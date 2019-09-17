@@ -1,0 +1,100 @@
+
+  <nb-card>
+    <nb-card-header class="HeadTitle">Department/Grades Base</nb-card-header>
+    <nb-card-body class="example-items-rows">
+      <div class="CardContent">{{CardContent}}</div>
+      <div class="CreateBtn text-center mt-2">
+            <button nbButton shape="rectangle" size="small" style="width: 15%">CREATE</button>
+        </div>
+      </nb-card-body>
+  </nb-card>
+<!-- Stepper block -->
+
+<div class="StepperBlock">
+  <nb-card>
+    <nb-card-header class="StepperTitle">Department / Grades Create Wizard</nb-card-header>
+    <nb-card-body>
+      <nb-stepper #stepper>
+        <nb-step [stepControl]="stepperFirst" label="First step">  
+          <!-- <ng-template #labelOne>First step</ng-template> -->
+          <h4>Step content #1</h4>
+          <form [formGroup]="stepperFirst" (ngSubmit)="onFirstSubmit()">
+          <p class="lorem">
+            Lorizzle ipsum dolizzle stuff fizzle, consectetuer adipiscing break it down.
+            Nullizzle sapien velizzle, my shizz pimpin', shizzle my nizzle crocodizzle shut the shizzle up,
+            gravida vizzle, dang.
+          </p>
+          <div class="input-group">
+            <input nbInput type="text" placeholder="Enter your name" class="form-control" formControlName="firstCtrl"
+                   [ngClass]="{'form-control-danger': stepperFirst.invalid && (stepperFirst.dirty || stepperFirst.touched)}">
+          </div>
+          <button nbButton disabled nbStepperNext>prev</button>
+          <button nbButton nbStepperNext>next</button>
+        </form>
+        </nb-step>
+        <nb-step [stepControl]="stepperSecond" label="Second step">
+          <h4>Step content #2</h4>
+          <form [formGroup]="stepperSecond" (ngSubmit)="onSecondSubmit()">
+          <p class="lorem">
+            Lorizzle ipsum dolizzle stuff fizzle, consectetuer adipiscing break it down.
+            Nullizzle sapien velizzle, my shizz pimpin', shizzle my nizzle crocodizzle shut the shizzle up,
+            gravida vizzle, dang.
+          </p>
+          <div class="input-group">
+            <input nbInput type="text" placeholder="Enter favorite movie" class="form-control" formControlName="secondCtrl"
+                   [ngClass]="{'form-control-danger': stepperSecond.invalid && (stepperSecond.dirty || stepperSecond.touched)}">
+          </div>
+          <button nbButton nbStepperPrevious>prev</button>
+          <button nbButton nbStepperNext>next</button>
+          </form>
+        </nb-step>
+        <nb-step [stepControl]="stepperThird" label="Third step">
+            <h4>Step content #3</h4>
+          <form [formGroup]="stepperThird" (ngSubmit)="onThirdSubmit()">
+          <p class="lorem">
+            Lorizzle ipsum dolizzle stuff fizzle, consectetuer adipiscing break it down.
+            Nullizzle sapien velizzle, my shizz pimpin', shizzle my nizzle crocodizzle shut the shizzle up,
+            gravida vizzle, dang.
+          </p>
+          <div class="input-group">
+            <input nbInput type="text" placeholder="Enter something" class="form-control" formControlName="thirdCtrl"
+                   [ngClass]="{'form-control-danger': stepperThird.invalid && (stepperThird.dirty || stepperThird.touched)}">
+          </div>
+          <button nbButton nbStepperPrevious>prev</button>
+          <button nbButton nbStepperNext>next</button>
+          </form>
+        </nb-step>
+        <nb-step [stepControl]="stepperThird" [hidden]="true" label="Third step">
+          <div class="step-container">
+            <h3>Wizard completed!</h3>
+            <div class="panel panel-primary">
+              	<div class="panel-heading">
+                    <h3 class="panel-title">{{tableHead}}</h3>
+            <table class="table table-striped Gradetable">
+              <thead>
+                <!-- <tr>
+                  <th class="text-left" scope="row">{{tableHead}}</th>
+                </tr> -->
+                <tr>
+                  <th *ngFor="let head of headElements" scope="col">{{head}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let el of elements">
+                    <th scope="row">{{el.id}}</th>
+                    <td>{{el.Coursename}}</td>
+                    <td>{{el.terms}}</td>
+                    <td>{{el.Duration}}</td>
+                    <td>{{el.Sectionsineachyear}}</td>
+                </tr>
+              </tbody>
+            </table>
+            </div>
+            </div>
+            <button nbButton (click)="stepper.reset()">Finish</button>
+          </div>
+        </nb-step>
+      </nb-stepper>
+    </nb-card-body>
+  </nb-card>
+</div>

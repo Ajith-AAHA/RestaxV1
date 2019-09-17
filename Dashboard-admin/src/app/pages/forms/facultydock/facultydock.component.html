@@ -1,0 +1,91 @@
+<nb-card>
+  <nb-card-header class="HeadTitle">{{tableHead}}</nb-card-header>
+  <nb-card-body class="example-items-rows">
+    <div class="CardContent">{{CardContent}}</div>
+    <div class="buttons-row">
+      <button *ngFor="let status of statuses" nbButton [status]="status" hero>
+        {{ status }}
+      </button>
+      <button primary nbButton hero>
+        Faculties
+      </button>
+      <button primary nbButton hero>
+        Students
+      </button>
+      <button primary nbButton hero>
+        Papers
+      </button>
+      <button primary nbButton hero>
+        Exams
+      </button>
+      <button primary nbButton hero>
+        Archive
+      </button>
+    </div>
+  </nb-card-body>
+</nb-card>
+<!-- Faculty table -->
+<nb-card>
+    <nb-card-header>
+      <div class="row">
+        <div class="col-6"> {{FacultyTitle}}</div>
+        <div class="col-6 Regbtn">
+            <button (click)="openModal(template1)" primary nbButton hero>Accept Registration</button>
+        </div>
+      </div>
+     
+    </nb-card-header>
+    <nb-card-body>
+        <!-- <form [formGroup]="facultyForm" (ngSubmit)="onSubmit()">              -->
+        <table class="table table-borderless" id="facultytable">
+            <thead>
+                <tr>
+                    <!-- <th *ngFor="let head of headElements" scope="col">{{head}}</th> -->
+                    <th scope="col">Actions</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">PWT</th>
+                    <th scope="col">PWI</th>
+                    <th scope="col">PWC</th>
+
+                </tr>
+               <tr>
+                  <td><button  nbButton size="medium" *ngIf="!faculty.id" (click)="createfaculty(facultyname,facultyemail,pwt,pwi,pwc)"   fullWidth><nb-icon icon="plus-outline"></nb-icon></button></td>
+                  <td><input type="text" class="FacId" name="id" [(ngModel)]="id" nbInput fullWidth placeholder="ID"></td>
+                  <td><input type="text" class="FacName" name="facultyname" [(ngModel)]="facultyname" nbInput fullWidth placeholder="Name"></td>
+                  <td><input type="text" class="FacEmail" name="facultyemail" [(ngModel)]="facultyemail" nbInput fullWidth placeholder="Email"></td>
+                  <td><nb-checkbox class="form-control" name="pwt" [(ngModel)]="pwt"></nb-checkbox></td>
+                  <td><nb-checkbox class="form-control" name="pwi" [(ngModel)]="pwi"></nb-checkbox></td>
+                  <td><nb-checkbox class="form-control" name="pwc" [(ngModel)]="pwc"></nb-checkbox></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let faculty of faculties;let i=index">
+                  <td>
+                      <!-- Show Edit User Form  -->
+                      <div class="row">
+                        <div class="btn text-center"  (click)="showEditfacultyForm(faculty, template)"><nb-icon icon="edit-outline"></nb-icon>
+                        </div>
+                        <!-- Remove User  -->
+                        <div class="btn text-center" (click)="removefaculty(faculty.id)"><nb-icon icon="trash-2-outline"></nb-icon>
+
+                        </div>
+                        <div  class="btn text-center" (click)="viewfaculty(faculty.id)"><nb-icon icon="person-outline"></nb-icon>
+
+                        </div>
+                      </div>
+                    </td>
+                <td class="FacultyData">{{ i+1 }}</td>
+                <td class="FacultyData">{{ faculty.facultyname }}</td>
+                <td class="FacultyData">{{ faculty.facultyemail }}</td>
+                <td class="FacultyData">{{ faculty.pwt }}</td>
+                <td class="FacultyData">{{ faculty.pwi }}</td>
+                <td class="FacultyData">{{ faculty.pwc }}</td>
+              </tr>
+                
+            </tbody>
+          </table>
+          <!-- </form> -->
+  </nb-card-body>
+</nb-card>

@@ -1,0 +1,81 @@
+.HeadTitle{
+    text-align: center;
+    font-size: 25px;
+    font-weight: bolder;
+}
+.CardContent{
+  text-align: center;
+    font-size: 17px;
+    font-weight: 600;
+}
+// stepperblock
+.Steppertitle{
+  font-size: 17px;
+  font-weight:400; 
+}
+nb-checkbox {
+    margin-bottom: 1rem;
+  }
+  
+  .form-inline [fullWidth] {
+    flex: 1;
+  }
+  
+  .form-inline > * {
+    margin: 0 1.5rem 1.5rem 0;
+  }
+  
+  nb-card.inline-form-card nb-card-body {
+    padding-bottom: 0;
+  }
+  // stepper
+  :host ::ng-deep nb-stepper .step-content {
+    text-align: center;
+  
+    button {
+      cursor: pointer;
+      margin: 0.5rem;
+    }
+  }
+  // Gradetable
+.row{
+    margin-top:40px;
+    padding: 0 10px;
+}
+.clickable{
+    cursor: pointer;   
+}
+
+.panel-heading div {
+  margin-top: -18px;
+  font-size: 15px;
+}
+.panel-heading div span{
+  margin-left:5px;
+}
+.panel-title{
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 20px;
+  text-align: left;
+  color: #ffffff;
+  padding-left: 28px;
+  background-color: #3366ff;
+    margin: 0;
+    border-radius: 7px;
+}
+.panel-body{
+  display: none;
+}
+.table.Gradetable{
+  border-collapse: separate;
+  border: 0px solid #dee2e6;
+    border-radius: 10px;
+    border-spacing: 0;
+}
+.table thead th{
+  border-bottom: none;
+}
+
+table.roundedCorners tr:last-child > td {
+  border-bottom: none;
+}

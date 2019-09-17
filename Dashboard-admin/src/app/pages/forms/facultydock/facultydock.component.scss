@@ -1,0 +1,41 @@
+.HeadTitle{
+    text-align: center;
+    font-size: 25px;
+    font-weight: bolder;
+}
+.CardContent{
+  text-align: center;
+    font-size: 17px;
+    font-weight: 600;
+}
+.buttons-row {
+  text-align: center;
+  button {
+      cursor: pointer;
+      margin: 0.5rem;
+      }
+    }
+.Regbtn{
+  text-align: right;
+}
+// Faculties table
+.FacId{
+  padding: 8px !important;
+  width: 40px!important;
+}
+.FacName{
+  padding: 8px!important;
+}
+
+
+::ng-deep.FacultyData{
+  padding: 20px!important;
+}
+
+
+//Department data
+.form-control{
+  height: auto!important;
+  border: none!important;
+  padding: 7px!important;
+}
