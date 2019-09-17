@@ -9,7 +9,6 @@ import { ButtonsComponent } from './buttons/buttons.component';
 import { DepartmentDataComponent } from './department-data/department-data.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FacultydockComponent } from './facultydock/facultydock.component';
-import { StudentComponent } from './student/student.component';
 
 const routes: Routes = [
   {
@@ -44,10 +43,7 @@ const routes: Routes = [
         path: 'facultydock',
         component: FacultydockComponent,
       },
-      {
-        path: 'Student',
-        component: StudentComponent,
-      },
+
     ],
   },
 ];

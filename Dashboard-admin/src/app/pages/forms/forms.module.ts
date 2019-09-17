@@ -21,7 +21,6 @@ import { FormLayoutsComponent } from './form-layouts/form-layouts.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { DepartmentDataComponent } from './department-data/department-data.component';
-import {StudentComponent} from './student/student.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FacultydockComponent } from './facultydock/facultydock.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
@@ -61,7 +60,7 @@ import * as forms from '@angular/forms';
     DatepickerComponent,
     DepartmentDataComponent,
     FacultydockComponent,
-    StudentComponent,
+
   ],
 })
 export class FormsModule { }
