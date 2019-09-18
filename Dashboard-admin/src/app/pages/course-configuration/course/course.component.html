@@ -1,6 +1,5 @@
 <div class="Course container">
-  <nb-card>
-    
+  <nb-card *ngIf="CourseModule">
     <nb-card-body>
       <div class="row">
         <div class="col-5">
@@ -222,17 +221,18 @@
   </nb-card-body>
   </nb-card>
   <nb-card *ngIf="Blocktree">
-   <nb-card-header>
-      <button class="btn btn-default"   (click)="blocktree()"><nb-icon icon="close-outline"></nb-icon>Institute Course Specifications Block View</button>
-   </nb-card-header>
-<nb-card-body>
-    <s2w-angular-d3-tree-lib
-    [(treeData)]="data"
-    (onNodeChanged)="nodeUpdated($event)"
-    (onNodeSelected)="nodeSelected($event)"></s2w-angular-d3-tree-lib>  
-</nb-card-body>  
-  </nb-card>
+    <nb-card-header>
+       <button class="btn btn-default"   (click)="blocktree()"><nb-icon icon="close-outline"></nb-icon>Institute Course Specifications Block View</button>
+    </nb-card-header>
+ <nb-card-body>
+     <s2w-angular-d3-tree-lib
+     [(treeData)]="data"
+     (onNodeChanged)="nodeUpdated($event)"
+     (onNodeSelected)="nodeSelected($event)"></s2w-angular-d3-tree-lib>  
+ </nb-card-body>  
+   </nb-card>
   <nb-card *ngIf="Unknownstate">
     <img style="width: 100%;" [src]="'assets/images/Not_found.png'">
   </nb-card>
   </div>
+  

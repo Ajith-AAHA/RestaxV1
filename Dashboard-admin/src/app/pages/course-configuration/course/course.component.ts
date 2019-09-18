@@ -4,7 +4,7 @@ import * as Query from './query';
 import 'rxjs/add/operator/map';
 declare var d3: any;
 import { AngularD3TreeLibService } from 'angular-d3-tree';
-import dataTree from './datatree';
+import dataTreeSimple from './data-tree-simple';
 
 @Component({
   selector: 'ngx-course',
@@ -12,9 +12,13 @@ import dataTree from './datatree';
   styleUrls: ['./course.component.scss'],
 })
 export class CourseComponent implements OnInit {
+
   data: any[];
   selectedNode: any;
 
+  constructor(private apollo: Apollo, private treeService: AngularD3TreeLibService) {
+    this.data = dataTreeSimple.result;
+   }
   nodeUpdated(node: any) {
     console.info('app detected node change');
   }
@@ -55,7 +59,7 @@ export class CourseComponent implements OnInit {
   CourseTitle= ['Set Courses'];
   DepartmentTitle= ['Set Departments'];
   LevelTitle= ['Set Levels'];
-
+  CourseModule: boolean = true;
   setcourse: boolean = false;
   // course: true;
   EditRecord: boolean = true;
@@ -66,9 +70,7 @@ export class CourseComponent implements OnInit {
   Unknownstate: boolean = true;
 
 
-  constructor(private apollo: Apollo, private treeService: AngularD3TreeLibService) {
-    this.data = dataTree.result;
-   }
+
 
   ngOnInit() {
     this.getAllcourses();
@@ -225,5 +227,6 @@ this.Unknownstate = false;
 this.setcourse = false;
 this.level = false;
 this.department = false;
+this.CourseModule = false;
 }
 }

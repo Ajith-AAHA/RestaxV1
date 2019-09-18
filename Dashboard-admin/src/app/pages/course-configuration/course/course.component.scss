@@ -65,8 +65,8 @@ padding: 20px!important;
   font-weight: bold;
   font-size: 20px;
 }
-path.link {
-  fill: none;
-  stroke: #CCC;
-  stroke-width: 2px;
+path.link{
+  fill: none !important;
+  stroke: #CCC !important;
+  stroke-width: 2px !important;
 }
