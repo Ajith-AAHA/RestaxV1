@@ -8,11 +8,11 @@
 }
 
 // Course table
-.CourseId{
+.ConfigId{
 padding: 8px !important;
 width: 40px!important;
 }
-.CourseName{
+.ConfigName{
 padding: 8px!important;
 }
 .CourseCategory{
@@ -42,7 +42,7 @@ padding: 8px!important;
     height: 100%;
     width: 16%;
     border-radius: 20px!important;
-    // filter:drop-shadow(16px 16px 10px black);
+   // filter:drop-shadow(16px 16px 10px black);
 }
 .Coursebtn:hover {
   box-shadow: 0 0 11px rgba(41, 23, 23, 0.43);
@@ -69,4 +69,10 @@ path.link{
   fill: none !important;
   stroke: #CCC !important;
   stroke-width: 2px !important;
+}
+.Levelbtn{
+  width: 80%!important;
+}
+.LevelData{
+  width: 15%;
 }

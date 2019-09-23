@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ThemeModule } from '../../@theme/theme.module';
+import { ModalModule } from 'ngx-bootstrap/modal';
 import {
   NbActionsModule,
   NbButtonModule,
@@ -40,6 +41,8 @@ import { CourseComponent } from './course/course.component';
     FormsModule,
     CommonModule,
     CourseConfigurationRoutingModule,
+    ModalModule.forRoot(),
+
   ],
 })
 export class CourseConfigurationModule { }
