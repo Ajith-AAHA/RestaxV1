@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import * as Query from './query';
 import 'rxjs/add/operator/map';
 declare var d3: any;
 import { AngularD3TreeLibService } from 'angular-d3-tree';
 import dataTreeSimple from './data-tree-simple';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'ngx-course',
@@ -12,11 +15,13 @@ import dataTreeSimple from './data-tree-simple';
   styleUrls: ['./course.component.scss'],
 })
 export class CourseComponent implements OnInit {
+  modalRef: BsModalRef;
 
   data: any[];
   selectedNode: any;
 
-  constructor(private apollo: Apollo, private treeService: AngularD3TreeLibService) {
+  constructor(private apollo: Apollo,
+    private treeService: AngularD3TreeLibService, private modalService: BsModalService) {
     this.data = dataTreeSimple.result;
    }
   nodeUpdated(node: any) {
@@ -32,7 +37,7 @@ export class CourseComponent implements OnInit {
     const name = window.prompt('new node name');
     this.treeService.addNode({id: '999', descripcion: name, parent: parent});
   }
-  user: any = {};
+  dept: any = {};
 
   isVisible = false;
 
@@ -40,15 +45,14 @@ export class CourseComponent implements OnInit {
   private newAttribute: any = {};
 
   courses:  Array<any> = [];
+
   course: any = [];
 
   coursename: any;
 
-  departments:  Array<any> = [];
   departmentname: any;
   shortcode: any;
 
-  levels:  Array<any> = [];
   levelname: any;
   levelshortcode: any;
   year: any;
@@ -74,8 +78,16 @@ export class CourseComponent implements OnInit {
 
   ngOnInit() {
     this.getAllcourses();
+    this.getAlldepartments();
   }
   addFieldValue() {
+    this.coursename = '';
+    this.levelname = '';
+    this.levelshortcode = '';
+    this.year = '';
+    this.terms = '';
+    this.departmentname = '';
+    this.shortcode = '';
     this.fieldArray.push(this.newAttribute);
     this.newAttribute = {};
   }
@@ -183,7 +195,7 @@ proxy.writeQuery({query: Query.courses, data});
 
           const index = data.users.map(function (x) { return x.id; }).indexOf(this.course.id);
 
-          data.users[index].coursename = course;
+          data.courses[index].coursename = course;
 
           // Write our data back to the cache.
           proxy.writeQuery({ query: Query.courses, data });
@@ -195,7 +207,133 @@ proxy.writeQuery({query: Query.courses, data});
       }, (error) => {
         console.log('there was an error sending the query', error);
       });
-  }
+}
+
+// department code block
+departments: any[];
+
+/**
+ * @param departmentname
+ * @param shortcode
+ */
+adddepartment(departmentname, shortcode, index) {
+  this.apollo
+  .mutate({
+    mutation: Query.adddepartment,
+    variables: {
+      departmentname: departmentname,
+      shortcode: shortcode,
+    },
+    // @ts-ignore
+    update: (proxy, {data: {adddepartment}}) => {
+                // Read the data from our cache for this query.
+const data: any = proxy.readQuery({query: Query.departments});
+
+data.departments.push(adddepartment);
+
+          // Write our data back to the cache.
+proxy.writeQuery({query: Query.departments, data});
+    },
+  }).subscribe(({data}) => {
+    this.departmentname = '';
+    this.shortcode = '';
+    console.log(data);
+    this.fieldArray.splice(index, 1);
+  }, (error) => {
+    console.log('there was an error sending query');
+  });
+}
+
+
+removedepartment(id) {
+  this.apollo
+  .mutate({
+    mutation: Query.removedepartment,
+    variables: {
+      id: id,
+    },
+    // @ts-ignore
+    update: (proxy, {data: {removedepartment}}) => {
+                // Read the data from our cache for this query.
+                const data: any = proxy.readQuery({query: Query.departments});
+                const index = data.departments.map(function(x){return x.id; }).indexOf(id);
+                data.departments.splice(index, 1);
+                          // Write our data back to the cache.
+                proxy.writeQuery({query: Query.departments, data});
+    },
+  }).subscribe(({data}) => {
+    console.log(data);
+  }, (error) => {
+    console.log('there was an error sending query');
+  });
+}
+
+/**
+ * Edit department
+ * @param departmentname
+ * @param shortcode
+ * @param template
+ */
+showEditdepartment (dept, template) {
+this.departmentname = dept.departmentname;
+this.shortcode = dept.shortcode;
+this.dept = dept;
+this.modalRef = this.modalService.show(template);
+}
+/**
+ * updateuser
+ * @param dept
+ * @param shortcode
+ */
+updatedepartment(dept, shortcode) {
+
+this.apollo
+.mutate({
+  mutation: Query.updatedepartment,
+  variables: {
+    id: this.dept.id,
+    departmentname: dept,
+    shortcode: shortcode,
+  },
+  // @ts-ignore
+  update: (proxy, {data: {updatedepartment}}) => {
+          // Read the data from our cache for this query.
+const data: any = proxy.readQuery({query: Query.departments});
+const index = data.departments.map(function(x){return x.id; }).indexOf(this.dept.id);
+data.departments[index].departmentname = dept;
+proxy.writeQuery({query: Query.departments, data});
+  },
+}).subscribe(({data}) => {
+  this.closeFirstModal();
+}, (error) => {
+  console.log('there was an error sending the query', error);
+});
+}
+getAlldepartments() {
+  this.apollo.watchQuery({query: Query.departments})
+  .valueChanges
+  .map((result: any) => result.data.departments).subscribe((data) => {
+    this.departments = data;
+    console.log(this.departments);
+  });
+ }
+
+
+
+
+// levels block code
+levels: Array<any> = ['testing', 'testing'];
+/**
+ * @param levelname
+ * @param shortcode
+ * @param year
+ * @param terms
+ */
+addlevel(levelname, shortcode, year, terms) {
+  console.log(this.levels);
+}
+
+
 Course() {
   this.setcourse = true;
   this.department = false;
@@ -228,5 +366,18 @@ this.setcourse = false;
 this.level = false;
 this.department = false;
 this.CourseModule = false;
+}
+// Open Modal
+openModal(template: TemplateRef<any>) {
+  this.departmentname = '';
+  this.shortcode = '';
+  this.dept = {};
+  this.modalRef = this.modalService.show(template);
+}
+
+// Close Modal
+closeFirstModal() {
+  this.modalRef.hide();
+  this.modalRef = null;
 }
 }

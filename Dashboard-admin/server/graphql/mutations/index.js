@@ -5,12 +5,12 @@
 var addcourse = require('./addcourse').addcourse;
 var removecourse = require('./removecourse').removecourse;
 var updatecourse = require('./updatecourse').updatecourse;
-var adddepartment = require('./department/adddepartments').adddepartment;
-var removedepartment = require('./department/removedepartment').removedepartment;
-var updatedepartment = require('./department/removedepartment').removedepartment;
-var addlevel = require('./level/addlevels').addlevel;
-var removelevel = require('./level/removelevel').removelevel;
-var updatelevel = require('./level/updatelevel').updatelevel;
+var adddepartment = require('./adddepartment').adddepartment;
+var removedepartment = require('./removedepartment').removedepartment;
+var updatedepartment = require('./updatedepartment').updatedepartment;
+var addlevel = require('./addlevel').addlevel;
+var removelevel = require('./removelevel').removelevel;
+var updatelevel = require('./updatelevel').updatelevel;
 
 module.exports = {
   // addfaculty,

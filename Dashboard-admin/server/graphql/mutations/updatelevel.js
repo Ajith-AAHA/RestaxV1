@@ -1,7 +1,7 @@
 var GraphQLNonNull = require('graphql').GraphQLNonNull;
 var GraphQLString = require('graphql').GraphQLString;
-var LevelType = require('../../types/level');
-var LevelModel = require('../../../models/level');
+var LevelType = require('../types/level');
+var LevelModel = require('../../models/level');
 
 exports.updatelevel = {
   type: LevelType.levelType,

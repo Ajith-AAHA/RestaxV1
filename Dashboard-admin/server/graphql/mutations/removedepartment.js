@@ -1,7 +1,7 @@
 var GraphQLNonNull = require('graphql').GraphQLNonNull;
 var GraphQLString = require('graphql').GraphQLString;
-var DepartmentType = require('../../types/department');
-var DepartmentModel = require('../../../models/department');
+var DepartmentType = require('../types/department');
+var DepartmentModel = require('../../models/department');
 
 exports.removedepartment = {
   type: DepartmentType.departmentType,

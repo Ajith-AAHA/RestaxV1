@@ -15,7 +15,8 @@ exports.updatecourse = {
     }
   },
   resolve(root,params){
-    return CourseModel.findByIdAndUpdate(params.id,{coursename:params.coursename,updated_date: new Date()},function(err){
+    return CourseModel.findByIdAndUpdate(
+      params.id,{$set:{coursename:params.coursename}},function(err){
       if (err) return next(err);
     });
   }
