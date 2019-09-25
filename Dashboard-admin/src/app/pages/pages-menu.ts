@@ -24,6 +24,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: 'Course',
         link: '/pages/course-configuration/course',
       },
+      {
+        title: 'Exam',
+        link: '/pages/course-configuration/exam',
+      },
     ],
   },
 
