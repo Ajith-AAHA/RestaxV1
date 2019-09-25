@@ -8,6 +8,7 @@ import { ECommerceModule } from './e-commerce/e-commerce.module';
 import { PagesRoutingModule } from './pages-routing.module';
 import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import {FormsModule} from '@angular/forms';
+
 @NgModule({
   imports: [
   PagesRoutingModule,
@@ -20,6 +21,7 @@ import {FormsModule} from '@angular/forms';
   ],
   declarations: [
     PagesComponent,
+    
   ],
 })
 export class PagesModule {

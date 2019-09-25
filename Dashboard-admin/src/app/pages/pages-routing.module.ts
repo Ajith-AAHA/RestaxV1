@@ -75,6 +75,11 @@ const routes: Routes = [{
         .then(m => m.MiscellaneousModule),
     },
     {
+      path: 'faculty',
+      loadChildren: () => import('./faculty/faculty.module')
+        .then(m => m.FacultyModule),
+    },
+    {
       path: '',
       redirectTo: 'dashboard',
       pathMatch: 'full',

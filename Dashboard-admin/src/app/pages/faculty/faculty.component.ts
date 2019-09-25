@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'ngx-faculty',
-  templateUrl: './faculty.component.html',
-  styleUrls: ['./faculty.component.scss']
+  template: `
+    <router-outlet></router-outlet>
+  `,
 })
 export class FacultyComponent implements OnInit {
 
