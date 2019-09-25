@@ -3,11 +3,10 @@ var GraphQLNonNull = require('graphql').GraphQLNonNull;
 var GraphQLID = require('graphql').GraphQLID;
 var GraphQLString = require('graphql').GraphQLString;
 
-
-//faculty type
+// level type
 
 exports.levelType = new GraphQLObjectType({
-    name:'levels',
+    name:'level',
     fields:function(){
         return{
             id:{
@@ -16,7 +15,7 @@ exports.levelType = new GraphQLObjectType({
             levelname:{
                 type:GraphQLString
             },
-            levelshortcode: {
+            levelshortcode:{
                 type:GraphQLString
             },
             year:{
@@ -24,8 +23,7 @@ exports.levelType = new GraphQLObjectType({
             },
             terms:{
                 type:GraphQLString
-            },
-            
+            }
         }
     }
 });

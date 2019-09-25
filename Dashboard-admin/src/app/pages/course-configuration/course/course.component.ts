@@ -1,5 +1,5 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { Apollo } from 'apollo-angular';
+import { Apollo, Mutation } from 'apollo-angular';
 import * as Query from './query';
 import 'rxjs/add/operator/map';
 declare var d3: any;
@@ -7,7 +7,8 @@ import { AngularD3TreeLibService } from 'angular-d3-tree';
 import dataTreeSimple from './data-tree-simple';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
-import { map } from 'rxjs/operators';
+import { variable } from '@angular/compiler/src/output/output_ast';
+import { query } from '\@angular/animations';
 
 @Component({
   selector: 'ngx-course',
@@ -38,15 +39,14 @@ export class CourseComponent implements OnInit {
     this.treeService.addNode({id: '999', descripcion: name, parent: parent});
   }
   dept: any = {};
-
-  isVisible = false;
+  course: any = {};
+  level: any = {};
 
   private fieldArray: Array<any> = [];
   private newAttribute: any = {};
 
   courses:  Array<any> = [];
 
-  course: any = [];
 
   coursename: any;
 
@@ -59,7 +59,7 @@ export class CourseComponent implements OnInit {
   terms: any;
 
   CardContent= ['This page is used to manipulate institute Configuration Data'];
-
+  HeadElements= ['Action', 'ID', 'LevelName', 'LevelShortcode', 'Year', 'Terms'];
   CourseTitle= ['Set Courses'];
   DepartmentTitle= ['Set Departments'];
   LevelTitle= ['Set Levels'];
@@ -69,7 +69,7 @@ export class CourseComponent implements OnInit {
   EditRecord: boolean = true;
   EditActions: boolean = false;
   department: boolean = false;
-  level: boolean = false;
+  setlevels: boolean = false;
   Blocktree: boolean = false;
   Unknownstate: boolean = true;
 
@@ -77,8 +77,9 @@ export class CourseComponent implements OnInit {
 
 
   ngOnInit() {
-    this.getAllcourses();
-    this.getAlldepartments();
+    // this.getAllcourses();
+    // this.getAlldepartments();
+    this.getLevels();
   }
   addFieldValue() {
     this.coursename = '';
@@ -100,9 +101,7 @@ editCourse(course: any) {
   this.EditRecord = false;
   this.EditActions = true;
 }
-// testcourse() {
-//   alert('it worked');
-// }
+
 
 Cancel(course) {
   course.editable = !course.editable;
@@ -176,8 +175,20 @@ proxy.writeQuery({query: Query.courses, data});
 }
 
 /**
-   * Update User
+ * Edit department
+ * @param coursename
+
+ * @param template
+ */
+showEditcourse (course, template) {
+  this.coursename = course.coursename;
+  this.course = course;
+  this.modalRef = this.modalService.show(template);
+  }
+  /**
+   * update course
    * @param course
+   * @param coursename
    */
   // tslint:disable-next-line: no-shadowed-variable
   updatecourse(course) {
@@ -193,7 +204,7 @@ proxy.writeQuery({query: Query.courses, data});
           // Read the data from our cache for this query.
           const data: any = proxy.readQuery({ query: Query.courses });
 
-          const index = data.users.map(function (x) { return x.id; }).indexOf(this.course.id);
+          const index = data.courses.map(function (x) { return x.id; }).indexOf(this.course.id);
 
           data.courses[index].coursename = course;
 
@@ -203,7 +214,7 @@ proxy.writeQuery({query: Query.courses, data});
       })
       .subscribe(({ data }) => {
        console.log(data);
-       course.editable = !course.editable;
+       this.closeFirstModal();
       }, (error) => {
         console.log('there was an error sending the query', error);
       });
@@ -281,7 +292,7 @@ this.dept = dept;
 this.modalRef = this.modalService.show(template);
 }
 /**
- * updateuser
+ * updatedepartment
  * @param dept
  * @param shortcode
  */
@@ -318,26 +329,132 @@ getAlldepartments() {
   });
  }
 
+levels: Array<any> = [];
 
-
-
-// levels block code
-levels: Array<any> = ['testing', 'testing'];
 /**
  * @param levelname
- * @param shortcode
+ * @param levelshortcode
  * @param year
  * @param terms
  */
-addlevel(levelname, shortcode, year, terms) {
-  console.log(this.levels);
+
+addlevel(levelname, levelshortcode, year, terms, index) {
+  this.apollo
+  .mutate({
+    mutation: Query.addlevel,
+    variables: {
+      levelname: levelname,
+      levelshortcode: levelshortcode,
+      year: year,
+      terms: terms,
+    },
+    // @ts-ignore
+    update: (proxy, {data: {addlevel}}) => {
+      // read the data from our cache for this query
+      const data: any = proxy.readQuery({query: Query.Levels});
+      data.levels.push(addlevel);
+      // write our data back to the cache
+      proxy.writeQuery({query: Query.Levels, data});
+    },
+  }).subscribe(({data}) => {
+    this.levelname = '';
+    this.levelshortcode = '';
+    this.year = '';
+    this.terms = '';
+    console.log(data);
+    this.fieldArray.splice(index, 1);
+  }, (error) => {
+    console.log('there was an error sending query');
+  },
+  );
+
+
+  }
+/**
+ * Remove level
+ *@param id
+ */
+removelevel(id) {
+this.apollo
+.mutate({
+  mutation: Query.removelevel,
+  variables: {
+    id: id,
+  },
+  // @ts-ignore
+  update: (proxy, {data: {removelevel}}) => {
+              // Read the data from our cache for this query.
+  const data: any = proxy.readQuery({query: Query.Levels});
+  const index = data.levels.map(function(x){return x.id; }).indexOf(id);
+  data.levels.splice(index, 1);
+            // Write our data back to the cache.
+proxy.writeQuery({query: Query.Levels, data});
+  },
+}).subscribe(({data}) => {
+  console.log(data);
+}, (error) => {
+  console.log('there was an error in sending the query');
+});
+}
+/**
+ * Editlevel
+ * @param level
+ * @param template
+ */
+showEditlevel(level, template) {
+this.levelname = level.levelname;
+this.levelshortcode = level.levelshortcode;
+this.year = level.year;
+this.terms = level.terms;
+this.level = level;
+this.modalRef = this.modalService.show(template);
+}
+/**
+ * updatelevel
+ * @param level
+ */
+updatelevel(level, levelshortcode, year, terms) {
+this.apollo
+.mutate({
+  mutation: Query.updatelevel,
+  variables: {
+    id: this.level.id,
+    levelname: level,
+    levelshortcode: levelshortcode,
+    year: year,
+    terms: terms,
+  },
+  // @ts-ignore
+  update: (proxy, {data: {updatelevel}}) => {
+              // Read the data from our cache for this query.
+  const data: any = proxy.readQuery({query: Query.Levels});
+  const index = data.levels.map(function(x){return x.id; }).indexOf(this.level.id);
+  data.levels[index].name = level;
+            // Write our data back to the cache.
+  proxy.writeQuery({query: Query.Levels, data});
+  },
+}).subscribe(({data}) => {
+  this.closeFirstModal();
+}, (error) => {
+  console.log('there was an error sending query');
+});
+}
+// getalllevels
+getLevels() {
+  this.apollo.watchQuery({query: Query.Levels})
+  .valueChanges
+  .map((result: any) => {
+    return result.data.levels;
+  }).subscribe((data) => {
+    this.levels = data;
+  });
 }
 
 
 Course() {
   this.setcourse = true;
   this.department = false;
-  this.level = false;
+  this.setlevels = false;
   this.Unknownstate = false;
   this.Blocktree = false;
 
@@ -346,7 +463,7 @@ Course() {
 Depts() {
   this.setcourse = false;
   this.department = true;
-  this.level = false;
+  this.setlevels = false;
   this.Unknownstate = false;
   this.Blocktree = false;
 
@@ -354,7 +471,7 @@ Depts() {
 Levels() {
   this.setcourse = false;
   this.department = false;
-  this.level = true;
+  this.setlevels = true;
   this.Unknownstate = false;
   this.Blocktree = false;
 
@@ -363,9 +480,12 @@ BlockTree() {
 this.Blocktree = true;
 this.Unknownstate = false;
 this.setcourse = false;
-this.level = false;
+this.setlevels = false;
 this.department = false;
 this.CourseModule = false;
+}
+TreeBlock() {
+
 }
 // Open Modal
 openModal(template: TemplateRef<any>) {

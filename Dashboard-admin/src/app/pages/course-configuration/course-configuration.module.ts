@@ -13,18 +13,18 @@ import {
   NbSelectModule,
   NbUserModule,
   NbStepperModule,
-
+  NbAlertModule,
 } from '@nebular/theme';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AngularD3TreeLibModule } from 'angular-d3-tree';
 
 import { CourseConfigurationRoutingModule } from './course-configuration-routing.module';
 import { CourseComponent } from './course/course.component';
-
+import { CourseConfigurationComponent } from './course-configuration.component';
 @NgModule({
-  declarations: [CourseComponent],
+  declarations: [CourseConfigurationComponent, CourseComponent],
   imports: [
-    AngularD3TreeLibModule,
+  AngularD3TreeLibModule,
     ThemeModule,
     NbInputModule,
     NbCardModule,
@@ -37,6 +37,7 @@ import { CourseComponent } from './course/course.component';
     NbSelectModule,
     NbIconModule,
     NbStepperModule,
+    NbAlertModule,
     ReactiveFormsModule,
     FormsModule,
     CommonModule,
