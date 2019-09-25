@@ -1,0 +1,43 @@
+<div class="Course container">
+  <nb-card *ngIf="CourseModule">
+    <nb-card-body>
+      <div class="row">
+        <div class="col-5">
+            <div  class="HeadTitle p-3">EXAM OPERATIONS</div>
+            <div class="CardContent pl-3">{{CardContent}}</div>
+            <div class="CreateBtn pt-2 pl-3">
+                  <button class="Morebtn mr-2" nbButton shape="rectangle" size="small">More Info<nb-icon icon="arrowhead-right-outline"></nb-icon></button>
+                  <!-- <button (click)="BlockTree($event)" class="Blockbtn" nbButton shape="rectangle" size="small">Block View</button> -->
+            </div>      
+        </div>
+        <div class="col-7 CourseCategory">
+            <button (click)="Course($event)" class="Coursebtn"  nbButton size="giant">
+              <ul style="list-style-type:none;">
+                <li><nb-icon  class="CourseIcons" icon="edit-2-outline"></nb-icon></li>
+                <li>pre</li>
+                <li>Exam</li>
+                <li>Ops</li>
+              </ul>
+            </button>
+            <button (click)="Depts($event)" class="Coursebtn ml-4 mr-4" nbButton size="giant">
+                <ul style="list-style-type:none;">
+                <li><nb-icon  class="CourseIcons" icon="edit-2-outline"></nb-icon></li>
+                               <li>Exam</li>
+                               <li>Day</li>
+                <li>Ops</li>
+              </ul>
+            </button>
+            <button (click)="Levels($event)" class="Coursebtn"  nbButton size="giant">
+              <ul style="list-style-type:none;">
+                <li><nb-icon  class="CourseIcons" icon="edit-2-outline"></nb-icon></li>
+                <li>Post</li>
+                <li>Exam</li>
+                <li>Ops</li>
+              </ul>
+          </button>
+          </div>
+        </div>
+      </nb-card-body>
+  </nb-card>
+  </div>
+  

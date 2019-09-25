@@ -18,11 +18,14 @@ import {
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AngularD3TreeLibModule } from 'angular-d3-tree';
 
-import { CourseConfigurationRoutingModule } from './course-configuration-routing.module';
-import { CourseComponent } from './course/course.component';
+import { CourseConfigurationRoutingModule} from './course-configuration-routing.module';
+import { CourseConfigurationComponent } from './course-configuration.component';
+
+import {CourseComponent} from './course/course.component';
+import { ExamComponent } from './exam/exam.component';
 
 @NgModule({
-  declarations: [CourseComponent],
+  declarations: [ CourseConfigurationComponent,CourseComponent,ExamComponent],
   imports: [
     AngularD3TreeLibModule,
     ThemeModule,

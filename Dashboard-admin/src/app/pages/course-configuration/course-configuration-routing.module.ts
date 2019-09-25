@@ -1,16 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { CourseConfigurationComponent} from './course-configuration.component';
 import {CourseComponent} from './course/course.component';
+import { ExamComponent } from './exam/exam.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
   path: '',
-  component: CourseComponent,
+  component: CourseConfigurationComponent,
   children: [
     {
       path: 'course',
       component: CourseComponent,
+    },
+    {
+      path: 'exam',
+      component: ExamComponent,
     },
   ],
   },
@@ -21,3 +27,8 @@ const routes: Routes = [
 exports: [RouterModule],
 })
 export class CourseConfigurationRoutingModule { }
+// export const routedComponents = [
+//   CourseConfigurationComponent,
+//   CourseComponent,
+//   ExamComponent,
+// ];
