@@ -1,13 +1,12 @@
-
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var levelsSchema = new Schema({
-    levelname: {
+var levelSchema = new Schema({
+    levelname:{
         type:String,
         required:true
     },
-    levelshortcode: {
+    levelshortcode:{
         type:String,
         required:true
     },
@@ -18,10 +17,8 @@ var levelsSchema = new Schema({
     terms:{
         type:String,
         required:true
-    },
-    
-
+    }
 });
 
-var Model = mongoose.model('level',levelsSchema);
+var Model = mongoose.model('Level',levelSchema);
 module.exports = Model;

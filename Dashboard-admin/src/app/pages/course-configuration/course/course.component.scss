@@ -14,6 +14,7 @@ width: 40px!important;
 }
 .ConfigName{
 padding: 8px!important;
+display: flex;
 }
 .CourseCategory{
   text-align: center;
@@ -70,9 +71,12 @@ path.link{
   stroke: #CCC !important;
   stroke-width: 2px !important;
 }
-.Levelbtn{
-  width: 80%!important;
-}
+// .Levelbtn{
+//   // width: 80%!important;
+// }
 .LevelData{
   width: 15%;
+}
+.LevelBlock{
+  display: flex!important;
 }

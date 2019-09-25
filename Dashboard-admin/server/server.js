@@ -20,10 +20,10 @@ mongoose.connect('mongodb://localhost/Restax', { promiseLibrary: require('bluebi
 
 app.use('*', cors());
 
-const departmentSchema = require('./graphql/index').departmentSchema;
+const levelSchema = require('./graphql/index').levelSchema;
 
 app.use('/graphql', cors(), graphqlHTTP({
-  schema: departmentSchema,
+  schema: levelSchema,
   rootValue: global,
   graphiql: true
 }));

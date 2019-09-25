@@ -4,7 +4,7 @@ import { CourseConfigurationComponent} from './course-configuration.component';
 import {CourseComponent} from './course/course.component';
 import { ExamComponent } from './exam/exam.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import {CourseConfigurationComponent} from '../course-configuration/course-configuration.component';
 const routes: Routes = [
   {
   path: '',
@@ -24,7 +24,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes), FormsModule, ReactiveFormsModule],
-exports: [RouterModule],
+  exports: [RouterModule],
 })
 export class CourseConfigurationRoutingModule { }
 // export const routedComponents = [

@@ -13,7 +13,7 @@ import {
   NbSelectModule,
   NbUserModule,
   NbStepperModule,
-
+  NbAlertModule,
 } from '@nebular/theme';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AngularD3TreeLibModule } from 'angular-d3-tree';
@@ -27,7 +27,7 @@ import { ExamComponent } from './exam/exam.component';
 @NgModule({
   declarations: [ CourseConfigurationComponent,CourseComponent,ExamComponent],
   imports: [
-    AngularD3TreeLibModule,
+  AngularD3TreeLibModule,
     ThemeModule,
     NbInputModule,
     NbCardModule,
@@ -40,6 +40,7 @@ import { ExamComponent } from './exam/exam.component';
     NbSelectModule,
     NbIconModule,
     NbStepperModule,
+    NbAlertModule,
     ReactiveFormsModule,
     FormsModule,
     CommonModule,

@@ -23,6 +23,7 @@ module.exports = {
   removedepartment,
   updatedepartment,
   addlevel,
-  updatelevel,
   removelevel,
+ updatelevel,
+
 }
