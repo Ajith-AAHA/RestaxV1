@@ -3,12 +3,12 @@ var GraphQLList = require('graphql').GraphQLList;
 var LevelModel = require('../../models/level');
 var levelType = require('../types/level').levelType;
 
-//Query
+// Query
 
-exports.queryType = new  GraphQLObjectType({
+exports.queryType = new GraphQLObjectType({
     name:'Query',
     fields:function(){
-        return {
+        return{
             levels:{
                 type: new GraphQLList(levelType),
                 resolve:function(){
@@ -16,7 +16,7 @@ exports.queryType = new  GraphQLObjectType({
                     if(!levels){
                         throw new Error('Error')
                     }
-                    return levels;
+                    return levels
                 }
             }
         }

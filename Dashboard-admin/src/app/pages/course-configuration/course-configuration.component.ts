@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'ngx-form-elements',
+  selector: 'ngx-course-configuration',
   template: `
     <router-outlet></router-outlet>
   `,
 })
-export class CourseComponent {
+export class CourseConfigurationComponent {
 }
