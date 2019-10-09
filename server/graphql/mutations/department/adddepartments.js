@@ -1,7 +1,7 @@
 var GraphQLNonNull = require('graphql').GraphQLNonNull;
 var GraphQLString = require('graphql').GraphQLString;
-var DepartmentType = require('../types/department');
-var DepartmentModel = require('../../models/department');
+var DepartmentType = require('../../types/department');
+var DepartmentModel = require('../../../models/department');
 
 exports.adddepartment ={
     type: DepartmentType.departmentType,
@@ -19,6 +19,5 @@ exports.adddepartment ={
         if(!newDepartment){
             throw new Error ('Error');
         }
-        return newDepartment
     }
 }

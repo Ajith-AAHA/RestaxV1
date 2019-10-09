@@ -313,6 +313,24 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },
   {
+    title: 'faculty',
+    icon: 'grid-outline',
+    children: [
+      {
+        title: 'faculties-pool',
+        link: '/pages/faculty/faculties-pool',
+      },
+      {
+        title: 'faculty-base',
+        link: '/pages/faculty/faculty-base',
+      },
+      {
+        title: 'faculty-registration',
+        link: '/pages/faculty/faculty-registration',
+      },
+    ],
+  },
+  {
     title: 'Miscellaneous',
     icon: 'shuffle-2-outline',
     children: [

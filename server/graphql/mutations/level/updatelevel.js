@@ -1,35 +1,33 @@
 var GraphQLNonNull = require('graphql').GraphQLNonNull;
 var GraphQLString = require('graphql').GraphQLString;
-var FacultyType = require('../types/faculty');
-var FacultyModel = require('../../models/faculty');
+var LevelType = require('../../types/level');
+var LevelModel = require('../../../models/level');
 
-exports.update = {
-  type: FacultyType.facultyType,
+exports.updatelevel = {
+  type: LevelType.levelType,
   args: {
     id: {
       name: 'id',
       type: new GraphQLNonNull(GraphQLString),
     },
-    facultyname: {
+    levelname: {
       type: new GraphQLNonNull(GraphQLString),
     },
-    facultyemail:{
+    levelshortcode:{
         type: new GraphQLNonNull(GraphQLString),
     },
-    pwt:{
+    year:{
         type: new GraphQLNonNull(GraphQLString),
     },
-    pwi:{
+    terms:{
         type: new GraphQLNonNull(GraphQLString),
     },
-    pwc:{
-        type: new GraphQLNonNull(GraphQLString)
-    },
+   
   },
   resolve(root, params) {
-   return FacultyModel.findByIdAndUpdate(
+   return LevelModel.findByIdAndUpdate(
        params.id,
-       {$set:{facultyname:params.facultyname,facultyemail:params.facultyemail,pwt:params.pwt,pwi:params.pwi,pwc:params.pwc}},
+       {$set:{levelname:params.levelname,levelshortcode:params.levelshortcode,year:params.year,terms:params.terms}},
        {new:true}
    )
    .catch(err=> new Error(err));
