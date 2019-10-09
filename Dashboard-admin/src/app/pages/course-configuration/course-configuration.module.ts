@@ -20,7 +20,7 @@ import { AngularD3TreeLibModule } from 'angular-d3-tree';
 
 import { CourseConfigurationRoutingModule} from './course-configuration-routing.module';
 import { CourseConfigurationComponent } from './course-configuration.component';
-
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import {CourseComponent} from './course/course.component';
 import { ExamComponent } from './exam/exam.component';
 
@@ -46,7 +46,7 @@ import { ExamComponent } from './exam/exam.component';
     CommonModule,
     CourseConfigurationRoutingModule,
     ModalModule.forRoot(),
-
+    NgMultiSelectDropDownModule,
   ],
 })
 export class CourseConfigurationModule { }

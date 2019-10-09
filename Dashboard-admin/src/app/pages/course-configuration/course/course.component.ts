@@ -77,8 +77,8 @@ export class CourseComponent implements OnInit {
 
 
   ngOnInit() {
-    // this.getAllcourses();
-    // this.getAlldepartments();
+     this.getAllcourses();
+    this.getAlldepartments();
     this.getLevels();
   }
   addFieldValue() {

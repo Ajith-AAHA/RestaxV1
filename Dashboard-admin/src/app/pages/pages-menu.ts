@@ -32,6 +32,78 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
 
   {
+    title: 'Exambase',
+    icon: 'shuffle-2-outline',
+     
+     children: [
+      {
+        title: 'Day Ops',
+        link: '/pages/exambase/dayops',
+      },
+      {
+        title: 'Post Ops',
+        link: '/pages/exambase/postops',
+      },
+      {
+        title: 'Pre Ops',
+        link: '/pages/exambase/preops',
+      },
+    ],
+     
+  },
+
+  {
+    title: 'Grading',
+    icon: 'home-outline',
+    link: '/pages/gradingsetup',
+  },
+
+
+  {
+    title: 'Season Setup',
+    icon: 'shuffle-2-outline',
+     link: '/pages/seasonsetup',
+     
+  },
+
+  {
+    title: 'Seating Configuration',
+    icon: 'shuffle-2-outline',
+     link: '/pages/seatingconfig',
+     
+  },
+
+  {
+    title: 'Student Base',
+    icon: 'shuffle-2-outline',
+     link: '/pages/studentbase',
+     
+  },
+
+  {
+    title: 'Faculty Base',
+    icon: 'shuffle-2-outline',
+    
+     children: [
+      {
+        title: 'PWT Profile',
+        link: '/pages/facultybase/pwtprofile',
+      },
+      {
+        title: 'PWI Profile',
+        link: '/pages/facultybase/pwiprofile',
+      },
+      {
+        title: 'PWE Profile',
+        link: '/pages/facultybase/pweprofile',
+      },
+    ],
+     
+  },
+
+
+
+  {
     title: 'Layout',
     icon: 'layout-outline',
     children: [
@@ -250,6 +322,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
     ],
   },
+  
   {
     title: 'Auth',
     icon: 'lock-outline',

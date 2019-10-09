@@ -37,7 +37,7 @@
       margin-left: 10px;
   }
   .Coursebtn{
-      text-transform: none!important;
+      text-transform: lowercase!important;
       font-size: 13px!important;
       height: 100%;
       width: 16%;
@@ -76,3 +76,30 @@
   .LevelData{
     width: 15%;
   }
+//   .Coursebtn1{
+//     text-transform: lowercase!important;
+//     font-size: 13px!important;
+//     height: 100%;
+//     width: 50%;
+//     border-radius: 20px!important;
+//    // filter:drop-shadow(16px 16px 10px black);
+// }
+.step-content {
+  text-align: center;
+  button {
+      cursor: pointer;
+      margin: 0.5rem;
+      text-transform: capitalize;
+      }
+    }
+
+    .vl {
+      border-right: 5px solid white;
+      height: 75px;
+      position: absolute;
+  left: 50%;
+  margin-left: -112px;
+  // text-transform: lowercase!important;
+    }
+
+  
