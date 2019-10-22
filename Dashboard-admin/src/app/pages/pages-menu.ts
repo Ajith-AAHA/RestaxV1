@@ -30,6 +30,16 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
     ],
   },
+  {
+    title: 'curriculum-setup',
+    icon: 'edit-2-outline',
+    children: [
+      {
+        title: 'Curriculum',
+        link: '/pages/curriculum-setup/curriculum',
+      },
+    ],
+  },
 
   {
     title: 'Layout',

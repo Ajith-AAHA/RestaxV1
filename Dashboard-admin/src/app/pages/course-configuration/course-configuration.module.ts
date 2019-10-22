@@ -14,18 +14,22 @@ import {
   NbUserModule,
   NbStepperModule,
   NbAlertModule,
+  NbDialogModule,
+  NbDialogConfig,
+  NbDialogRef,
 } from '@nebular/theme';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AngularD3TreeLibModule } from 'angular-d3-tree';
 
 import { CourseConfigurationRoutingModule} from './course-configuration-routing.module';
 import { CourseConfigurationComponent } from './course-configuration.component';
+// tslint:disable-next-line: max-line-length
+import { DialogNamePromptComponent } from '../course-configuration/course/dialog-name-prompt/dialog-name-prompt.component';
 
 import {CourseComponent} from './course/course.component';
 import { ExamComponent } from './exam/exam.component';
-
 @NgModule({
-  declarations: [ CourseConfigurationComponent,CourseComponent,ExamComponent],
+  declarations: [ CourseConfigurationComponent, CourseComponent, ExamComponent, DialogNamePromptComponent],
   imports: [
   AngularD3TreeLibModule,
     ThemeModule,
@@ -46,7 +50,9 @@ import { ExamComponent } from './exam/exam.component';
     CommonModule,
     CourseConfigurationRoutingModule,
     ModalModule.forRoot(),
+    NbDialogModule.forRoot(),
 
   ],
+  entryComponents: [DialogNamePromptComponent],
 })
 export class CourseConfigurationModule { }

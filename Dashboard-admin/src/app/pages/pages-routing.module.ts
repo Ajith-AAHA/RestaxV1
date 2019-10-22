@@ -30,6 +30,11 @@ const routes: Routes = [{
       .then(m => m.CourseConfigurationModule),
     },
     {
+      path: 'curriculum-setup',
+      loadChildren: () => import('./curriculum-setup/curriculum-setup.module')
+      .then(m => m.CurriculumSetupModule),
+    },
+    {
       path: 'forms',
       loadChildren: () => import('./forms/forms.module')
         .then(m => m.FormsModule),
