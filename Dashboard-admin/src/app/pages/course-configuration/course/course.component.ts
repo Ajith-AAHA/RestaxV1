@@ -7,8 +7,7 @@ import { AngularD3TreeLibService } from 'angular-d3-tree';
 import dataTreeSimple from './data-tree-simple';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
-import { variable } from '@angular/compiler/src/output/output_ast';
-import { query } from '\@angular/animations';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'ngx-course',
@@ -22,7 +21,7 @@ export class CourseComponent implements OnInit {
   selectedNode: any;
 
   constructor(private apollo: Apollo,
-    private treeService: AngularD3TreeLibService, private modalService: BsModalService) {
+    private treeService: AngularD3TreeLibService, private modalService: BsModalService,private _http:HttpClient) {
     this.data = dataTreeSimple.result;
    }
   nodeUpdated(node: any) {
@@ -73,15 +72,13 @@ export class CourseComponent implements OnInit {
   Blocktree: boolean = false;
   Unknownstate: boolean = true;
 
-
-
-
-  ngOnInit() {
+ngOnInit() {
      this.getAllcourses();
-    this.getAlldepartments();
-    this.getLevels();
-  }
-  addFieldValue() {
+    //  this.submitted = false;
+    //  this.course = new Course();
+ 
+ }
+addFieldValue() {
     this.coursename = '';
     this.levelname = '';
     this.levelshortcode = '';
@@ -109,70 +106,17 @@ Cancel(course) {
   this.EditActions = false;
 
 }
-/**
- * @param coursename
- */
-addcourse(coursename, index) {
-  this.apollo
-  .mutate({
-  mutation: Query.addcourse,
-  variables: {
-        coursename: coursename,
-},
-// @ts-ignore
-update: (proxy, {data: {addcourse}}) => {
 
-       // Read the data from our cache for this query.
 
-const data: any = proxy.readQuery({query: Query.courses});
-data.courses.push(addcourse);
-      // write our data back to cache
-proxy.writeQuery({query: Query.courses, data});
-},
-}).subscribe(({data}) => {
-  console.log('it is worked');
-  this.fieldArray.splice(index, 1);
-}, (error) => {
-  console.log('there was an error sending query', error);
-});
-}
 getAllcourses() {
-  this.apollo.watchQuery({query: Query.courses})
-  .valueChanges
-  .map((result: any) => result.data.courses).subscribe((data) => {
-    this.courses = data;
+
+  this._http.get('http://192.168.0.105:8000/courses/').subscribe((data) => {
+    console.log('django data ', data);
+    // this.courses = data;
   });
+  
 }
 
-/**
- * Remove course
- * @param id
- */
-// tslint:disable-next-line: no-shadowed-variable
-removecourse(id: any) {
-  this.apollo
-  .mutate({
-   mutation: Query.removecourse,
-   variables: {
-   id: id,
-},
-// @ts-ignore
-update: (proxy, {data: {removecourse}}) => {
-            // Read the data from our cache for this query.
-const data: any = proxy.readQuery({query: Query.courses});
-const index = data.courses.map(function(x){return x.id; }).indexOf(id);
-
-data.courses.splice(index, 1);
-          // Write our data back to the cache.
-proxy.writeQuery({query: Query.courses, data});
-},
-
-}).subscribe(({data}) => {
-  console.log(data);
-}, (error) => {
-  console.log('there was an error sending the query', error);
-});
-}
 
 /**
  * Edit department
@@ -185,270 +129,7 @@ showEditcourse (course, template) {
   this.course = course;
   this.modalRef = this.modalService.show(template);
   }
-  /**
-   * update course
-   * @param course
-   * @param coursename
-   */
-  // tslint:disable-next-line: no-shadowed-variable
-  updatecourse(course) {
-    this.apollo
-      .mutate({
-        mutation: Query.updatecourse,
-        variables: {
-          id: this.course.id,
-          coursename: course,
-        },
-        // @ts-ignore
-        update: (proxy, { data: { updatecourse } }) => {
-          // Read the data from our cache for this query.
-          const data: any = proxy.readQuery({ query: Query.courses });
-
-          const index = data.courses.map(function (x) { return x.id; }).indexOf(this.course.id);
-
-          data.courses[index].coursename = course;
-
-          // Write our data back to the cache.
-          proxy.writeQuery({ query: Query.courses, data });
-        },
-      })
-      .subscribe(({ data }) => {
-       console.log(data);
-       this.closeFirstModal();
-      }, (error) => {
-        console.log('there was an error sending the query', error);
-      });
-}
-
-// department code block
-departments: any[];
-
-/**
- * @param departmentname
- * @param shortcode
- */
-adddepartment(departmentname, shortcode, index) {
-  this.apollo
-  .mutate({
-    mutation: Query.adddepartment,
-    variables: {
-      departmentname: departmentname,
-      shortcode: shortcode,
-    },
-    // @ts-ignore
-    update: (proxy, {data: {adddepartment}}) => {
-                // Read the data from our cache for this query.
-const data: any = proxy.readQuery({query: Query.departments});
-
-data.departments.push(adddepartment);
-
-          // Write our data back to the cache.
-proxy.writeQuery({query: Query.departments, data});
-    },
-  }).subscribe(({data}) => {
-    this.departmentname = '';
-    this.shortcode = '';
-    console.log(data);
-    this.fieldArray.splice(index, 1);
-  }, (error) => {
-    console.log('there was an error sending query');
-  });
-}
-
-
-removedepartment(id) {
-  this.apollo
-  .mutate({
-    mutation: Query.removedepartment,
-    variables: {
-      id: id,
-    },
-    // @ts-ignore
-    update: (proxy, {data: {removedepartment}}) => {
-                // Read the data from our cache for this query.
-                const data: any = proxy.readQuery({query: Query.departments});
-                const index = data.departments.map(function(x){return x.id; }).indexOf(id);
-                data.departments.splice(index, 1);
-                          // Write our data back to the cache.
-                proxy.writeQuery({query: Query.departments, data});
-    },
-  }).subscribe(({data}) => {
-    console.log(data);
-  }, (error) => {
-    console.log('there was an error sending query');
-  });
-}
-
-/**
- * Edit department
- * @param departmentname
- * @param shortcode
- * @param template
- */
-showEditdepartment (dept, template) {
-this.departmentname = dept.departmentname;
-this.shortcode = dept.shortcode;
-this.dept = dept;
-this.modalRef = this.modalService.show(template);
-}
-/**
- * updatedepartment
- * @param dept
- * @param shortcode
- */
-updatedepartment(dept, shortcode) {
-
-this.apollo
-.mutate({
-  mutation: Query.updatedepartment,
-  variables: {
-    id: this.dept.id,
-    departmentname: dept,
-    shortcode: shortcode,
-  },
-  // @ts-ignore
-  update: (proxy, {data: {updatedepartment}}) => {
-          // Read the data from our cache for this query.
-const data: any = proxy.readQuery({query: Query.departments});
-const index = data.departments.map(function(x){return x.id; }).indexOf(this.dept.id);
-data.departments[index].departmentname = dept;
-proxy.writeQuery({query: Query.departments, data});
-  },
-}).subscribe(({data}) => {
-  this.closeFirstModal();
-}, (error) => {
-  console.log('there was an error sending the query', error);
-});
-}
-getAlldepartments() {
-  this.apollo.watchQuery({query: Query.departments})
-  .valueChanges
-  .map((result: any) => result.data.departments).subscribe((data) => {
-    this.departments = data;
-    console.log(this.departments);
-  });
- }
-
-levels: Array<any> = [];
-
-/**
- * @param levelname
- * @param levelshortcode
- * @param year
- * @param terms
- */
-
-addlevel(levelname, levelshortcode, year, terms, index) {
-  this.apollo
-  .mutate({
-    mutation: Query.addlevel,
-    variables: {
-      levelname: levelname,
-      levelshortcode: levelshortcode,
-      year: year,
-      terms: terms,
-    },
-    // @ts-ignore
-    update: (proxy, {data: {addlevel}}) => {
-      // read the data from our cache for this query
-      const data: any = proxy.readQuery({query: Query.Levels});
-      data.levels.push(addlevel);
-      // write our data back to the cache
-      proxy.writeQuery({query: Query.Levels, data});
-    },
-  }).subscribe(({data}) => {
-    this.levelname = '';
-    this.levelshortcode = '';
-    this.year = '';
-    this.terms = '';
-    console.log(data);
-    this.fieldArray.splice(index, 1);
-  }, (error) => {
-    console.log('there was an error sending query');
-  },
-  );
-
-
-  }
-/**
- * Remove level
- *@param id
- */
-removelevel(id) {
-this.apollo
-.mutate({
-  mutation: Query.removelevel,
-  variables: {
-    id: id,
-  },
-  // @ts-ignore
-  update: (proxy, {data: {removelevel}}) => {
-              // Read the data from our cache for this query.
-  const data: any = proxy.readQuery({query: Query.Levels});
-  const index = data.levels.map(function(x){return x.id; }).indexOf(id);
-  data.levels.splice(index, 1);
-            // Write our data back to the cache.
-proxy.writeQuery({query: Query.Levels, data});
-  },
-}).subscribe(({data}) => {
-  console.log(data);
-}, (error) => {
-  console.log('there was an error in sending the query');
-});
-}
-/**
- * Editlevel
- * @param level
- * @param template
- */
-showEditlevel(level, template) {
-this.levelname = level.levelname;
-this.levelshortcode = level.levelshortcode;
-this.year = level.year;
-this.terms = level.terms;
-this.level = level;
-this.modalRef = this.modalService.show(template);
-}
-/**
- * updatelevel
- * @param level
- */
-updatelevel(level, levelshortcode, year, terms) {
-this.apollo
-.mutate({
-  mutation: Query.updatelevel,
-  variables: {
-    id: this.level.id,
-    levelname: level,
-    levelshortcode: levelshortcode,
-    year: year,
-    terms: terms,
-  },
-  // @ts-ignore
-  update: (proxy, {data: {updatelevel}}) => {
-              // Read the data from our cache for this query.
-  const data: any = proxy.readQuery({query: Query.Levels});
-  const index = data.levels.map(function(x){return x.id; }).indexOf(this.level.id);
-  data.levels[index].name = level;
-            // Write our data back to the cache.
-  proxy.writeQuery({query: Query.Levels, data});
-  },
-}).subscribe(({data}) => {
-  this.closeFirstModal();
-}, (error) => {
-  console.log('there was an error sending query');
-});
-}
-// getalllevels
-getLevels() {
-  this.apollo.watchQuery({query: Query.Levels})
-  .valueChanges
-  .map((result: any) => {
-    return result.data.levels;
-  }).subscribe((data) => {
-    this.levels = data;
-  });
-}
+  
 
 
 Course() {

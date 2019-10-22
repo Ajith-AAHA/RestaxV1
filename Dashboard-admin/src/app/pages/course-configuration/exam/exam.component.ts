@@ -1,20 +1,43 @@
-import { Component, OnInit } from '@angular/core';
-import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/theme';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { NbCalendarRange, NbDateService } from '@nebular/theme';
+import { DayCellComponent } from './day-cell/day-cell.component';
+import * as jsPDF from 'jspdf';
 @Component({
   selector: 'ngx-exam',
   templateUrl: './exam.component.html',
-  styleUrls: ['./exam.component.scss']
+  styleUrls: ['./exam.component.scss'],
+  entryComponents: [DayCellComponent],
 })
 export class ExamComponent implements OnInit {
 
-  // statuses: NbComponentStatus[] = [ 'primary' ];
-  // shapes: NbComponentShape[] = [ 'rectangle' ];
-  // sizes: NbComponentSize[] = [  'giant' ];
+     date = new Date();
+  date2 = new Date();
+  range: NbCalendarRange<Date>;
+  dayCellComponent = DayCellComponent;
 
-  constructor() { }
+  constructor(protected dateService: NbDateService<Date>) {
+    this.range = {
+      start: this.dateService.addDay(this.monthStart, 3),
+      end: this.dateService.addDay(this.monthEnd, -3),
+    };
+  }
+
+  get monthStart(): Date {
+    return this.dateService.getMonthStart(new Date());
+  }
+
+  get monthEnd(): Date {
+    return this.dateService.getMonthEnd(new Date());
+  }
+
+ 
 
   ngOnInit() {
+    this.getAllpapers();
   }
+
+
+  getAllpapers(){}
 
   CardContent= ['This page is used to manage the Exam operations'];
 
@@ -25,13 +48,13 @@ export class ExamComponent implements OnInit {
   setexam: boolean = false;
   // course: true;
   EditRecord: boolean = true;
-  EditActions: boolean = false;
+  EditActions: boolean = true;
   setexam1: boolean = false;
   setexam2: boolean = false;
   Blocktree: boolean = false;
   Unknownstate: boolean = true;
-  papers:boolean = false;
-  slots:boolean = false;
+  asp:boolean = false;
+  createslots:boolean = false;
   exam:boolean = false;
   marks:boolean = false;
   pwt:boolean =false;
@@ -39,18 +62,24 @@ export class ExamComponent implements OnInit {
   students :boolean = false;
   seating :boolean = false;
   pwi:boolean= false;
+  priya: boolean=false;
+  paper1: any;
+  paper2: any;
+  calendar:boolean=false;
   dropdownList = [];
   selectedItems = [];
   dropdownSettings = {};
-
+  private fieldArray: Array<any> = [];
+  private newAttribute: any = {};
+  papers:  Array<any> = [];
   Exams() {
     this.setexam = true;
     this.setexam1 = false;
     this.setexam2 = false;
     this.Unknownstate = false;
     this.Blocktree = false;
-    this.papers = false;
-    this.slots = false;
+    this.asp = false;
+    this.createslots = false;
     
   }
   
@@ -71,8 +100,8 @@ export class ExamComponent implements OnInit {
   
   }
 assignpapers(){
-  this.papers = true;
-  this.slots = false;
+  this.asp = true;
+  this.createslots = false;
   this.exam = false;
   this.marks = false;
   this.pwt = false;
@@ -109,9 +138,9 @@ onSelectAll(items: any) {
   console.log(items);
 }
 
-createslots(){
-  this.papers = false;
-  this.slots = true;
+createslot(){
+  this.asp = false;
+  this.createslots = true;
   this.exam = false;
   this.marks = false;
   this.pwt = false;
@@ -120,10 +149,43 @@ createslots(){
   this.seating = false;
   this.pwi = false;
   this.setexam = false;
+  this.calendar= false;
 }
+addField(){
+  this.paper1 = '';
+  this.paper2= '';
+  this.fieldArray.push(this.newAttribute);
+    this.newAttribute = {};
+}
+deleteFieldValue(index) {
+  this.fieldArray.splice(index, 1);
+}
+
+// editpapers(paper1: any,paper2: any) {
+//   paper1.editable = !paper1.editable;
+//   paper2.editable = !paper2.editable;
+//   this.EditRecord = false;
+//   this.EditActions = true;
+// }
+// Cancel(paper) {
+//   paper.editable = !paper.editable;
+//   this.EditRecord = true;
+//   this.EditActions = false;
+// }
+
+
+/**
+ * @param paper1
+ * @param paper2
+ */
+
+addpaper(paper1,paper2){
+
+}
+
 scheduleexam(){
-  this.papers = false;
-  this.slots = false;
+  this.asp = false;
+  this.createslots = false;
   this.exam = true;
   this.marks = false;
   this.pwt = false;
@@ -134,8 +196,8 @@ scheduleexam(){
   this.setexam = false;
 }
 setmarks(){
-  this.papers = false;
-  this.slots = false;
+  this.asp = false;
+  this.createslots = false;
   this.exam = false;
   this.marks = true;
   this.pwt = false;
@@ -146,8 +208,8 @@ setmarks(){
   this.setexam = false;
 }
 assignpwt(){
-  this.papers = false;
-  this.slots = false;
+  this.asp = false;
+  this.createslots = false;
   this.exam = false;
   this.marks = false;
   this.pwt = true;
@@ -158,8 +220,8 @@ assignpwt(){
   this.setexam = false;
 }
 setsyllabus(){
-  this.papers = false;
-  this.slots = false;
+  this.asp = false;
+  this.createslots = false;
   this.exam = false;
   this.marks = false;
   this.pwt = false;
@@ -170,8 +232,8 @@ setsyllabus(){
   this.setexam = false;
 }
 setstudents(){
-  this.papers = false;
-  this.slots = false;
+  this.asp = false;
+  this.createslots = false;
   this.exam = false;
   this.marks = false;
   this.pwt = false;
@@ -182,8 +244,8 @@ setstudents(){
   this.setexam = false;
 }
 setseating(){
-  this.papers = false;
-  this.slots = false;
+  this.asp = false;
+  this.createslots = false;
   this.exam = false;
   this.marks = false;
   this.pwt = false;
@@ -194,8 +256,8 @@ setseating(){
   this.setexam = false;
 }
 assignpwi(){
-  this.papers = false;
-  this.slots = false;
+  this.asp = false;
+  this.createslots = false;
   this.exam = false;
   this.marks = false;
   this.pwt = false;
@@ -205,4 +267,34 @@ assignpwi(){
   this.pwi = true;
   this.setexam = false;
 }
+calendarview(){
+  this.exam = false;
+this.priya= true;
+  this.calendar= true;
 }
+
+@ViewChild('reportContent',{static: false}) reportContent: ElementRef;
+exportaspdf(){
+  
+  // console.log("hi this is priya");
+  // const doc = new jsPDF();
+  // doc.text('hi this is priya',15,15);
+  // doc.save('first.pdf');
+  const doc = new jsPDF();
+    const specialElementHandlers = {
+      '#editor': function (element, renderer) {
+        return true;
+      }
+    };
+
+    const content = this.reportContent.nativeElement;
+
+    doc.fromHTML(content.innerHTML, 15, 15, {
+      'width': 190,
+      'elementHandlers': specialElementHandlers
+    });
+
+    doc.save('restax' + '.pdf');
+  }
+}
+
