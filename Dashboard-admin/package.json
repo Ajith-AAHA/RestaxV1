@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "@agm/core": "^1.0.0",
+    "@angular-devkit/architect": "^0.803.13",
     "@angular/animations": "^8.2.11",
     "@angular/cdk": "^8.2.3",
     "@angular/common": "^8.2.11",
