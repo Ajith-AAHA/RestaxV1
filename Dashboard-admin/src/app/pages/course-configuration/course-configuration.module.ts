@@ -25,7 +25,7 @@ import {CourseComponent} from './course/course.component';
 import { ExamComponent } from './exam/exam.component';
 
 @NgModule({
-  declarations: [ CourseConfigurationComponent,CourseComponent,ExamComponent],
+  declarations: [ CourseConfigurationComponent, CourseComponent, ExamComponent],
   imports: [
   AngularD3TreeLibModule,
     ThemeModule,

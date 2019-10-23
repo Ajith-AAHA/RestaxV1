@@ -4,7 +4,6 @@ import { CourseConfigurationComponent} from './course-configuration.component';
 import {CourseComponent} from './course/course.component';
 import { ExamComponent } from './exam/exam.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {CourseConfigurationComponent} from '../course-configuration/course-configuration.component';
 const routes: Routes = [
   {
   path: '',
@@ -27,8 +26,4 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class CourseConfigurationRoutingModule { }
-// export const routedComponents = [
-//   CourseConfigurationComponent,
-//   CourseComponent,
-//   ExamComponent,
-// ];
+

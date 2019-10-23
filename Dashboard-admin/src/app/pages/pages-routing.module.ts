@@ -30,6 +30,11 @@ const routes: Routes = [{
       .then(m => m.CourseConfigurationModule),
     },
     {
+      path: 'season-setup',
+      loadChildren: () => import('./season-setup/season-setup.module')
+        .then(m => m.SeasonSetupModule),
+    },
+    {
       path: 'forms',
       loadChildren: () => import('./forms/forms.module')
         .then(m => m.FormsModule),
