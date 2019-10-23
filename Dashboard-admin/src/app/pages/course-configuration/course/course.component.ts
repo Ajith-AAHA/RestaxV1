@@ -24,7 +24,7 @@ export class Department {
   styleUrls: ['./course.component.scss'],
 })
 export class CourseComponent implements OnInit {
- 
+
   course: Course = new Course();
   department: Department = new Department();
 

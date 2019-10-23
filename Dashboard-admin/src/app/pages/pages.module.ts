@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { NbMenuModule,NbCardModule } from '@nebular/theme';
+import { NbMenuModule, NbCardModule } from '@nebular/theme';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 import { ThemeModule } from '../@theme/theme.module';
@@ -25,7 +25,7 @@ import { StudentbaseComponent } from './studentbase/studentbase.component';
     MiscellaneousModule,
     FormsModule,
     NbCardModule,
-    NgMultiSelectDropDownModule.forRoot()
+    NgMultiSelectDropDownModule.forRoot(),
 
   ],
   declarations: [
@@ -36,7 +36,7 @@ import { StudentbaseComponent } from './studentbase/studentbase.component';
     SeasonsetupComponent,
     SeatingconfigComponent,
     StudentbaseComponent,
-   
+
   ],
 })
 export class PagesModule {

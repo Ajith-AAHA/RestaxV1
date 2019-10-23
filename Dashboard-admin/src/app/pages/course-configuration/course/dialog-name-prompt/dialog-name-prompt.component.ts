@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NbDialogRef } from '@nebular/theme';
 import { Output, EventEmitter } from '@angular/core';
-import { removelevel } from './../query';
 
 @Component({
   selector: 'ngx-dialog-name-prompt',
@@ -16,8 +15,5 @@ export class DialogNamePromptComponent {
     this.ref.close();
   }
 
-  removelevl() {
-    this.click.emit(removelevel);
-    this.ref.close();
-  }
+
 }

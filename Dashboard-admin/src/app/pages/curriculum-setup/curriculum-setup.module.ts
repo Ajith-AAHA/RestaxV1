@@ -18,18 +18,14 @@ import {
   NbDialogModule,
   NbTreeGridModule,
 } from '@nebular/theme';
-import {MatTreeModule} from '@angular/material/tree';
-import {MatIconModule} from '@angular/material/icon';
+
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {CurriculumSetupComponent} from './curriculum-setup.component';
 import { CurriculumComponent } from './curriculum/curriculum.component';
 import { FsIconComponent } from './curriculum/curriculum.component';
 import { CurriculumSetupRoutingModule } from './curriculum-setup-routing.module';
-import {AngularTreeGridModule} from 'angular-tree-grid';
-import { TreeviewModule } from 'ngx-treeview';
-// import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { GridModule, EditService, ToolbarService, SortService } from '@syncfusion/ej2-angular-grids';
 
+// import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [CurriculumSetupComponent, CurriculumComponent, FsIconComponent],
   imports: [
@@ -51,18 +47,12 @@ import { GridModule, EditService, ToolbarService, SortService } from '@syncfusio
     ReactiveFormsModule,
     FormsModule,
     CommonModule,
-    MatIconModule,
-    MatTreeModule,
-    GridModule,
-
-    AngularTreeGridModule,
     NbDialogModule.forRoot(),
-    TreeviewModule.forRoot(),
     ModalModule.forRoot(),
     CurriculumSetupRoutingModule,
   ],
   exports: [FsIconComponent],
-  providers: [EditService, ToolbarService, SortService],
+
 
 })
 export class CurriculumSetupModule { }
