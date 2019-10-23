@@ -118,7 +118,9 @@ addcourse(coursename, index) {
   mutation: Query.addcourse,
   variables: {
         coursename: coursename,
-},
+        departmentId: '5d9c1d1206f24a24e4867ef0' /// TODO: Change this based on user Selection (may be dropdown)
+                  
+      },
 // @ts-ignore
 update: (proxy, {data: {addcourse}}) => {
 

@@ -79,7 +79,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
      link: '/pages/studentbase',
      
   },
-
+  {
+    title:'test',
+    icon: 'edit-2-outline',
+    link:'/pages/test',
+  },
   {
     title: 'Faculty Base',
     icon: 'shuffle-2-outline',
@@ -266,6 +270,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
     ],
   },
+  
   {
     title: 'Charts',
     icon: 'pie-chart-outline',

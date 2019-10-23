@@ -24,7 +24,7 @@ import {FormsModule} from '@angular/forms';
 import { GraphQLModule } from './pages/forms/graphql.module';
 
 @NgModule({
-  declarations: [AppComponent ],
+  declarations: [AppComponent],
   imports: [
     BrowserAnimationsModule,
     HttpClientModule,

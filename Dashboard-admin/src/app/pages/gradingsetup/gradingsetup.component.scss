@@ -1,0 +1,82 @@
+.HeadTitle{
+    font-size: 25px;
+    font-weight: bolder;
+  }
+  .CardContent{
+    font-size: 17px;
+    font-weight: 600;
+  }
+  
+  // Course table
+  .ConfigId{
+  padding: 8px !important;
+  width: 40px!important;
+  }
+  .ConfigName{
+  padding: 8px!important;
+  display: flex;
+  }
+  .CourseCategory{
+    text-align: center;
+  }
+  .SetCourse{
+    width: 100%;
+  }
+  //Blockbtn
+  .Morebtn{
+    text-transform: none!important;
+  }
+  .Blockbtn{
+    height: 36px;
+    text-transform: none!important;
+  }
+  .ActionTitle{
+    padding-left: 20px;
+  }
+  .Addbtn{
+      width: 50%;
+      margin-left: 10px;
+  }
+  .Coursebtn{
+      text-transform: none!important;
+      font-size: 13px!important;
+      height: 100%;
+      width: 16%;
+      border-radius: 20px!important;
+     // filter:drop-shadow(16px 16px 10px black);
+  }
+  .Coursebtn:hover {
+    box-shadow: 0 0 11px rgba(41, 23, 23, 0.43);
+  }
+  .CourseIcons{
+  font-size:42px;
+  }
+  ul{
+    padding: unset!important;
+  }
+  li{
+    color: #ffffff!important;
+    line-height: normal!important;
+  }
+  ::ng-deep.CourseData{
+  padding: 20px!important;
+  }
+  
+  .CourseTitle{
+    font-weight: bold;
+    font-size: 20px;
+  }
+  path.link{
+    fill: none !important;
+    stroke: #CCC !important;
+    stroke-width: 2px !important;
+  }
+  // .Levelbtn{
+  //   // width: 80%!important;
+  // }
+  .LevelData{
+    width: 15%;
+  }
+  .LevelBlock{
+    display: flex!important;
+  }

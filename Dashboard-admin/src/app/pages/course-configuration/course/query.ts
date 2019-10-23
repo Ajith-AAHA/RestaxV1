@@ -5,12 +5,17 @@ import { query } from '\@angular/animations';
 import { Mutation } from 'apollo-angular';
 
 export const addcourse = gql`
-  mutation addcourse($coursename: String!) {
+  mutation addcourse($coursename: String!, $departmentId: ID!) {
     addcourse(
       coursename: $coursename,
+      departmentId: $departmentId
     ) {
       id
       coursename
+      department {
+        id
+        departmentname
+      }
     }
   }
 `;
@@ -20,6 +25,10 @@ export const courses = gql`
     courses{
       id
       coursename
+      department {
+        id
+        departmentname
+      }
     }
   }`;
 
@@ -28,6 +37,10 @@ export const removecourse = gql`
     removecourse(id: $id) {
       id
       coursename
+      department {
+        id
+        departmentname
+      }
     }
   }`;
 
@@ -43,6 +56,10 @@ mutation updatecourse(
     ){
     id
     coursename
+    department {
+      id
+      departmentname
+    }
   }
 }`;
 

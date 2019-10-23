@@ -1,3 +1,313 @@
-<p>
-  pweprofile works!
-</p>
+<nb-card *ngIf="PWCdashboard">
+  <nb-card-body>
+    <div class="artboard-94 nb-card-header ">
+      <nb-card-header><strong>PWC Dashboard</strong></nb-card-header>
+      <select>
+        <option>01- Engineering</option>
+        <option>02- Engineering</option>
+        <option>03- Engineering</option>
+        <option>04- Engineering</option>
+        <option>05- Engineering</option>
+      </select>
+      <hr>
+
+      <div class="action-needed">
+        <div class="row">
+          <div class="col-sm-4">
+            <button type="button" class="btn btn-primary" title="Paper Evaluated" (click)="evaluate()">
+              <h4>03</h4>
+              <p>Papers Evaluated</p>
+            </button>
+          </div>
+          <div class="col-sm-4">
+            <button type="button" class="btn btn-primary" title="Disputes Resolved" (click)="openModal()">
+              <h4>34</h4>
+              <p>Disputes Resolved</p>
+            </button>
+          </div>
+          <div class="col-sm-4">
+            <button type="button" class="btn btn-primary" title="Exams Contributed" (click)="openModal()">
+              <h4>04</h4>
+              <p>Exams Contributed</p>
+            </button>
+          </div>
+        </div>
+      </div>
+      <hr>
+
+      <!-- 2nd segment -->
+
+      <div class="header1 nb-card-header">
+        <nb-card-header><strong>Action Needed</strong></nb-card-header>
+      </div>
+
+      <div class="table-responsive">
+        <div class="table color">
+          <table class="table table-d">
+
+            <tr>
+              <th rowspan="2">#01</th>
+              <td>Exam </td>
+              <td>Papers</td>
+              <td>Slot</td>
+              <td>#Evaluated</td>
+              <td>#Pass</td>
+              <td>#Fail</td>
+
+              <td rowspan="2">
+                <a href="#">
+                  <nb-icon icon="bar-chart-outline" title="Grade" class="hover-cross"></nb-icon>
+                </a>
+              </td>
+              <td rowspan="2">
+                <a href="#">
+                  <nb-icon icon="checkmark-square-outline" title="Check" class="hover-cross"></nb-icon>
+                </a>
+              </td>
+              <td rowspan="2">
+                <a href="#">
+                  <nb-icon icon="save-outline" title="Save" class="hover-cross"></nb-icon>
+                </a>
+              </td>
+              <td rowspan="2">
+                <a href="#">
+                  <nb-icon icon="alert-triangle-outline" title="Alert" class="hover-cross"></nb-icon>
+                </a>
+              </td>
+
+            </tr>
+
+            <tr>
+              <td>Semester 1</td>
+              <td>ME101</td>
+              <td>01</td>
+              <td>00/45</td>
+              <td>00/45</td>
+              <td>00/45</td>
+            </tr>
+
+          </table>
+        </div>
+      </div>
+
+
+      <div class="table-responsive">
+        <div class="table color">
+          <table class="table table-d">
+
+            <tr>
+              <th rowspan="2">#02</th>
+              <td>Exam </td>
+              <td>Papers</td>
+              <td>Slot</td>
+              <td>#Evaluated</td>
+              <td>#Pass</td>
+              <td>#Fail</td>
+
+              <td rowspan="2">
+                <a href="#">
+                  <nb-icon icon="bar-chart-outline" title="Grade" class="hover-cross"></nb-icon>
+                </a>
+              </td>
+              <td rowspan="2">
+                <a href="#">
+                  <nb-icon icon="checkmark-square-outline" title="Check" class="hover-cross"></nb-icon>
+                </a>
+              </td>
+              <td rowspan="2">
+                <a href="#">
+                  <nb-icon icon="save-outline" title="Save" class="hover-cross"></nb-icon>
+                </a>
+              </td>
+              <td rowspan="2">
+                <a href="#">
+                  <nb-icon icon="alert-triangle-outline" title="Alert" class="hover-cross"></nb-icon>
+                </a>
+              </td>
+
+            </tr>
+
+            <tr>
+              <td>Semester 1</td>
+              <td>ME101</td>
+              <td>02</td>
+              <td>00/45</td>
+              <td>00/45</td>
+              <td>00/45</td>
+            </tr>
+
+          </table>
+        </div>
+      </div>
+
+      <hr>
+
+      <!-- 3th segment -->
+
+      <div class="header1 nb-card-header">
+        <nb-card-header><strong>Previous Activities</strong></nb-card-header>
+      </div>
+
+      <div class="table-responsive">
+        <div class="table color">
+          <table class="table table-d">
+
+            <tr>
+              <th rowspan="2">#01</th>
+              <td>Exam </td>
+              <td>Papers</td>
+              <td>Slot</td>
+              <td>#Evaluated</td>
+              <td>#Pass</td>
+              <td>#Fail</td>
+
+              <td rowspan="2">
+                <a href="#">
+                  <nb-icon icon="bar-chart-outline" title="Grade" class="hover-cross"></nb-icon>
+                </a>
+              </td>
+              <td rowspan="2">
+                <a href="#">
+                  <nb-icon icon="checkmark-square-outline" title="Check" class="hover-cross"></nb-icon>
+                </a>
+              </td>
+              <td rowspan="2">
+                <a href="#">
+                  <nb-icon icon="save-outline" title="Save" class="hover-cross"></nb-icon>
+                </a>
+              </td>
+              <td rowspan="2">
+                <a href="#">
+                  <nb-icon icon="alert-triangle-outline" title="Alert" class="hover-cross"></nb-icon>
+                </a>
+              </td>
+
+            </tr>
+
+            <tr>
+              <td>Semester 1</td>
+              <td>ME101</td>
+              <td>01</td>
+              <td>00/45</td>
+              <td>00/45</td>
+              <td>00/45</td>
+            </tr>
+
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </nb-card-body>
+</nb-card>
+
+<!--- pop up page-->
+<nb-card *ngIf="AnswerBlock">
+  <nb-card-header>
+    <button class="btn" (click)="newChange()" id="new">
+      <nb-icon icon="close-outline" title="Close" class="hover-cross"></nb-icon>
+    </button>
+    <h4 class="unselect">Evaluate Answer Scripts | ME101 | Slot 1</h4>
+  </nb-card-header>
+  <nb-card-body>
+    <div class="row evt-ans">
+      <div class="col-md-2">
+        <h4>05</h4>
+        <p>#Students</p>
+      </div>
+      <div class="col-md-2">
+        <h4>03</h4>
+        <p>#Pass</p>
+      </div>
+      <div class="col-md-2">
+        <h4>02</h4>
+        <p>#Fail</p>
+      </div>
+      <div class="col-md-2">
+        <h4>01</h4>
+        <p>#Absent</p>
+      </div>
+      <div class="col-md-2">
+        <h4>#01</h4>
+        <p>Malpractice</p>
+      </div>
+      <div class="col-md-2 none">
+        <h4>#01</h4>
+        <p>Malpractice</p>
+      </div>
+    </div>
+
+    <!--table-responsive-->
+
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Roll Number</th>
+            <th scope="col">Status</th>
+            <th scope="col">Score</th>
+            <th scope="col">State</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">01</th>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>
+              <button class="btn color-btn" nbButton status="primary" title="Evaluate">Evaluate</button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">02</th>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>
+              <button class="btn color-btn" nbButton status="primary" title="Evaluate">Evaluate</button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">03</th>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>
+              <button class="btn color-btn" nbButton status="primary" title="Evaluate">Evaluate</button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">04</th>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>
+              <button class="btn color-btn" nbButton status="primary" title="Evaluate">Evaluate</button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">05</th>
+            <td> cell </td>
+            <td> cell </td>
+            <td> cell </td>
+            <td> cell </td>
+
+            <td>
+              <button class="btn color-btn" nbButton status="primary" title="Evaluate">Evaluate</button>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+
+  </nb-card-body>
+</nb-card>

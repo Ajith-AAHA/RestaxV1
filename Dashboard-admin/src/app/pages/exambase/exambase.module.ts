@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 import { ExambaseRoutingModule } from './exambase-routing.module';
 import { DayopsComponent } from './dayops/dayops.component';
@@ -12,8 +13,9 @@ import {
   NbCardModule,
   NbListModule,
   NbRouteTabsetModule,
-  NbStepperModule,
+  NbStepperModule,NbIconModule ,
   NbTabsetModule, NbUserModule,
+  
 } from '@nebular/theme';
 import * as forms from '@angular/forms';
 import { FormsModule  } from '../forms/forms.module';
@@ -37,7 +39,8 @@ import { FormsModule  } from '../forms/forms.module';
   NbTabsetModule, 
   NbUserModule,
   FormsModule,
-   
+  NbIconModule ,
+  NgMultiSelectDropDownModule.forRoot()
   ]
 })
 export class ExambaseModule { }
