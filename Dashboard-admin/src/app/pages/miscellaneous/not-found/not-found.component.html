@@ -1,15 +1,147 @@
-<div class="row">
-  <div class="col-md-12">
-    <nb-card>
-      <nb-card-body>
-        <div class="flex-centered col-xl-4 col-lg-6 col-md-8 col-sm-12">
-          <h2 class="title">404 Page Not Found</h2>
-          <small class="sub-title">The page you were looking for doesn't exist</small>
-          <button nbButton fullWidth (click)="goToHome()" type="button" class="home-button">
-            Take me home
-          </button>
-        </div>
-      </nb-card-body>
-    </nb-card>
-  </div>
-</div>
+
+<!-- Export as csv -->
+
+
+<nb-card>
+  <nb-card-body>
+    <div class="row">
+
+      <div class="  col-sm-6 student-base">
+        <h3>GRADING SETUP</h3>
+        <p>This page is used to Manipulated<br>The Grades of courses.</p>
+        <a href="#" class="More-info" title="More"> More Info >></a>
+      </div>
+
+      <div class="  col-sm-6 btn-tags">
+        <a href="#" title="Person Add">
+          <nb-icon icon="person-add-outline"></nb-icon>
+          <p>Set Course</p>
+        </a>
+
+        <a href="#" title="People">
+          <nb-icon icon="people-outline"></nb-icon>
+          <p>Set Grade</p>
+        </a>
+
+        <a href="#" title="Person Remove">
+          <nb-icon icon="person-remove-outline"></nb-icon>
+          <p>Export Data</p>
+        </a>
+
+      </div>
+
+    </div>
+  </nb-card-body>
+</nb-card>
+
+
+<nb-card>
+  <nb-card-header class="row">
+    <h5 class="col-sm-6">Set Course</h5>
+    <span class="col-sm-6"> 
+      <select class="select1">
+        <option>02 Engineering</option>
+        <option>02 Engineering</option>
+        <option>01 Engineering</option>
+      </select>
+    </span>
+   
+  </nb-card-header>
+
+  <!-- <nb-card-header>
+    <div class="row mg">
+      <table class="table col">
+        <thead>
+          <tr class="t-h">
+            <th> Course </th>
+            <th> Depts</th>
+            <th> Level</th>
+            <th> Batch</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>
+              <select class="select1">
+                <option>02 Engineering</option>
+                <option>02 Engineering</option>
+                <option>01 Engineering</option>
+              </select>
+            </td>
+            <td>
+              <select class="select2">
+                <option>ME</option>
+                <option>BE</option>
+              </select>
+            </td>
+
+            <td>
+              <select class="select3">
+                <option>M-Tech</option>
+                <option>B-Tech</option>
+              </select>
+            </td>
+
+            <td>
+              <select class="select4">
+                <option>2018-2019</option>
+                <option>2019-2020</option>
+              </select>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </nb-card-header> -->
+
+  <nb-card-body>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Sl.No.</th>
+          <th>Roll Number</th>
+          <th>Student Name</th>
+          <th>Profile</th>
+          <th>Send Mail</th>
+          <th>Disable</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>01</td>
+          <td>ME14B1010</td>
+          <td>Student 1</td>
+          <td>
+            <button nb-button class="btn btn-primary" title="Profile">Profile</button>
+          </td>
+          <td>
+            <button nb-button class="btn btn-primary" title="Send Mail">Send Mail</button>
+          </td>
+          <td>
+            <button nb-button class="btn btn-primary clr-2" title="Disable">Disable</button>
+          </td>
+        </tr>
+        <tr>
+          <td>02</td>
+          <td>ME14B1012</td>
+          <td>Student 2</td>
+          <td>
+            <button nb-button class="btn btn-primary" title="Profile">Profile</button>
+          </td>
+          <td>
+            <button nb-button class="btn btn-primary" title="Send Mail">Send Mail</button>
+          </td>
+          <td>
+            <button nb-button class="btn btn-primary clr-2" title="Disable">Disable</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </nb-card-body>
+</nb-card>
+
+
+

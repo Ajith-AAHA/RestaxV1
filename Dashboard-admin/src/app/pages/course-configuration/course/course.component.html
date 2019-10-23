@@ -66,28 +66,48 @@
                 <th scope="col">Department Name</th>
               </tr>
               <tr>
-                <td><button type="button" nbButton size="medium" class="Addbtn" (click)="addFieldValue()" fullWidth>
+                <td><button nbButton   size="medium" class="Addbtn" (click)="addCourseValue()" fullWidth>
                     <nb-icon icon="plus-outline"></nb-icon>
                   </button></td>
-                <td><input type="text" class="ConfigId " name="newAttributeid" [(ngModel)]="newAttribute.id" nbInput
-                    fullWidth placeholder="ID"></td>
-                <td><input type="text" class="ConfigName" id="newAttributecoursename" name="newAttributecoursename"
-                    [(ngModel)]="newAttribute.coursename" nbInput fullWidth placeholder="Course Name"></td>
-              </tr>
-              <tr *ngFor="let field of fieldArray; let i = index">
                 <td>
-                  <button class="btn btn-default" *ngIf="!course.id" (click)="addcourse(coursename)">
+                    
+                  <input type="text" class="ConfigId " name="newAttributecourse_id" [(ngModel)]="newAttribute.course_id" nbInput
+                    fullWidth placeholder="ID">
+                  
+                  </td>
+                <td>
+                 
+                  <input type="text" class="ConfigName" id="newAttributecourse_name" name="newAttributecourse_name"
+                  [(ngModel)]="newAttribute.course_name" nbInput fullWidth placeholder="Course Name">
+                
+                </td>
+              </tr>
+              <tr *ngFor="let field of coursefieldArray; let i = index">
+                <td>
+                  <button class="btn btn-default" type="button" (click)="onSubmit()">
                     <nb-icon icon="checkmark-outline"></nb-icon>
                   </button>
-                  <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">
+                  <button class="btn btn-default" type="button" (click)="deleteCourseValue(i)">
                     <nb-icon icon="close-outline"></nb-icon>
                   </button>
                 </td>
-                <td><input type="text" class="ConfigId" name="id" [(ngModel)]="id" nbInput fullWidth placeholder="ID">
+
+                <td>
+                 
+                  <input type="text"  class="ConfigId" name="course_id" [(ngModel)]="course.course_id" nbInput
+                    fullWidth placeholder="ID">
+                  
                 </td>
-                <td><input type="text" class="ConfigName" name="coursename" [(ngModel)]="coursename" nbInput fullWidth
-                    placeholder="Course Name"></td>
+                
+                <td>
+                   
+                  <input type="text"  class="ConfigName" name="course.course_name"
+                  [(ngModel)]="course.course_name" nbInput fullWidth placeholder="Course Name">
+                
+                </td>
+
               </tr>
+           
             </thead>
             <tbody>
               <tr *ngFor="let course of courses ;let i=index">
@@ -98,7 +118,7 @@
                       <nb-icon icon="edit-outline"></nb-icon>
                     </button>
                     <!-- Remove course  -->
-                    <button class="btn text-center" (click)="removecourse(course.id)">
+                    <button class="btn text-center" (click)="removecourse(course_id)">
                       <nb-icon icon="trash-2-outline"></nb-icon>
                     </button>
 
@@ -113,9 +133,8 @@
                   </div>
                 </td>
 
-                <td class="CourseData">{{ i+1 }}</td>
-                <td class="CourseData">{{course.coursename}}</td>
-                <td class="CourseData">{{ course.department ? course.department.departmentname : "" }}</td>
+                <td class="CourseData">{{course.course_id }}</td>
+                <td class="CourseData">{{course.course_name}}</td>
 
                 <ng-template #template1>
                   <div class="modal-header">
@@ -153,10 +172,16 @@
   </ng-template>
 
   <!-- department table -->
-  <nb-card *ngIf="department">
+  <nb-card *ngIf="setdepartment">
     <nb-card-header>
       <div class="row">
         <div class="col-6 CourseTitle"> {{DepartmentTitle}}</div>
+        <div class="col-6">
+          <nb-select class="DeptList" placeholder="Departments" size="medium" appearances="outline"
+            [(ngModel)]="selectDept">
+            <nb-option *ngFor="let course of courses ;" value="Departments">{{course.course_id}}</nb-option>
+          </nb-select>
+        </div>
       </div>
 
     </nb-card-header>
@@ -172,31 +197,38 @@
               <th scope="col">Shortcode</th>
             </tr>
             <tr>
-              <td><button nbButton size="medium" class="Addbtn" (click)="addFieldValue()" fullWidth>
+              <td><button nbButton size="medium" class="Addbtn" (click)="addDeptValue()" fullWidth>
                   <nb-icon icon="plus-outline"></nb-icon>
-                </button></td>
-              <td><input type="text" class="ConfigId" name="newAttributeid" [(ngModel)]="newAttribute.id" nbInput
-                  fullWidth placeholder="ID"></td>
-              <td><input type="text" class="ConfigName" name="newAttributedepartmentname"
-                  [(ngModel)]="newAttribute.departmentname" nbInput fullWidth placeholder="Department Name"></td>
-              <td><input type="text" class="ConfigName" name="newAttributeshortcode"
-                  [(ngModel)]="newAttribute.shortcode" nbInput fullWidth placeholder="Shortcode"></td>
-            </tr>
-            <tr *ngFor="let field of fieldArray; let i = index">
+                </button>
+              </td>
               <td>
-                <button class="btn btn-default" *ngIf="!department.id"
-                  (click)="adddepartment(departmentname,shortcode)">
+                  <input type="text" class="ConfigId" name="newAttributedepartment_id" [(ngModel)]="newAttribute.department_id" nbInput
+                  fullWidth placeholder="ID">
+              </td>
+              <td>
+                  <input type="text" class="ConfigName" name="newAttributename"
+                  [(ngModel)]="newAttribute.name" nbInput fullWidth placeholder="Department Name">
+              </td>
+              <td>
+                  <input type="text" class="ConfigName" name="newAttributeshortcode"
+                  [(ngModel)]="newAttribute.shortcode" nbInput fullWidth placeholder="Shortcode">
+              </td>
+            </tr>
+            <tr *ngFor="let field of departmentfieldArray; let i = index">
+              <td>
+                <button class="btn btn-default" 
+                  (click)="onSubmit()">
                   <nb-icon icon="checkmark-outline"></nb-icon>
                 </button>
-                <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">
+                <button class="btn btn-default" type="button" (click)="deleteDeptValue(i)">
                   <nb-icon icon="close-outline"></nb-icon>
                 </button>
               </td>
-              <td><input type="text" class="ConfigId" name="id" [(ngModel)]="id" nbInput fullWidth placeholder="ID">
+              <td><input type="text" class="ConfigId" name="department_id" [(ngModel)]="department.department_id" nbInput fullWidth placeholder="ID">
               </td>
-              <td><input type="text" class="ConfigName" name="departmentname" [(ngModel)]="departmentname" nbInput
+              <td><input type="text" class="ConfigName" name="name" [(ngModel)]="department.name" nbInput
                   fullWidth placeholder="departmentname"></td>
-              <td><input type="text" class="ConfigName" name="shortcode" [(ngModel)]="shortcode" nbInput fullWidth
+              <td><input type="text" class="ConfigName" name="shortcode" [(ngModel)]="department.shortcode" nbInput fullWidth
                   placeholder="shortcode"></td>
             </tr>
           </thead>
@@ -205,8 +237,8 @@
               <td>
                 <div class="" *ngIf="EditRecord">
                   <!--  Edit course  -->
-                  <button class="btn text-center" *ngIf="department.id"
-                    (click)="showEditdepartment(department,template)">
+                  <button class="btn text-center" 
+                    (click)="showEditdepartment()">
                     <nb-icon icon="edit-outline"></nb-icon>
                   </button>
                   <!-- Remove course  -->
@@ -223,8 +255,8 @@
                   </button>
                 </div>
               </td>
-              <td class="CourseData">{{ i+1 }}</td>
-              <td class="CourseData">{{ department.departmentname }}</td>
+              <td class="CourseData">{{ department.department_id }}</td>
+              <td class="CourseData">{{ department.name }}</td>
               <td class="CourseData">{{ department.shortcode }}</td>
 
               <ng-template #template>
@@ -260,7 +292,33 @@
   <nb-card *ngIf="setlevels">
     <nb-card-header>
       <div class="row">
+        <div class="col-4 CourseTitle"> {{LevelTitle}}</div>
+        <div class="col-4">
+          <select  st yle="border-radius: 6px;" name="Courses">
+              <option value="">01-Engineering</option>
+              <option value="">02-arts</option>
+              <option value="">03-medical</option>
+              <option value="">04-cultures</option>
+            </select>
+            </div>
+            <div class="col-4">
+            <select  style="border-radius: 6px;"  name="exams">
+                <option value="">Computer Science</option>
+                <option value="">Electrical and Communication</option>
+                <option value="">Electrical and Electronics</option>
+                <option value="">Information Technology</option>
+              </select>
+              </div>
         <div class="col-6 CourseTitle"> {{LevelTitle}}</div>
+        <div class="col-6" class="LevelList">
+          <nb-select class="DeptList" placeholder="Departments" size="medium" appearances="outline"
+            [(ngModel)]="selectDept">
+            <nb-option *ngFor="let course of courses ;" value="Departments">{{course.coursename}}</nb-option>
+          </nb-select>
+          <nb-select placeholder="Shortcode" size="medium" appearances="outline" [(ngModel)]="selectDept">
+            <nb-option *ngFor="let course of courses ;" value="Shortcode">{{course.id}}</nb-option>
+          </nb-select>
+        </div>
       </div>
 
     </nb-card-header>
@@ -272,44 +330,45 @@
               <th *ngFor="let head of HeadElements" scope="col">{{head}}</th>
             </tr>
             <tr>
-              <td><button nbButton size="medium" (click)="addFieldValue()" fullWidth>
+              <td><button nbButton size="medium" (click)="addLevelValue()" fullWidth>
                   <nb-icon icon="plus-outline"></nb-icon>
                 </button></td>
-              <td><input type="text" class="ConfigId" name="newAttributeid" [(ngModel)]="newAttribute.id" nbInput
+              <td><input type="text" class="ConfigId" name="newAttributelevel_id" [(ngModel)]="newAttribute.level_id" nbInput
                   fullWidth placeholder="ID"></td>
-              <td><input type="text" class="ConfigName" name="newAttributelevelname"
+              <td><input type="text" class="ConfigName" name="newAttributename"
                   [(ngModel)]="newAttribute.levelname" nbInput fullWidth placeholder="levelname"></td>
-              <td><input type="text" class="ConfigName" name="newAttributelevelshortcode"
+              <td><input type="text" class="ConfigName" name="newAttributeshortcode"
                   [(ngModel)]="newAttribute.levelshortcode" nbInput fullWidth placeholder="shortcode"></td>
               <td><input type="text" class="ConfigName" name="newAttributeyear" [(ngModel)]="newAttribute.year" nbInput
                   fullWidth placeholder="year"></td>
               <td><input type="text" class="ConfigName" name="newAttributeterms" [(ngModel)]="newAttribute.terms"
                   nbInput fullWidth placeholder="terms"></td>
             </tr>
-            <tr *ngFor="let field of fieldArray; let i = index">
+            <tr *ngFor="let field of levelfieldArray; let i = index">
               <td class="LevelBlock">
-                <button class="btn btn-default" *ngIf="!level.id" (click)="addlevel(levelname,levelshortcode,year,terms)">
+                <button class="btn btn-default" 
+                  (click)="addlevel(levelname,levelshortcode,year,terms)">
                   <nb-icon icon="checkmark-outline"></nb-icon>
                 </button>
-                <button class="btn btn-default" (click)="deleteFieldValue(i)">
+                <button class="btn btn-default" (click)="deleteLevelValue(i)">
                   <nb-icon icon="close-outline"></nb-icon>
                 </button>
               </td>
-              <td><input type="text" class="ConfigId" name="id" [(ngModel)]="id" nbInput fullWidth placeholder="ID">
+              <td><input type="text" class="ConfigId" name="id" [(ngModel)]="level.level_id" nbInput fullWidth placeholder="ID">
               </td>
-              <td><input type="text" class="ConfigName" name="levelname" [(ngModel)]="levelname" nbInput fullWidth
+              <td><input type="text" class="ConfigName" name="levelname" [(ngModel)]="level.name" nbInput fullWidth
                   placeholder="levelname"></td>
-              <td><input type="text" class="ConfigName" name="levelshortcode" [(ngModel)]="levelshortcode" nbInput fullWidth
-                  placeholder="shortcode"></td>
-              <td><input type="text" class="ConfigName" name="year" [(ngModel)]="year" nbInput fullWidth
+              <td><input type="text" class="ConfigName" name="levelshortcode" [(ngModel)]="level.shortcode" nbInput
+                  fullWidth placeholder="shortcode"></td>
+              <td><input type="text" class="ConfigName" name="year" [(ngModel)]="level.year" nbInput fullWidth
                   placeholder="year"></td>
-              <td><input type="text" class="ConfigName" name="terms" [(ngModel)]="terms" nbInput fullWidth
+              <td><input type="text" class="ConfigName" name="terms" [(ngModel)]="level.terms" nbInput fullWidth
                   placeholder="terms"></td>
             </tr>
           </thead>
           <tbody>
             <!-- List of All leve;s  -->
-            <tr *ngFor="let level of levels; let i=index">
+            <tr *ngFor="let level of levels;let i=index">
               <td class="LevelBlock">
                 <button class="btn btn-default" (click)="showEditlevel(level,template3)">
                   <nb-icon icon="edit-outline"></nb-icon>
@@ -318,10 +377,10 @@
                   <nb-icon icon="trash-2-outline"></nb-icon>
                 </button>
               </td>
-
-              <td class="CourseData">{{i+1}}</td>
-              <td class="CourseData">{{level.levelname}}</td>
-              <td class="CourseData">{{level.levelshortcode}}</td>
+              <!-- <td>{{levels.length}}</td> -->
+              <td class="CourseData">{{level.level_id}}</td>
+              <td class="CourseData">{{level.name}}</td>
+              <td class="CourseData">{{level.shortcode}}</td>
               <td class="CourseData">{{level.year}}</td>
               <td class="CourseData">{{level.terms}}</td>
               <!-- Modal Template of New User Form -->
@@ -336,17 +395,17 @@
                   <form>
                     <div class="form-group">
                       <label for="name">Level Name</label>
-                      <input type="text" class="form-control" name="levelname" nbInput
-                      fullWidth placeholder="levelName" [(ngModel)]="levelname">
+                      <input type="text" class="form-control" name="levelname" nbInput fullWidth placeholder="levelName"
+                        [(ngModel)]="levelname">
                       <label for="name">Shortcode</label>
-                      <input type="text" class="form-control" name="levelshortcode" nbInput
-                      fullWidth placeholder="shortcode" [(ngModel)]="levelshortcode">
+                      <input type="text" class="form-control" name="levelshortcode" nbInput fullWidth
+                        placeholder="shortcode" [(ngModel)]="levelshortcode">
                       <label for="name">Year</label>
-                      <input type="text" class="form-control" name="year" nbInput
-                      fullWidth placeholder="year" [(ngModel)]="year">
+                      <input type="text" class="form-control" name="year" nbInput fullWidth placeholder="year"
+                        [(ngModel)]="year">
                       <label for="name">Terms</label>
-                      <input type="text" class="form-control" name="terms" nbInput
-                      fullWidth placeholder="terms" [(ngModel)]="terms">
+                      <input type="text" class="form-control" name="terms" nbInput fullWidth placeholder="terms"
+                        [(ngModel)]="terms">
                     </div>
                     <button type="button" class="btn btn-primary" *ngIf="level.id"
                       (click)="updatelevel(levelname,levelshortcode,year,terms);">Update</button>

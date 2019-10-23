@@ -10,4 +10,9 @@
 
 export const environment = {
   production: false,
+<<<<<<< HEAD
+  apiUrl:'http://192.168.0.105:8000',
+=======
+  apiUrl: 'http://192.168.0.105:8000/',
+>>>>>>> 8c0fb7b439cc8d4089c22799fbe5fea771161a9c
 };

@@ -13,6 +13,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/iot-dashboard',
   },
   {
+    title: 'season-setup',
+    icon: 'home-outline',
+    link: '/pages/season-setup',
+  },
+  {
     title: 'FEATURES',
     group: true,
   },
@@ -27,6 +32,16 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: 'Exam',
         link: '/pages/course-configuration/exam',
+      },
+    ],
+  },
+  {
+    title: 'curriculum-setup',
+    icon: 'edit-2-outline',
+    children: [
+      {
+        title: 'Curriculum',
+        link: '/pages/curriculum-setup/curriculum',
       },
     ],
   },

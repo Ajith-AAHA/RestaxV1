@@ -1,20 +1,458 @@
-@import '../../../@theme/styles/themes';
+.student-base {
+  margin-bottom: 3rem;
+}
 
-@include nb-install-component() {
-  .buttons-row {
-    margin: -0.5rem;
-  }
+.student-base h3 {
+  font-size: 2rem;
+}
 
-  button[nbButton] {
-    margin: 0.5rem;
-  }
+.student-base p {
+  font-size: 1.6rem;
+  margin: 1.5rem 0rem 2.2rem 0rem;
+  line-height: 2.5rem;
+}
 
-  .action-icon {
-    @include nb-ltr(margin-right, 0.5rem);
-    @include nb-rtl(margin-left, 0.5rem);
-  }
+.student-base a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  background-color: #3366FF;
+  padding: 0.2rem 1.5rem;
+  border-radius: 5%;
+}
 
-  .actions-card {
-    height: 8rem;
-  }
+.btn-tags {
+  text-align: center;
+}
+
+.btn-tags a {
+  text-decoration: none;
+  display: inline-block;
+  width: 20%;
+  background-color: #3366FF;
+  margin: 0% 6%;
+  border-radius: 20%;
+  padding: 1.5rem 0rem;
+  transition: box-shadow .3s;
+}
+
+.btn-tags a nb-icon,
+.student-base a,
+.btn-tags a p {
+  color: white
+}
+
+.btn-tags a nb-icon {
+  font-size: 3.4rem;
+}
+
+.btn-tags a p {
+  font-size: 1.4rem;
+  line-height: 1.6rem;
+  padding-top: 1rem;
+  margin: 0;
+}
+
+.btn-tags a:hover {
+  box-shadow: 0 0 50px rgba(41, 38, 38, 0.4);
+}
+
+.icon-dash a {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+}
+
+.select1, .select2, .select3, .select4 {
+  border-radius: 4px;
+  padding: 0.3rem 1rem;
+}
+
+.a1 button {
+  display: inline-block;
+  background-color: #3366FF;
+  color: white;
+  border-radius: 10px;
+  width: 3.5rem;
+  text-decoration: none;
+  margin: 0px 0.5rem;
+}
+
+.a1 nb-icon {
+  font-size: 1.8rem;
+  margin-top: 0.5rem;
+}
+
+.a1 p {
+  font-size: 0.8rem;
+  color: white;
+}
+
+.icon2,
+.a1 {
+  display: inline-block;
+  text-align: center;
+}
+
+.t-f td:nth-child(2) {
+  width: 4.4rem;
+}
+
+.t-f td input {
+  border: 1px solid #9c9c9c;
+  border-radius: 3px;
+  padding: 5px 0px 5px 5px;
+}
+
+.e-d td span {
+  display: inline-block;
+}
+
+.e-d td span nb-icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.t-f td,
+.e-d td,
+.t-h th {
+  border: none !important;
+}
+
+.t-f td button {
+  padding: 0rem 1rem;
+}
+
+.t-f td button nb-icon {
+  font-size: 1.6rem;
+}
+
+.table th,
+.table td {
+  border: none !important;
+}
+
+
+.icon2 {
+  margin: 0px;
+  padding: 0px;
+}
+
+.icon2 .a1 {
+  margin: 0rem 1rem;
+  padding: 0rem;
+  width: 3.5rem;
+  border-radius: 15px;
+}
+
+.icon2 .a1 button {
+  border-radius: 20%;
+}
+
+.modal-title .pull-left {
+  font-size: 0.8rem;
+}
+
+.pop-up2 {
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #ababab;
+  background-color: #eeeeee;
+}
+
+.pop-up2 nb-icon {
+  font-size: 1.5rem;
+  margin-top: 10px;
+}
+
+.pop-up2 p {
+  font-size: 0.8rem;
+  margin-bottom: 0px;
+}
+
+.pop-up1 p {
+  font-size: 0.8rem;
+}
+
+.pop-up3 {
+  padding: 1rem 2rem;
+}
+
+.pop-up4 {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.pop-up4 input {
+  width: 100%;
+  padding: 0.3rem 0rem 0.3rem 0.5rem;
+  border-radius: 3px;
+  border: 1px solid #888888;
+  box-shadow: 0px 0px 10px 1px #888888;
+}
+
+.pop-up4 button nb-icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: top;
+  margin: -2px -18px;
+}
+
+.pop-up4 button {
+  position: absolute;
+  right: 0rem;
+  width: 1.8rem;
+  height: 1.8rem;
+
+}
+
+.pop-up5 button {
+  width: 3.5rem;
+  height: 3.5rem;
+  font-size: 0.7rem;
+  line-height: 1.2rem;
+  padding: 0rem 0.5rem;
+}
+
+.model-content {
+  width: 515px;
+}
+
+.pop-up7 {
+  overflow: hidden;
+}
+
+.pop-up7 tr {
+  display: block;
+  margin-top: 1rem;
+}
+
+.pop-up7 tr td {
+  display: inline-block;
+  width: 100%;
+}
+
+.pop-up7 tr td label,
+.pop-up7 tr td input {
+  width: 100%;
+}
+
+.pop-up7 tr td input,
+.pop-up7 tr td select {
+  background-color: #007bff !important;
+  color: white;
+  border: 1px solid #bbc0c3;
+  padding: 0.3rem 0rem 0.3rem 0.6rem;
+  border-radius: 0.3rem;
+}
+
+.pop-up9 td select {
+  width: 100%;
+}
+
+.nb-h3 {
+  color: white;
+}
+
+
+.pop-btn td button {
+  padding: 0.3rem 0.6rem;
+  background-color: white;
+  color: #007bff;
+  border-radius: 0.3rem;
+  font-weight: 700;
+  border: 1px solid;
+}
+
+.pop-btn td a {
+  font-size: 1rem;
+  color: white;
+  text-decoration: none;
+  border-bottom: 0.1rem solid white;
+  font-weight: bold;
+}
+
+.nb-head {
+  border-bottom: none;
+}
+
+.span-eye {
+  position: relative;
+}
+
+.span-eye nb-icon {
+  position: absolute;
+  left: -13rem;
+  bottom: 0;
+  cursor: pointer;
+}
+
+.span-eye input {
+  padding-left: 2rem;
+}
+
+.img-5 img {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.mg {
+  margin: 0;
+}
+
+.clr button{
+  width: 100%;
+}
+
+.clr button h5{
+  color: #f5f3f3;
+  font-size: 6rem;
+  padding: 2rem 0rem;
+}
+
+.clr button p{
+  color: white;
+  font-size: 2rem;
+}
+
+.clr-2:active{
+  background-color: #ea0707!important;
+}
+
+.img-2 img{
+  width: 100%;
+}
+
+.btn-3{
+  border-right: 1px solid #afabab;
+  border-left: 1px solid #afabab;
+}
+
+.btn-3 button{
+  width: 100%;
+  margin-bottom: 0.5rem;
+  padding: 0;
+}
+
+.btn-3 button h6, .btn-3 button p{
+  color: white;
+  margin: 0;
+}
+
+.hover-cross{
+  font-size: 2rem;
+}
+
+.hover-cross:hover{
+  transform: scale(1.2);
+}
+
+.unselect{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.btn-size nb-icon{
+ font-size: 2rem;
+}
+
+button.btn.btn-primary.btn-size{
+  width: 10%;
+  border-radius: 1.5rem;
+  height: 100%;
+  margin: 0% 1%;
+  padding: 0% 1%;
+}
+button.btn.btn-primary.btn-size p{
+  color: white;
+  margin: 15% 8%;
+}
+
+.btst-p p:nth-child(1){
+  font-weight: bold;
+  margin: 0;
+  line-height: 2rem;
+}
+.btst-p p:nth-child(2){
+  line-height: 2rem;
+}
+
+// .btn-group > .btn:not(:last-child):not(.dropdown-toggle), .btn-group > .btn-group:not(:last-child) > .btn{
+//   border-top-right-radius: none!important;
+//   border-bottom-right-radius: none!important;
+// }
+
+// .btn-group>.btn-group:not(:last-child)>.btn, .btn-group>.btn:not(:last-child):not(.dropdown-toggle){
+//   border-top-right-radius: none!important;
+//   border-bottom-right-radius: none!important;
+// }
+
+/*  Archive Graduate Student */
+
+.img-6 img{
+  margin-top: 3.9rem;
+}
+              
+            /*checkbox design*/
+
+/* The container */
+.checkbox-label {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+  line-height: 1.5rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+
+.checkbox-label input {
+  position: absolute;
+  opacity: 0;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 5px;
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkbox-label input:checked ~ .checkmark {
+  background-color:#eee;
+}
+
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+// / Show the checkmark when checked /
+.checkbox-label input:checked ~ .checkmark:after {
+  display: block;
+}
+
+// / Style the checkmark/indicator /
+.checkbox-label .checkmark:after {
+  left: 10px;
+  top: 7px;
+  width: 6px;
+  height: 10px;
+  border: solid #2196F3;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }

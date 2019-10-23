@@ -1,123 +1,726 @@
+<nb-card>
+  <nb-card-body>
+    <div class="row">
+
+      <div class="  col-sm-6 student-base">
+        <h3>STUDENT BASE</h3>
+        <p>This page is used to Manipulated Student Data.</p>
+        <a href="#" class="More-info" title="More"> More Info >></a>
+      </div>
+
+      <div class="  col-sm-6 btn-tags">
+        <a href="#" title="Person Add">
+          <nb-icon icon="person-add-outline"></nb-icon>
+          <p>Add Students</p>
+        </a>
+
+        <a href="#" title="People">
+          <nb-icon icon="people-outline"></nb-icon>
+          <p>Students Pool</p>
+        </a>
+
+        <a href="#" title="Person Remove">
+          <nb-icon icon="person-remove-outline"></nb-icon>
+          <p> Archive Students</p>
+        </a>
+
+      </div>
+
+    </div>
+  </nb-card-body>
+</nb-card>
+
+<nb-card>
+  <nb-card-header>
+    Student List
+  </nb-card-header>
+
+  <nb-card-header>
+    <div class="row mg">
+      <table class="col-sm-9 table">
+        <thead>
+          <tr class="t-h">
+            <th> Course </th>
+            <th> Depts</th>
+            <th> Level</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>
+              <select class="select1">
+                <option>02 Engineering</option>
+                <option>02 Engineering</option>
+                <option>01 Engineering</option>
+              </select>
+            </td>
+            <td>
+              <select class="select2">
+                <option>ME</option>
+                <option>BE</option>
+              </select>
+            </td>
+
+            <td>
+              <select class="select3">
+                <option>M-Tech</option>
+                <option>B-Tech</option>
+              </select>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="col-sm-3 icon2">
+
+        <button title="Import" class="btn btn-primary a1" nbButton size="small" (click)="openModal(template1)">
+          <nb-icon icon="file-add-outline"></nb-icon>
+          <p>Import</p>
+        </button>
+
+        <button title="Form" class="btn btn-primary a1" nbButton size="small" (click)="openModal(template2)">
+          <nb-icon icon="browser-outline"></nb-icon>
+          <p>Form</p>
+        </button>
+
+      </div>
+
+    </div>
+  </nb-card-header>
+
+  <nb-card-body>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Actions</th>
+          <th>ID</th>
+          <th>Roll Number</th>
+          <th>Student Name</th>
+          <th>Email ID</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="t-f">
+          <td>
+            <button class="btn btn-primary">
+              <nb-icon icon="plus-outline" title="Add"></nb-icon>
+            </button>
+          </td>
+          <td>
+            <input type="text" Title="ID" Placeholder="ID" class="input-group">
+          </td>
+          <td>
+            <input type="text" title="Roll Number" placeholder="Roll Number">
+          </td>
+          <td>
+            <input type="text" title="Student Name" placeholder="Student Name">
+          </td>
+          <td>
+            <input type="Email" title="Email ID" placeholder="Email ID">
+          </td>
+        </tr>
+
+        <tr class="e-d">
+          <td>
+            <span>
+              <nb-icon icon="edit-outline" title="Edit"></nb-icon>
+            </span>
+            <span>
+              <nb-icon icon="trash-2-outline" title="Delete"></nb-icon>
+            </span>
+          </td>
+          <td>01</td>
+          <td>ME14B1010</td>
+          <td>Student1</td>
+          <td>student1@gmail.com</td>
+        </tr>
+      </tbody>
+    </table>
+  </nb-card-body>
+
+</nb-card>
+
+
+
+<!---------------------------          pop-up              -------------------------------->
+
+
+<ng-template #template1>
+  <div class="modal-body pop-up1">
+    <h6 class="modal-title pull-left">IMPORT PANEL</h6>
+    <p>Please Upload the Respective students list as a CSV file in the Desired format.<br>
+      Sample CSV <a href="#">Download Here .</a></p>
+
+    <button nb-button class="btn pop-up2">
+      <nb-icon icon="download-outline" title="Choose a File"></nb-icon>
+      <p><strong>Choose a file</strong> or drag it here.</p>
+    </button>
+  </div>
+</ng-template>
+
+
+
+
+<!----------------------------------- Form Operation --------------------------->
+
+
+<ng-template #template2>
+  <div class="model-content">
+    <div class=" model-body pop-up3">
+      <h5 class="modal-title pull-left">FORM OPERATIONS</h5>
+      <p>The services is used to operate the respective forms of the selected service.</p>
+      <div class="pop-up4">
+        <input type="text" title="Choose a File">
+        <button class="btn btn-primary">
+          <nb-icon icon="clipboard-outline" title="Choose a File">
+            <input type="file">
+          </nb-icon>
+        </button>
+      </div>
+
+
+
+      <div class="btn-toolbar pop-up5" role="toolbar" aria-label="Toolbar with button groups">
+
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+          <button title="Form" class="btn btn-primary" nbButton size="small" (click)="openModal(template3)">Form
+            info</button>
+        </div>
+        <div class="btn-group mr-2" role="group" aria-label="Second group">
+          <button class="btn btn-primary" type="button">Commit Selected</button>
+        </div>
+
+        <div class="btn-group mr-2" role="group" aria-label="Third group">
+          <button class="btn btn-primary" type="button">Commit All</button>
+        </div>
+        <div class="btn-group mr-2" role="group" aria-label="Fourth group">
+          <button class="btn btn-primary" type="button">Accept Entires</button>
+        </div>
+        <div class="btn-group mr-2" role="group" aria-label="Fourth group">
+          <button class="btn btn-primary" type="button" aria-label="Fifth group">Revert Selected</button>
+        </div>
+        <div class="btn-group mr-2" role="group" aria-label="Fourth group">
+          <button class="btn btn-primary" type="button" aria-label="Sixth group">Revert All</button>
+        </div>
+        <div class="btn-group mr-2" role="group" aria-label="Fourth group">
+          <button class="btn btn-primary" type="button" aria-label="Seventh group">Stop Entires</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+
+
+
+<!-- Form Information -->
+
+
+<ng-template #template3>
+  <nb-card>
+    <nb-card-header>
+      CKEditor
+    </nb-card-header>
+    <nb-card-body>
+
+    </nb-card-body>
+  </nb-card>
+</ng-template>
+
+
+
+
+
+<!----------------------------------- New Student Registration --------------------------------------->
 <div class="row">
-  <div class="col-lg-12">
-    <nb-card>
-      <nb-card-header>Hero Buttons</nb-card-header>
+  <div class="col-lg-6">
+    <!-- registration form design -->
+    <nb-card class="bg-primary text-white">
+
+      <nb-card-header class="nb-head">
+        <h3 class="nb-h3">New Student Registration</h3>
+      </nb-card-header>
+
       <nb-card-body>
-        <div class="buttons-row">
-          <button *ngFor="let status of statuses" nbButton [status]="status" hero>
-            {{ status }}
-          </button>
-          <button disabled nbButton hero>
-            disabled
-          </button>
-        </div>
+
+        <table class="table-responsive pop-up7">
+          <tr>
+            <td class="pop-lg">
+              <label>Institute Name</label>
+              <input type="text" title="Institute Name">
+            </td>
+          </tr>
+          <tr class="row">
+            <td class="col-sm-8 pop-up8">
+              <label>Student Name</label>
+              <input type="text" title="Student Name">
+            </td>
+            <td class="col-sm-4">
+              <label>Roll Number</label>
+              <input type="text" title="Roll Number">
+            </td>
+          </tr>
+
+          <tr class="row pop-up9">
+            <td class="col-sm-3">
+              <label>Department</label>
+              <select>
+                <option>ME</option>
+                <option>BE</option>
+              </select>
+            </td>
+            <td class="col-sm-3">
+              <label>Course</label>
+              <select>
+                <option>B.Tech</option>
+                <option>M.Tech</option>
+              </select>
+            </td>
+            <td class="col-sm-6">
+              <label>Batch</label>
+              <input type="text">
+            </td>
+          </tr>
+          <tr class="row">
+            <td class="col-sm-6">
+              <label> E-Mail id</label>
+              <input type="Email" title="Email">
+            </td>
+            <td class="col-sm-6">
+              <label>Mobile Number</label>
+              <input type="tel" title="phone No." id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+            </td>
+          </tr>
+
+          <tr class="row">
+            <td class="col-sm-6">
+              <label>Password</label>
+              <span class="span-eye">
+                <nb-icon icon="eye-off-outline" title="Show"></nb-icon>
+                <input type="Password" title="Password">
+              </span>
+            </td>
+            <td class="col-sm-6">
+              <label> Confirm Password</label>
+              <span class="span-eye">
+                <nb-icon icon="eye-off-outline" title="Show"></nb-icon>
+                <input type="Password" title="Confirm Password">
+              </span>
+            </td>
+          </tr>
+
+          <tr class="row pop-btn">
+            <td class="col-sm-3">
+              <button nb-button title="Register">Register</button>
+            </td>
+            <td class="col-sm-9">
+              <a href="#" title="Information">Information </a>
+            </td>
+          </tr>
+        </table>
       </nb-card-body>
     </nb-card>
 
-    <nb-card>
-      <nb-card-header>Default Buttons</nb-card-header>
-      <nb-card-body>
-        <div class="buttons-row">
-          <button *ngFor="let status of statuses" nbButton [status]="status">
-            {{ status }}
-          </button>
-          <button disabled nbButton>
-            disabled
-          </button>
-        </div>
-      </nb-card-body>
-    </nb-card>
-
-    <nb-card>
-      <nb-card-header>Outline Buttons</nb-card-header>
-      <nb-card-body>
-        <div class="buttons-row">
-          <button *ngFor="let status of statuses" nbButton [status]="status" outline>
-            {{ status }}
-          </button>
-          <button disabled nbButton outline>
-            disabled
-          </button>
-        </div>
-      </nb-card-body>
-    </nb-card>
-
-    <nb-card>
-      <nb-card-header>Ghost Buttons</nb-card-header>
-      <nb-card-body>
-        <div class="buttons-row">
-          <button *ngFor="let status of statuses" nbButton [status]="status" ghost>
-            {{ status }}
-          </button>
-          <button disabled nbButton outline>
-            disabled
-          </button>
-        </div>
-      </nb-card-body>
-    </nb-card>
   </div>
 
-  <div class="col-md-12 col-lg-12 col-xxxl-6">
-    <nb-card>
-      <nb-card-header>Button shapes</nb-card-header>
+  <!-- design of diagram  -->
+  <div class="col-lg-6 img-5">
+    <img src="/assets/images/undraw_referral_4ki4.png" alt="New Student Registration">
+  </div>
+  <!-- end of the line -->
+
+</div>
+
+
+<!-- Student Pool -->
+
+<nb-card>
+  <nb-card-body>
+    <div class="row">
+
+      <div class="  col-sm-6 student-base">
+        <h3>STUDENT BASE</h3>
+        <p>This page is used to Manipulated Student Data.</p>
+        <a href="#" class="More-info" title="More"> More Info >></a>
+      </div>
+
+      <div class="  col-sm-6 btn-tags">
+        <a href="#" title="Person Add">
+          <nb-icon icon="person-add-outline"></nb-icon>
+          <p>Add Students</p>
+        </a>
+
+        <a href="#" title="People">
+          <nb-icon icon="people-outline"></nb-icon>
+          <p>Students Pool</p>
+        </a>
+
+        <a href="#" title="Person Remove">
+          <nb-icon icon="person-remove-outline"></nb-icon>
+          <p> Archive Students</p>
+        </a>
+
+      </div>
+
+    </div>
+  </nb-card-body>
+</nb-card>
+
+
+
+<nb-card>
+  <nb-card-header>
+    Student Pool
+  </nb-card-header>
+
+  <nb-card-header>
+    <div class="row mg">
+      <table class="table col">
+        <thead>
+          <tr class="t-h">
+            <th> Course </th>
+            <th> Depts</th>
+            <th> Level</th>
+            <th> Batch</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>
+              <select class="select1">
+                <option>02 Engineering</option>
+                <option>02 Engineering</option>
+                <option>01 Engineering</option>
+              </select>
+            </td>
+            <td>
+              <select class="select2">
+                <option>ME</option>
+                <option>BE</option>
+              </select>
+            </td>
+
+            <td>
+              <select class="select3">
+                <option>M-Tech</option>
+                <option>B-Tech</option>
+              </select>
+            </td>
+
+            <td>
+              <select class="select4">
+                <option>2014-2018</option>
+                <option>2018-2022</option>
+              </select>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </nb-card-header>
+  <nb-card-body class="row">
+    <div class="col-sm-6 clr">
+      <button class="btn btn-primary">
+        <h5>230</h5>
+        <p>Total Active Students</p>
+      </button>
+    </div>
+    <div class="col-sm-6 clr">
+      <button class="btn btn-primary">
+        <h5>00</h5>
+        <p>Achived Student</p>
+      </button>
+    </div>
+  </nb-card-body>
+</nb-card>
+
+
+<!-- Export as csv -->
+
+
+<nb-card>
+  <nb-card-body>
+    <div class="row">
+
+      <div class="  col-sm-6 student-base">
+        <h3>STUDENT BASE</h3>
+        <p>This page is used to Manipulated Student Data.</p>
+        <a href="#" class="More-info" title="More"> More Info >></a>
+      </div>
+
+      <div class="  col-sm-6 btn-tags">
+        <a href="#" title="Person Add">
+          <nb-icon icon="person-add-outline"></nb-icon>
+          <p>Add Students</p>
+        </a>
+
+        <a href="#" title="People">
+          <nb-icon icon="people-outline"></nb-icon>
+          <p>Students Pool</p>
+        </a>
+
+        <a href="#" title="Person Remove">
+          <nb-icon icon="person-remove-outline"></nb-icon>
+          <p> Archive Students</p>
+        </a>
+
+      </div>
+
+    </div>
+  </nb-card-body>
+</nb-card>
+
+
+<nb-card>
+  <nb-card-header class="row">
+    <h5 class="col-sm-6">Student Pool</h5>
+    <span class="col-sm-3"> <input type="text" class="form-control" placeholder="Search ......"></span>
+    <span class="col-sm-3 text-center"><button nb-button class="btn btn-primary" title="Export As CSV"> Export As
+        CSV</button></span>
+  </nb-card-header>
+
+  <nb-card-header>
+    <div class="row mg">
+      <table class="table col">
+        <thead>
+          <tr class="t-h">
+            <th> Course </th>
+            <th> Depts</th>
+            <th> Level</th>
+            <th> Batch</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>
+              <select class="select1">
+                <option>02 Engineering</option>
+                <option>02 Engineering</option>
+                <option>01 Engineering</option>
+              </select>
+            </td>
+            <td>
+              <select class="select2">
+                <option>ME</option>
+                <option>BE</option>
+              </select>
+            </td>
+
+            <td>
+              <select class="select3">
+                <option>M-Tech</option>
+                <option>B-Tech</option>
+              </select>
+            </td>
+
+            <td>
+              <select class="select4">
+                <option>2018-2019</option>
+                <option>2019-2020</option>
+              </select>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </nb-card-header>
+
+  <nb-card-body>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Sl.No.</th>
+          <th>Roll Number</th>
+          <th>Student Name</th>
+          <th>Profile</th>
+          <th>Send Mail</th>
+          <th>Disable</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>01</td>
+          <td>ME14B1010</td>
+          <td>Student 1</td>
+          <td>
+            <button nb-button class="btn btn-primary" title="Profile">Profile</button>
+          </td>
+          <td>
+            <button nb-button class="btn btn-primary" title="Send Mail">Send Mail</button>
+          </td>
+          <td>
+            <button nb-button class="btn btn-primary clr-2" title="Disable">Disable</button>
+          </td>
+        </tr>
+        <tr>
+          <td>02</td>
+          <td>ME14B1012</td>
+          <td>Student 2</td>
+          <td>
+            <button nb-button class="btn btn-primary" title="Profile">Profile</button>
+          </td>
+          <td>
+            <button nb-button class="btn btn-primary" title="Send Mail">Send Mail</button>
+          </td>
+          <td>
+            <button nb-button class="btn btn-primary clr-2" title="Disable">Disable</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </nb-card-body>
+</nb-card>
+
+
+
+
+
+<!----------------------- Student Profile --------------------->
+
+
+<nb-card>
+  <nb-card-header>
+    <button class="btn" nbButton status="primary" id="new">
+      <nb-icon icon="close-outline" title="Close" class="hover-cross"></nb-icon>
+    </button>
+    <h4 class="unselect">STUDENT PROFILE</h4>
+  </nb-card-header>
+
+  <nb-card-header class="row">
+    <div class="col-sm-2 img-2">
+      <img src="/assets/images/undraw_male_avatar_323b.png" alt="Student Profile" title="Student Profile">
+    </div>
+    <div class="col-sm-4 btst-p">
+      <p>Student 1<br>ENGINEERING | B.Tech<br>2014 - 2018 | ME14B1001</p>
+      <p>student1@gmail.com | +919047210673</p>
+    </div>
+    <div class="col-sm-2 btn-3">
+      <button class="btn btn-primary">
+        <h6>28</h6>
+        <p>Papers</p>
+      </button>
+      <button class="btn btn-primary">
+        <h6>08</h6>
+        <p>Exams</p>
+      </button>
+      <button class="btn btn-primary">
+        <h6>03</h6>
+        <p>Seasons</p>
+      </button>
+    </div>
+
+    <div class="col-sm-4 btn-group">
+
+      <button class="btn btn-primary btn-size" title="Send Mail">
+        <nb-icon icon="email-outline"></nb-icon>
+        <p>Send Email</p>
+      </button>
+      <button class="btn btn-primary btn-size" title="Disable Profile">
+        <nb-icon icon="person-delete-outline"></nb-icon>
+        <p>Disable Profile</p>
+      </button>
+      <button class="btn btn-primary btn-size" title="Export Profile">
+        <nb-icon icon="cloud-download-outline"></nb-icon>
+        <p>Export Report</p>
+      </button>
+
+    </div>
+  </nb-card-header>
+</nb-card>
+
+
+<!-- Archive Graduate Students -->
+
+<div class="row">
+  <div class="col-lg-6">
+    <!-- registration form design -->
+    <nb-card class="bg-primary text-white">
+
+      <nb-card-header class="nb-head">
+        <h3 class="nb-h3">Archive Graduate Students</h3>
+      </nb-card-header>
+
       <nb-card-body>
-        <div class="buttons-row">
-          <button *ngFor="let shape of shapes" nbButton [shape]="shape">
-            {{ shape }}
-          </button>
-        </div>
+
+        <table class="table-responsive pop-up7">
+          <tr>
+            <td class="pop-lg">
+              <label>Institute Name</label>
+              <input type="text" title="Institute Name">
+            </td>
+          </tr>
+          <tr class="row">
+            <td class="col-sm-8 pop-up8">
+              <label>Student Name</label>
+              <input type="text" title="Student Name">
+            </td>
+            <td class="col-sm-4">
+              <label>Roll Number</label>
+              <input type="text" title="Roll Number">
+            </td>
+          </tr>
+
+          <tr class="row pop-up9">
+
+            <td class="col-sm-3">
+              <label>Department</label>
+              <select>
+                <option>ME</option>
+                <option>BE</option>
+              </select>
+            </td>
+            <td class="col-sm-3">
+              <label>Course</label>
+              <select>
+                <option>B.Tech</option>
+                <option>M.Tech</option>
+              </select>
+            </td>
+            <td class="col-sm-6">
+              <label>Batch</label>
+              <input type="password" title="Batch">
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <label class="checkbox-label">
+                I Hereby Declare that i graduated from this institute and I allow the Institute to archive my
+                Data
+                <input type="checkbox" checked="checked">
+                <span class="checkmark"></span>
+              </label>
+            </td>
+          </tr>
+
+          <tr class="row pop-btn">
+            <td class="col-sm-3">
+              <button nb-button title="Submit">Submit</button>
+            </td>
+            <td class="col-sm-9">
+              <a href="#" title="Information">Information </a>
+            </td>
+          </tr>
+
+
+        </table>
       </nb-card-body>
     </nb-card>
 
-    <nb-card>
-      <nb-card-header>Button sizes</nb-card-header>
-      <nb-card-body>
-        <div class="buttons-row">
-          <button *ngFor="let size of sizes" nbButton [size]="size">
-            {{ size }}
-          </button>
-        </div>
-      </nb-card-body>
-    </nb-card>
   </div>
 
-  <div class="col-md-12 col-lg-12 col-xxxl-6">
-    <nb-card class="actions-card">
-      <nb-card-header>Action Groups</nb-card-header>
-      <nb-card-body>
-        <nb-actions size="medium">
-          <nb-action icon="menu-outline"></nb-action>
-          <nb-action icon="search-outline"></nb-action>
-          <nb-action icon="email-outline"></nb-action>
-          <nb-action disabled icon="bell-outline"></nb-action><nb-action>
-          <nb-user name="Han Solo"></nb-user>
-        </nb-action>
-          <nb-action icon="settings-2-outline"></nb-action>
-        </nb-actions>
-      </nb-card-body>
-    </nb-card>
-
-    <nb-card>
-      <nb-card-body>
-        <nb-actions size="medium" fullWidth>
-          <nb-action>
-            <nb-icon class="action-icon" icon="pause-circle-outline"></nb-icon>
-            <span>Pause</span>
-          </nb-action>
-          <nb-action>
-            <nb-icon class="action-icon" icon="list-outline"></nb-icon>
-            <span>Logs</span>
-          </nb-action>
-          <nb-action>
-            <nb-icon class="action-icon" icon="search-outline"></nb-icon>
-            <span>Search</span>
-          </nb-action>
-          <nb-action>
-            <nb-icon class="action-icon" icon="settings-2-outline"></nb-icon>
-            <span>Setup</span>
-          </nb-action>
-        </nb-actions>
-      </nb-card-body>
-    </nb-card>
+  <!-- design of diagram  -->
+  <div class="col-lg-6 img-5 img-6">
+    <img src="/assets/images/undraw_skateboard_nmbb.png" alt="New Student Registration">
   </div>
+  <!-- end of the line -->
+
 </div>
