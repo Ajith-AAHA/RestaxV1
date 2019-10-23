@@ -292,6 +292,23 @@
   <nb-card *ngIf="setlevels">
     <nb-card-header>
       <div class="row">
+        <div class="col-4 CourseTitle"> {{LevelTitle}}</div>
+        <div class="col-4">
+          <select  st yle="border-radius: 6px;" name="Courses">
+              <option value="">01-Engineering</option>
+              <option value="">02-arts</option>
+              <option value="">03-medical</option>
+              <option value="">04-cultures</option>
+            </select>
+            </div>
+            <div class="col-4">
+            <select  style="border-radius: 6px;"  name="exams">
+                <option value="">Computer Science</option>
+                <option value="">Electrical and Communication</option>
+                <option value="">Electrical and Electronics</option>
+                <option value="">Information Technology</option>
+              </select>
+              </div>
         <div class="col-6 CourseTitle"> {{LevelTitle}}</div>
         <div class="col-6" class="LevelList">
           <nb-select class="DeptList" placeholder="Departments" size="medium" appearances="outline"

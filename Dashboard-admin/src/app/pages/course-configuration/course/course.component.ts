@@ -69,9 +69,9 @@ export class CourseComponent implements OnInit {
   private newAttribute: any = {};
 
   courses:  Array<any> = [];
-  departments: Array<any> = [];
-  levels: Array<any> = [];
 
+departments: Array<any> = [];
+levels: Array<any> = [];
   coursename: any;
 
   name: any;
@@ -82,7 +82,7 @@ export class CourseComponent implements OnInit {
   terms: any;
 
   CardContent= ['This page is used to manipulate institute Configuration Data'];
-  HeadElements= ['Action', 'ID', 'LevelName', 'LevelShortcode', 'Year', 'Terms'];
+  HeadElements= ['Action', 'LevelName', 'LevelShortcode', 'Year', 'Terms'];
   CourseTitle= ['Set Courses'];
   DepartmentTitle= ['Set Departments'];
   LevelTitle= ['Set Levels'];
@@ -186,6 +186,22 @@ getAllcourses() {
     console.log(this.courses);
   });
 }
+// getAlldepartments() {
+
+//   this._http.get('http://192.168.0.105:8000/departments/').subscribe((data) => {
+//     console.log('django data ', data);
+//     // this.courses = data;
+//   });
+  
+// }
+// getAlllevels() {
+
+//   this._http.get('http://192.168.0.105:8000/levels/').subscribe((data) => {
+//     console.log('django data ', data);
+//     // this.courses = data;
+//   });
+  
+// }
 
 getAlldepartments() {
 this.CoursedataService.getdepartmentlist().subscribe((data: any) => {
