@@ -9,6 +9,7 @@ import { GradingsetupComponent } from './gradingsetup/gradingsetup.component';
 import { SeasonsetupComponent } from './seasonsetup/seasonsetup.component';
 import { StudentbaseComponent } from './studentbase/studentbase.component';
 import { SeatingconfigComponent } from './seatingconfig/seatingconfig.component';
+import { TestComponent } from './test/test.component';
 
 
 const routes: Routes = [{
@@ -46,17 +47,20 @@ const routes: Routes = [{
       component: SeasonsetupComponent,
     },
 
-    {
-      path: 'studentbase',
-      component: StudentbaseComponent,
-    },
+    // {
+    //   path: 'studentbase',
+    //   component: StudentbaseComponent,
+    // },
 
     {
       path: 'seatingconfig',
       component: SeatingconfigComponent,
     },
-
-
+    {
+      path:'test',
+      component:TestComponent,
+    },
+  
     {
       path: 'layout',
       loadChildren: () => import('./layout/layout.module')

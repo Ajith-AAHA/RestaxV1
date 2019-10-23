@@ -7,7 +7,7 @@ import {
   NbListModule,
   NbRouteTabsetModule,
   NbStepperModule,
-  NbTabsetModule, NbUserModule,
+  NbTabsetModule, NbUserModule,NbIconModule 
 } from '@nebular/theme';
 
 import { FacultybaseRoutingModule } from './facultybase-routing.module';
@@ -32,7 +32,7 @@ import { PwiprofileComponent } from './pwiprofile/pwiprofile.component';
   NbListModule,
   NbRouteTabsetModule,
   NbStepperModule,
-  NbTabsetModule, NbUserModule,
+  NbTabsetModule, NbUserModule,NbIconModule ,
   ]
 })
 export class FacultybaseModule { }

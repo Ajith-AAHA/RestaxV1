@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/theme';
 @Component({
   selector: 'ngx-preops',
   templateUrl: './preops.component.html',
@@ -11,5 +11,6 @@ export class PreopsComponent implements OnInit {
 
   ngOnInit() {
   }
+
 
 }

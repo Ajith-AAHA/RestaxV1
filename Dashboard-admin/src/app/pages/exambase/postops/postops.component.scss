@@ -1,0 +1,169 @@
+.student-base {
+    margin-bottom: 3rem;
+  }
+  
+  .student-base h3 {
+    font-size: 2rem;
+  }
+  
+  .student-base p {
+    font-size: 1.6rem;
+    margin: 1.5rem 0rem 3.2rem 0rem;
+  }
+  
+  .student-base a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    background-color: #0064f9;
+    padding: 0.2rem 1.5rem;
+    border-radius: 5%;
+  }
+  
+  .btn-tags {
+    text-align: center;
+  }
+  
+  .btn-tags button {
+    width: 25%;
+    background-color: #0064f9;
+    margin: 6% 4%;
+    border-radius: 20%;
+    padding: 1.5rem 0rem;
+    transition: box-shadow .3s;
+    outline: none !important;
+  }
+  
+  .btn-tags button nb-icon,
+  .student-base a,
+  .btn-tags button p {
+    color: white
+  }
+  
+  .btn-tags button nb-icon {
+    font-size: 2.4rem;
+  }
+  
+  .btn-tags button p {
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+    padding-top: 1rem;
+    margin: 0px 16px 15px 16px;
+  }
+  
+  .btn-tags button:hover {
+    box-shadow: 0 0 50px rgba(41, 38, 38, 0.4);
+  }
+  
+  
+  .table-div select {
+    padding: 4px 50px 4px 12px;
+    border-radius: 5%;
+  }
+  
+  .left {
+    display: inline-block;
+  }
+  
+  
+  .artboard-94 nb-card-header {
+    border-bottom: none;
+  }
+  
+  .artboard-94 select {
+    float: right;
+    padding: 5px 10px;
+  }
+  
+  .action-needed {
+    width: 100%;
+  }
+  
+  .action-needed .row .col-sm-4 button,
+  .action-needed .row .col-sm-3 button {
+    width: 100%;
+  }
+  
+  .action-needed span:nth-child(2) {
+    margin: 0% 8%;
+  }
+  
+  .action-needed .row .col-sm-4 {
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .action-needed .row .col-sm-4 h4 {
+    font-size: 35px;
+    padding: 5% 0%;
+  }
+  
+  .action-needed .row .col-sm-4 h4,
+  .action-needed .row .col-sm-4 p,
+  .action-needed .row .col-sm-3 h4,
+  .action-needed .row .col-sm-3 p {
+    color: white;
+    text-align: center;
+  }
+  
+  .action-needed {
+    margin-bottom: 35px;
+  }
+  
+  .d-md-flex .col-sm-3 div:nth-child(1) {
+    margin-top: 40%;
+  }
+  
+  .table-d tr td,
+  .table-d tr th {
+    border-top: none !important;
+  }
+  
+  .side-border {
+    border-right: 1px solid #969090;
+  }
+  
+  .table-d tr th input {
+    width: 100%;
+    border-radius: 3px;
+    border: 1px solid #9c9a9a;
+  }
+  
+  table.table.table-d tr td {
+    padding-left: 22px;
+  }
+  
+  table.table.table-d tr th input {
+    padding: 5px;
+  }
+  
+  
+  
+  
+  /*          pop- up using the second last-html element */
+  
+  
+  table.table tr th,
+  table.table tr td {
+    border: none;
+  }
+  
+  
+  /*      last square button  */
+  
+  
+  
+  
+  button.btn.btn-primary.d-flex.justify-content-center.d-md-table.mx-auto {
+    width: 11rem;
+  }
+  
+  button.btn.btn-primary.d-flex.justify-content-center.d-md-table.mx-auto nb-icon {
+    font-size: 4rem;
+  }
+  
+  button.btn.btn-primary.d-flex.justify-content-center.d-md-table.mx-auto p {
+    color: white;
+    font-size: 1.6rem;
+    line-height: 2rem;
+  }
+  

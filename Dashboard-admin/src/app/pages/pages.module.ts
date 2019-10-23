@@ -15,6 +15,7 @@ import { GradingsetupComponent } from './gradingsetup/gradingsetup.component';
 import { SeasonsetupComponent } from './seasonsetup/seasonsetup.component';
 import { SeatingconfigComponent } from './seatingconfig/seatingconfig.component';
 import { StudentbaseComponent } from './studentbase/studentbase.component';
+import { TestComponent } from './test/test.component';
 @NgModule({
   imports: [
   PagesRoutingModule,
@@ -36,7 +37,8 @@ import { StudentbaseComponent } from './studentbase/studentbase.component';
     SeasonsetupComponent,
     SeatingconfigComponent,
     StudentbaseComponent,
-
+    TestComponent
+   
   ],
 })
 export class PagesModule {
