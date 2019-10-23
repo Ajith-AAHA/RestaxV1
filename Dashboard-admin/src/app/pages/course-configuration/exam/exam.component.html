@@ -481,10 +481,9 @@
                             <input type="text" class="ConfigName" name="paper2
                             " [(ngModel)]="paper1" nbInput
                               fullWidth placeholder="slots">
-                              <input type="text" class="ConfigName" name="paper3
-                            " [(ngModel)]="paper1" nbInput
-                              fullWidth placeholder="date and time ">
-                              <input type="text" class="ConfigName" name="paper4                            " [(ngModel)]="paper1" nbInput
+                              <td><input type="datetime-local" class="ConfigName" id="" name="newAttributepaper3"
+                                [(ngModel)]="newAttribute.paper3" nbInput fullWidth placeholder="Date and Time"></td>
+                              <input type="text" class="ConfigName" name="paper4" [(ngModel)]="paper1" nbInput
                               fullWidth placeholder="duration">
   
                           </div>
@@ -533,8 +532,7 @@
                 <div class="col-3">
                   
                   <button type="button" (click)="exportaspdf()" class="btn btn-primary" >Export as PDF</button>
-                     
-     
+                          
                 </div>
                 
               </nb-card-header>
@@ -542,9 +540,9 @@
         <div class="row">
         <div class="col-6 calendars">
           <div class="calendar-container">
-            <span class="subtitle">
+            <!-- <span class="subtitle">
               Selected date: {{ date | date }}
-            </span>
+            </span> -->
             <nb-calendar [(date)]="date" [boundingMonth]="true"></nb-calendar>
           </div>
           <!-- <div class="calendar-container">

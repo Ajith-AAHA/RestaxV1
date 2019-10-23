@@ -259,7 +259,23 @@
   <nb-card *ngIf="setlevels">
     <nb-card-header>
       <div class="row">
-        <div class="col-6 CourseTitle"> {{LevelTitle}}</div>
+        <div class="col-4 CourseTitle"> {{LevelTitle}}</div>
+        <div class="col-4">
+          <select  st yle="border-radius: 6px;" name="Courses">
+              <option value="">01-Engineering</option>
+              <option value="">02-arts</option>
+              <option value="">03-medical</option>
+              <option value="">04-cultures</option>
+            </select>
+            </div>
+            <div class="col-4">
+            <select  style="border-radius: 6px;"  name="exams">
+                <option value="">Computer Science</option>
+                <option value="">Electrical and Communication</option>
+                <option value="">Electrical and Electronics</option>
+                <option value="">Information Technology</option>
+              </select>
+              </div>
       </div>
 
     </nb-card-header>
@@ -274,8 +290,8 @@
               <td><button nbButton size="medium" (click)="addFieldValue()" fullWidth>
                   <nb-icon icon="plus-outline"></nb-icon>
                 </button></td>
-              <td><input type="text" class="ConfigId" name="newAttributeid" [(ngModel)]="newAttribute.id" nbInput
-                  fullWidth placeholder="ID"></td>
+              <!-- <td><input type="text" class="ConfigId" name="newAttributeid" [(ngModel)]="newAttribute.id" nbInput
+                  fullWidth placeholder="ID"></td> -->
               <td><input type="text" class="ConfigName" name="newAttributelevelname"
                   [(ngModel)]="newAttribute.levelname" nbInput fullWidth placeholder="levelname"></td>
               <td><input type="text" class="ConfigName" name="newAttributelevelshortcode"
@@ -294,8 +310,8 @@
                   <nb-icon icon="close-outline"></nb-icon>
                 </button>
               </td>
-              <td><input type="text" class="ConfigId" name="id" [(ngModel)]="id" nbInput fullWidth placeholder="ID">
-              </td>
+              <!-- <td><input type="text" class="ConfigId" name="id" [(ngModel)]="id" nbInput fullWidth placeholder="ID">
+              </td> -->
               <td><input type="text" class="ConfigName" name="levelname" [(ngModel)]="levelname" nbInput fullWidth
                   placeholder="levelname"></td>
               <td><input type="text" class="ConfigName" name="levelshortcode" [(ngModel)]="levelshortcode" nbInput fullWidth

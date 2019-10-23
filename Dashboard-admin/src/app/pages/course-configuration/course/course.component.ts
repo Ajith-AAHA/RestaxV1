@@ -46,7 +46,8 @@ export class CourseComponent implements OnInit {
 
   courses:  Array<any> = [];
 
-
+departments: Array<any> = [];
+levels: Array<any> = [];
   coursename: any;
 
   departmentname: any;
@@ -58,7 +59,7 @@ export class CourseComponent implements OnInit {
   terms: any;
 
   CardContent= ['This page is used to manipulate institute Configuration Data'];
-  HeadElements= ['Action', 'ID', 'LevelName', 'LevelShortcode', 'Year', 'Terms'];
+  HeadElements= ['Action', 'LevelName', 'LevelShortcode', 'Year', 'Terms'];
   CourseTitle= ['Set Courses'];
   DepartmentTitle= ['Set Departments'];
   LevelTitle= ['Set Levels'];
@@ -74,9 +75,8 @@ export class CourseComponent implements OnInit {
 
 ngOnInit() {
      this.getAllcourses();
-    //  this.submitted = false;
-    //  this.course = new Course();
- 
+    this.getAlldepartments();
+    this.getAlllevels();
  }
 addFieldValue() {
     this.coursename = '';
@@ -111,6 +111,22 @@ Cancel(course) {
 getAllcourses() {
 
   this._http.get('http://192.168.0.105:8000/courses/').subscribe((data) => {
+    console.log('django data ', data);
+    // this.courses = data;
+  });
+  
+}
+getAlldepartments() {
+
+  this._http.get('http://192.168.0.105:8000/departments/').subscribe((data) => {
+    console.log('django data ', data);
+    // this.courses = data;
+  });
+  
+}
+getAlllevels() {
+
+  this._http.get('http://192.168.0.105:8000/levels/').subscribe((data) => {
     console.log('django data ', data);
     // this.courses = data;
   });
