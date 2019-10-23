@@ -1,27 +1,48 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { Apollo, Mutation } from 'apollo-angular';
-import * as Query from './query';
+import { NbDialogService } from '@nebular/theme';
 import 'rxjs/add/operator/map';
 declare var d3: any;
 import { AngularD3TreeLibService } from 'angular-d3-tree';
 import dataTreeSimple from './data-tree-simple';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
-import { HttpClient } from '@angular/common/http';
-
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+// import { Course } from '../../Models/course';
+import { CoursedataService } from './../../Services/coursedata.service';
+export class Course {
+  course_id: number;
+  course_name: string;
+}
+export class Department {
+  department_id: number;
+  name: string;
+  shortcode: string;
+}
 @Component({
   selector: 'ngx-course',
   templateUrl: './course.component.html',
   styleUrls: ['./course.component.scss'],
 })
 export class CourseComponent implements OnInit {
-  modalRef: BsModalRef;
+ 
+  course: Course = new Course();
+  department: Department = new Department();
 
+  course_id: any;
+  course_name: any;
+  submitted = false;
+
+  modalRef: BsModalRef;
+  names: string[] = [];
   data: any[];
   selectedNode: any;
+  basic: string;
+  FormBuilder: any;
 
-  constructor(private apollo: Apollo,
-    private treeService: AngularD3TreeLibService, private modalService: BsModalService,private _http:HttpClient) {
+  // tslint:disable-next-line: no-shadowed-variable
+  constructor(private _http: HttpClient, private CoursedataService: CoursedataService,
+    private treeService: AngularD3TreeLibService, private modalService: BsModalService,
+    private dialogService: NbDialogService) {
     this.data = dataTreeSimple.result;
    }
   nodeUpdated(node: any) {
@@ -37,11 +58,14 @@ export class CourseComponent implements OnInit {
     const name = window.prompt('new node name');
     this.treeService.addNode({id: '999', descripcion: name, parent: parent});
   }
-  dept: any = {};
-  course: any = {};
-  level: any = {};
+  // dept: any = {};
+  // course: any = {};
+  // level: any = {};
 
-  private fieldArray: Array<any> = [];
+  private coursefieldArray: Array<any> = [];
+  private departmentfieldArray: Array<any> = [];
+  private levelfieldArray: Array<any> = [];
+
   private newAttribute: any = {};
 
   courses:  Array<any> = [];
@@ -50,9 +74,8 @@ departments: Array<any> = [];
 levels: Array<any> = [];
   coursename: any;
 
-  departmentname: any;
+  name: any;
   shortcode: any;
-
   levelname: any;
   levelshortcode: any;
   year: any;
@@ -68,31 +91,77 @@ levels: Array<any> = [];
   // course: true;
   EditRecord: boolean = true;
   EditActions: boolean = false;
-  department: boolean = false;
+  setdepartment: boolean = false;
   setlevels: boolean = false;
   Blocktree: boolean = false;
   Unknownstate: boolean = true;
 
-ngOnInit() {
-     this.getAllcourses();
+
+
+  ngOnInit() {
+
+    this.getAllcourses();
     this.getAlldepartments();
     this.getAlllevels();
- }
-addFieldValue() {
-    this.coursename = '';
+    this.submitted = false;
+    this.course = new Course();
+
+  }
+
+
+  courseadd() {
+    this.CoursedataService.createCourse(this.course)
+      .subscribe(
+        data => {
+          console.log(data);
+          this.submitted = true;
+        },
+        error => console.log(error));
+    this.course = new Course();
+  }
+  removecourse() {
+    this.CoursedataService.deleteCourse(this.course.course_id)
+    .subscribe(
+      data => {
+      console.log(data);
+      this.courses = data;
+    } ,
+    error => console.log(error));
+  }
+
+  onSubmit(index) {
+    this.courseadd();
+    this.coursefieldArray.splice(index, 1);
+
+  }
+  addCourseValue() {
+    this.course_name = '';
+    this.coursefieldArray.push(this.newAttribute);
+    this.newAttribute = {};
+  }
+  addDeptValue() {
+    this.name = '';
+    this.shortcode = '';
+    this.departmentfieldArray.push(this.newAttribute);
+    this.newAttribute = {};
+  }
+  addLevelValue() {
     this.levelname = '';
     this.levelshortcode = '';
     this.year = '';
     this.terms = '';
-    this.departmentname = '';
-    this.shortcode = '';
-    this.fieldArray.push(this.newAttribute);
+    this.levelfieldArray.push(this.newAttribute);
     this.newAttribute = {};
   }
-  deleteFieldValue(index) {
-  this.fieldArray.splice(index, 1);
+  deleteCourseValue(index: number) {
+  this.coursefieldArray.splice(index, 1);
 }
-
+deleteDeptValue(index: number) {
+  this.departmentfieldArray.splice(index, 1);
+}
+ deleteLevelValue(index: number) {
+  this.levelfieldArray.splice(index, 1);
+}
 editCourse(course: any) {
   course.editable = !course.editable;
   this.EditRecord = false;
@@ -100,7 +169,7 @@ editCourse(course: any) {
 }
 
 
-Cancel(course) {
+Cancel(course: { editable: boolean; }) {
   course.editable = !course.editable;
   this.EditRecord = true;
   this.EditActions = false;
@@ -108,49 +177,50 @@ Cancel(course) {
 }
 
 
+
 getAllcourses() {
 
-  this._http.get('http://192.168.0.105:8000/courses/').subscribe((data) => {
+  this.CoursedataService.getCoursesList().subscribe((data: any) => {
+    this.courses = data;
     console.log('django data ', data);
-    // this.courses = data;
+    console.log(this.courses);
   });
-  
 }
+// getAlldepartments() {
+
+//   this._http.get('http://192.168.0.105:8000/departments/').subscribe((data) => {
+//     console.log('django data ', data);
+//     // this.courses = data;
+//   });
+  
+// }
+// getAlllevels() {
+
+//   this._http.get('http://192.168.0.105:8000/levels/').subscribe((data) => {
+//     console.log('django data ', data);
+//     // this.courses = data;
+//   });
+  
+// }
+
 getAlldepartments() {
-
-  this._http.get('http://192.168.0.105:8000/departments/').subscribe((data) => {
-    console.log('django data ', data);
-    // this.courses = data;
-  });
-  
+this.CoursedataService.getdepartmentlist().subscribe((data: any) => {
+  this.departments = data;
+});
 }
+
 getAlllevels() {
-
-  this._http.get('http://192.168.0.105:8000/levels/').subscribe((data) => {
-    console.log('django data ', data);
-    // this.courses = data;
+  this.CoursedataService.getlevellist().subscribe((data: any) => {
+    this.levels = data;
   });
-  
 }
 
 
-/**
- * Edit department
- * @param coursename
-
- * @param template
- */
-showEditcourse (course, template) {
-  this.coursename = course.coursename;
-  this.course = course;
-  this.modalRef = this.modalService.show(template);
-  }
-  
 
 
 Course() {
   this.setcourse = true;
-  this.department = false;
+  this.setdepartment = false;
   this.setlevels = false;
   this.Unknownstate = false;
   this.Blocktree = false;
@@ -159,7 +229,7 @@ Course() {
 
 Depts() {
   this.setcourse = false;
-  this.department = true;
+  this.setdepartment = true;
   this.setlevels = false;
   this.Unknownstate = false;
   this.Blocktree = false;
@@ -167,7 +237,7 @@ Depts() {
 }
 Levels() {
   this.setcourse = false;
-  this.department = false;
+  this.setdepartment = false;
   this.setlevels = true;
   this.Unknownstate = false;
   this.Blocktree = false;
@@ -178,7 +248,7 @@ this.Blocktree = true;
 this.Unknownstate = false;
 this.setcourse = false;
 this.setlevels = false;
-this.department = false;
+this.setdepartment = false;
 this.CourseModule = false;
 }
 TreeBlock() {
@@ -186,9 +256,9 @@ TreeBlock() {
 }
 // Open Modal
 openModal(template: TemplateRef<any>) {
-  this.departmentname = '';
+  this.name = '';
   this.shortcode = '';
-  this.dept = {};
+  // this.dept = {};
   this.modalRef = this.modalService.show(template);
 }
 

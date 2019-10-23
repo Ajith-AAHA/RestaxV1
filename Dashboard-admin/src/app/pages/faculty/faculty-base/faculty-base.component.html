@@ -1,3 +1,614 @@
-<p>
-  faculties-pool works!
-</p>
+<!-- <div class="row">
+  <div class="col-lg-12">
+    <nb-card *ngIf="CourseModule" class="step-content">
+      
+      <nb-card-body>
+       
+        <div class="row">
+          
+          <div class="col-lg-6">
+        
+            <p><b>FACULTY BASE</b></p>
+          <p> This page is used to manipulate Faculties Static Data.<br></p>
+        <button primary nbButton hero (click)="btnClick();">
+           
+            More info  <nb-icon icon="arrowhead-right-outline"></nb-icon>
+           </button>
+      
+           <!--<button type="button" class="btn btn-primary-outline pull-right" (click)="btnClick();"><i class="fa fa-plus"></i> Add</button>  -->  
+
+
+
+          <!-- </div>
+  <div class="col-lg-6 step-content">
+          <button primary nbButton hero (click)="openModal1(template1)">
+              <nb-icon style="margin-bottom: 0.75rem" icon="person-add-outline"></nb-icon><br>
+            Add<br>Faculties
+          </button>
+         
+          <button primary nbButton hero>
+              <nb-icon style="margin-bottom: 0.75rem" icon="people-outline"></nb-icon><br>
+            Faculties <br> Pool
+            </button> 
+            <button primary nbButton hero>
+                <nb-icon style="margin-bottom: 0.75rem" icon="person-add-outline"></nb-icon><br>
+               Assign <br> Roles
+              </button>
+              
+                  <!--<a routerLink="/grid" routerLinkActive="active">Crisis Center</a>
+                  <a routerLink="/grid" routerLinkActive="active">Heroes</a>-->
+       
+     <!--   </div>
+        </div>
+      </nb-card-body>
+    </nb-card>
+    </div>
+    </div>
+    
+
+<!-- Course table 
+<nb-card *ngIf="setcourse">
+  <nb-card-header>
+    <div class="row">
+      <div class="col-6 CourseTitle"> {{CourseTitle}}</div>
+    </div>
+
+  </nb-card-header>
+  <nb-card-body>
+    <div class="row">
+      <div class="col-8">
+        <table class="table table-borderless" id="coursetable">
+          <thead>
+            <tr>
+              <!-- <th *ngFor="let head of headElements" scope="col">{{head}}</th> -->
+             <!-- <th class="ActionTitle" scope="col">Actions</th>
+              <th scope="col">ID</th>
+              <th scope="col">Course Name</th>
+
+            </tr>
+            <tr>
+              <td><button type="button" nbButton size="medium" class="Addbtn" (click)="addFieldValue()" fullWidth>
+                  <nb-icon icon="plus-outline"></nb-icon>
+                </button></td>
+              <td><input type="text" class="ConfigId " name="newAttributeid" [(ngModel)]="newAttribute.id" nbInput
+                  fullWidth placeholder="ID"></td>
+              <td><input type="text" class="ConfigName" id="newAttributecoursename" name="newAttributecoursename"
+                  [(ngModel)]="newAttribute.coursename" nbInput fullWidth placeholder="Course Name"></td>
+            </tr>
+            <tr *ngFor="let field of fieldArray; let i = index">
+              <td>
+                <button class="btn btn-default" *ngIf="!course.id" (click)="addcourse(coursename)">
+                  <nb-icon icon="checkmark-outline"></nb-icon>
+                </button>
+                <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">
+                  <nb-icon icon="close-outline"></nb-icon>
+                </button>
+              </td>
+              <td><input type="text" class="ConfigId" name="id" [(ngModel)]="id" nbInput fullWidth placeholder="ID">
+              </td>
+              <td><input type="text" class="ConfigName" name="coursename" [(ngModel)]="coursename" nbInput fullWidth
+                  placeholder="Course Name"></td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let course of courses ;let i=index">
+              <td>
+                <div class="" *ngIf="EditRecord">
+                  <!--  Edit course  -->
+                <!--  <button class="btn text-center" (click)="showEditcourse(course,template1)">
+                    <nb-icon icon="edit-outline"></nb-icon>
+                  </button>-->
+                  <!-- Remove course  -->
+                 <!-- <button class="btn text-center" (click)="removecourse(course.id)">
+                    <nb-icon icon="trash-2-outline"></nb-icon>
+                  </button>
+
+                </div>
+                <div class="" *ngIf="EditActions">
+                  <button class="btn btn-default" *ngIf="course.id" type="button" (click)="updatecourse(coursename)">
+                    <nb-icon icon="checkmark-outline"></nb-icon>
+                  </button>
+                  <button class="btn btn-default" type="button" (click)="Cancel(course)">
+                    <nb-icon icon="close-outline"></nb-icon>
+                  </button>
+                </div>
+              </td>
+
+              <td class="CourseData">{{ i+1 }}</td>
+              <td class="CourseData">{{course.coursename}}</td>
+
+              <ng-template #template1>
+                <div class="modal-header">
+                  <h4 class="modal-title pull-left">Update Course</h4>
+                  <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="form-group">
+                      <label for="name">Course Name</label>
+                      <input type="text" class="ConfigName" name="coursename" [(ngModel)]="coursename" nbInput
+                        fullWidth placeholder="departmentname">
+                    </div>
+                    <button type="button" class="btn btn-primary" *ngIf="course.id"
+                      (click)="updatecourse(coursename);">Update</button>
+                  </form>
+                </div>
+              </ng-template>
+
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+      <div class="col-4">
+        <img class="SetCourse" [src]="'assets/images/Set_course.png'">
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>
+<ng-template #elseBlock>
+
+</ng-template>-->
+
+
+  <!--  <div class="row">
+        <div class="col-lg-12">
+          <nb-card *ngIf="setpool" class="step-content">
+              <nb-card-header  class="row">
+                  <p class="col-6"><b>Faculties Pool</b></p>
+                  <div class="col-3">
+                      <label for="name"><b>Course</b></label>
+                      <div>
+                      <select name="Course">
+                          <option value="volvo">01-Engineering</option>
+                          <option value="saab">01-Engineering</option>
+                          <option value="fiat">01-Engineering</option>
+                          <option value="audi">01-Engineering</option>
+                        </select></div>
+                  </div>
+                      <div class="col-3">
+                          <label for="name"><b>Department</b></label>
+                          <div>
+                              <select name="Department">
+                                  <option value="volvo">ME</option>
+                                  <option value="saab">CSE</option>
+                                  <option value="fiat">ECE</option>
+                                  <option value="audi">EEE</option>
+                                </select></div>
+                      </div>
+</nb-card-header>
+            
+            <nb-card-body >
+              <div class="row">
+                <div class="col-sm-12">
+                   
+                    <div class="row show-grid">
+                      <div class="col-12 col-md-6">
+                        <div>
+                            <button primary nbButton hero>
+                                <h1>45</h1>
+                                <p>Total Number of Faculties</p>
+                            </button>
+                        </div>
+                      </div>
+                      <div class="col-6 col-md-6">
+                        <div>
+
+                            <button primary nbButton hero>
+                                <h1>45</h1>
+                                <p>Total Number of PWT Roles</p>
+                            </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row show-grid">
+                      <div class="col-6 col-md-6">
+                        <div>
+                            <button primary nbButton hero>
+                                <h1>34</h1>
+                                <p>Total Number of PWI Roles</p>
+                            </button>
+                        </div>
+                      </div>
+                      <div class="col-6 col-md-6">
+                        <div>
+                            <button primary nbButton hero>
+                                <h1>30</h1>
+                                <p>Total Number of PWE Roles</p>
+                            </button>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  
+                    </div>
+                    </div>
+            </nb-card-body>
+          </nb-card>
+          </div>
+          </div> --> 
+
+
+
+          <div class="Course container">
+            <nb-card *ngIf="CourseModule">
+              <nb-card-body>
+                <div class="row">
+                  <div class="col-5">
+                    <div class="HeadTitle p-3">COURSE CONFIGURATION</div>
+                    <div class="CardContent pl-3">{{CardContent}}</div>
+                    <div class="CreateBtn pt-2 pl-3">
+                      <button class="Morebtn mr-2" nbButton shape="rectangle" size="small">More Info<nb-icon
+                          icon="arrowhead-right-outline"></nb-icon></button>
+                      <button (click)="BlockTree($event)" class="Blockbtn" nbButton shape="rectangle" size="small">Block
+                        View</button>
+                    </div>
+                  </div>
+                  <div class="col-7 CourseCategory">
+                    <button (click)="Course($event)" class="Coursebtn" nbButton size="giant">
+                      <ul style="list-style-type:none;">
+                        <li>
+                          <nb-icon class="CourseIcons" icon="archive-outline"></nb-icon>
+                        </li>
+                        <li>Set</li>
+                        <li>Courses</li>
+                      </ul>
+                    </button>
+                    <button (click)="Depts($event)" class="Coursebtn ml-4 mr-4" nbButton size="giant">
+                      <ul style="list-style-type:none;">
+                        <li>
+                          <nb-icon class="CourseIcons" icon="npm-outline"></nb-icon>
+                        </li>
+                        <li>Set</li>
+                        <li>Depts.</li>
+                      </ul>
+                    </button>
+                    <button (click)="Levels($event)" class="Coursebtn" nbButton size="giant">
+                      <ul style="list-style-type:none;">
+                        <li>
+                          <nb-icon class="CourseIcons" icon="bookmark-outline"></nb-icon>
+                        </li>
+                        <li>Set</li>
+                        <li>Levels</li>
+                      </ul>
+                    </button>
+                  </div>
+                </div>
+              </nb-card-body>
+            </nb-card>
+          
+            <!-- Course table -->
+            <nb-card *ngIf="setcourse">
+              <nb-card-header>
+                <div class="row">
+                  <div class="col-6 CourseTitle"> {{CourseTitle}}</div>
+                </div>
+          
+              </nb-card-header>
+              <nb-card-body>
+                <div class="row">
+                  <div class="col-8">
+                    <table class="table table-borderless" id="coursetable">
+                      <thead>
+                        <tr>
+                          <!-- <th *ngFor="let head of headElements" scope="col">{{head}}</th> -->
+                          <th class="ActionTitle" scope="col">Actions</th>
+                          <th scope="col">ID</th>
+                          <th scope="col">Course Name</th>
+          
+                        </tr>
+                        <tr>
+                          <td><button type="button" nbButton size="medium" class="Addbtn" (click)="addFieldValue()" fullWidth>
+                              <nb-icon icon="plus-outline"></nb-icon>
+                            </button></td>
+                          <td><input type="text" class="ConfigId " name="newAttributeid" [(ngModel)]="newAttribute.id" nbInput
+                              fullWidth placeholder="ID"></td>
+                          <td><input type="text" class="ConfigName" id="newAttributecoursename" name="newAttributecoursename"
+                              [(ngModel)]="newAttribute.coursename" nbInput fullWidth placeholder="Course Name"></td>
+                        </tr>
+                        <tr *ngFor="let field of fieldArray; let i = index">
+                          <td>
+                            <button class="btn btn-default" *ngIf="!course.id" (click)="addcourse(coursename)">
+                              <nb-icon icon="checkmark-outline"></nb-icon>
+                            </button>
+                            <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">
+                              <nb-icon icon="close-outline"></nb-icon>
+                            </button>
+                          </td>
+                          <td><input type="text" class="ConfigId" name="id" [(ngModel)]="id" nbInput fullWidth placeholder="ID">
+                          </td>
+                          <td><input type="text" class="ConfigName" name="coursename" [(ngModel)]="coursename" nbInput fullWidth
+                              placeholder="Course Name"></td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let course of courses ;let i=index">
+                          <td>
+                            <div class="" *ngIf="EditRecord">
+                              <!--  Edit course  -->
+                              <button class="btn text-center" (click)="showEditcourse(course,template1)">
+                                <nb-icon icon="edit-outline"></nb-icon>
+                              </button>
+                              <!-- Remove course  -->
+                              <button class="btn text-center" (click)="removecourse(course.id)">
+                                <nb-icon icon="trash-2-outline"></nb-icon>
+                              </button>
+          
+                            </div>
+                            <div class="" *ngIf="EditActions">
+                              <button class="btn btn-default" *ngIf="course.id" type="button" (click)="updatecourse(coursename)">
+                                <nb-icon icon="checkmark-outline"></nb-icon>
+                              </button>
+                              <button class="btn btn-default" type="button" (click)="Cancel(course)">
+                                <nb-icon icon="close-outline"></nb-icon>
+                              </button>
+                            </div>
+                          </td>
+          
+                          <td class="CourseData">{{ i+1 }}</td>
+                          <td class="CourseData">{{course.coursename}}</td>
+          
+                          <ng-template #template1>
+                            <div class="modal-header">
+                              <h4 class="modal-title pull-left">Update Course</h4>
+                              <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <form>
+                                <div class="form-group">
+                                  <label for="name">Course Name</label>
+                                  <input type="text" class="ConfigName" name="coursename" [(ngModel)]="coursename" nbInput
+                                    fullWidth placeholder="departmentname">
+                                </div>
+                                <button type="button" class="btn btn-primary" *ngIf="course.id"
+                                  (click)="updatecourse(coursename);">Update</button>
+                              </form>
+                            </div>
+                          </ng-template>
+          
+                        </tr>
+          
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="col-4">
+                    <img class="SetCourse" [src]="'assets/images/Set_course.png'">
+                  </div>
+                </div>
+              </nb-card-body>
+            </nb-card>
+            <ng-template #elseBlock>
+          
+            </ng-template>
+          
+            <!-- department table -->
+            <nb-card *ngIf="department">
+              <nb-card-header>
+                <div class="row">
+                  <div class="col-6 CourseTitle"> {{DepartmentTitle}}</div>
+                </div>
+          
+              </nb-card-header>
+              <nb-card-body>
+                <div class="row">
+                  <table class="table table-borderless" id="departmenttable">
+                    <thead>
+                      <tr>
+                        <!-- <th *ngFor="let head of headElements" scope="col">{{head}}</th> -->
+                        <th scope="col">Actions</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Department Name</th>
+                        <th scope="col">Shortcode</th>
+                      </tr>
+                      <tr>
+                        <td><button nbButton size="medium" class="Addbtn" (click)="addFieldValue()" fullWidth>
+                            <nb-icon icon="plus-outline"></nb-icon>
+                          </button></td>
+                        <td><input type="text" class="ConfigId" name="newAttributeid" [(ngModel)]="newAttribute.id" nbInput
+                            fullWidth placeholder="ID"></td>
+                        <td><input type="text" class="ConfigName" name="newAttributedepartmentname"
+                            [(ngModel)]="newAttribute.departmentname" nbInput fullWidth placeholder="Department Name"></td>
+                        <td><input type="text" class="ConfigName" name="newAttributeshortcode"
+                            [(ngModel)]="newAttribute.shortcode" nbInput fullWidth placeholder="Shortcode"></td>
+                      </tr>
+                      <tr *ngFor="let field of fieldArray; let i = index">
+                        <td>
+                          <button class="btn btn-default" *ngIf="!department.id"
+                            (click)="adddepartment(departmentname,shortcode)">
+                            <nb-icon icon="checkmark-outline"></nb-icon>
+                          </button>
+                          <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">
+                            <nb-icon icon="close-outline"></nb-icon>
+                          </button>
+                        </td>
+                        <td><input type="text" class="ConfigId" name="id" [(ngModel)]="id" nbInput fullWidth placeholder="ID">
+                        </td>
+                        <td><input type="text" class="ConfigName" name="departmentname" [(ngModel)]="departmentname" nbInput
+                            fullWidth placeholder="departmentname"></td>
+                        <td><input type="text" class="ConfigName" name="shortcode" [(ngModel)]="shortcode" nbInput fullWidth
+                            placeholder="shortcode"></td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let department of departments;let i=index">
+                        <td>
+                          <div class="" *ngIf="EditRecord">
+                            <!--  Edit course  -->
+                            <button class="btn text-center" *ngIf="department.id"
+                              (click)="showEditdepartment(department,template)">
+                              <nb-icon icon="edit-outline"></nb-icon>
+                            </button>
+                            <!-- Remove course  -->
+                            <button class="btn text-center" (click)="removedepartment(department.id)">
+                              <nb-icon icon="trash-2-outline"></nb-icon>
+                            </button>
+                          </div>
+                          <div class="" *ngIf="EditActions">
+                            <button class="btn btn-default" type="button" (click)="updatedepartment(departmentname,shortcode)">
+                              <nb-icon icon="checkmark-outline"></nb-icon>
+                            </button>
+                            <button class="btn btn-default" type="button" (click)="Cancel(course)">
+                              <nb-icon icon="close-outline"></nb-icon>
+                            </button>
+                          </div>
+                        </td>
+                        <td class="CourseData">{{ i+1 }}</td>
+                        <td class="CourseData">{{ department.departmentname }}</td>
+                        <td class="CourseData">{{ department.shortcode }}</td>
+          
+                        <ng-template #template>
+                          <div class="modal-header">
+                            <h4 class="modal-title pull-left">Update department</h4>
+                            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <form>
+                              <div class="form-group">
+                                <label for="name">Department Name</label>
+                                <input type="text" class="ConfigName" name="departmentname" [(ngModel)]="departmentname" nbInput
+                                  fullWidth placeholder="departmentname">
+                                <label for="name">Short code</label>
+                                <td><input type="text" class="ConfigName" name="shortcode" [(ngModel)]="shortcode" nbInput
+                                    fullWidth placeholder="shortcode"></td>
+                              </div>
+                              <button type="button" class="btn btn-primary" *ngIf="department.id"
+                                (click)="updatedepartment(departmentname,shortcode);">Update</button>
+                            </form>
+                          </div>
+                        </ng-template>
+                      </tr>
+                    </tbody>
+                  </table>
+          
+                </div>
+              </nb-card-body>
+            </nb-card>
+            <!-- set levels table -->
+            <nb-card *ngIf="setlevels">
+              <nb-card-header>
+                <div class="row">
+                  <div class="col-6 CourseTitle"> {{LevelTitle}}</div>
+                </div>
+          
+              </nb-card-header>
+              <nb-card-body>
+                <div class="row">
+                  <table class="table table-borderless" id="coursetable">
+                    <thead>
+                      <tr>
+                        <th *ngFor="let head of HeadElements" scope="col">{{head}}</th>
+                      </tr>
+                      <tr>
+                        <td><button nbButton size="medium" (click)="addFieldValue()" fullWidth>
+                            <nb-icon icon="plus-outline"></nb-icon>
+                          </button></td>
+                        <td><input type="text" class="ConfigId" name="newAttributeid" [(ngModel)]="newAttribute.id" nbInput
+                            fullWidth placeholder="ID"></td>
+                        <td><input type="text" class="ConfigName" name="newAttributelevelname"
+                            [(ngModel)]="newAttribute.levelname" nbInput fullWidth placeholder="levelname"></td>
+                        <td><input type="text" class="ConfigName" name="newAttributelevelshortcode"
+                            [(ngModel)]="newAttribute.levelshortcode" nbInput fullWidth placeholder="shortcode"></td>
+                        <td><input type="text" class="ConfigName" name="newAttributeyear" [(ngModel)]="newAttribute.year" nbInput
+                            fullWidth placeholder="year"></td>
+                        <td><input type="text" class="ConfigName" name="newAttributeterms" [(ngModel)]="newAttribute.terms"
+                            nbInput fullWidth placeholder="terms"></td>
+                      </tr>
+                      <tr *ngFor="let field of fieldArray; let i = index">
+                        <td class="LevelBlock">
+                          <button class="btn btn-default" *ngIf="!level.id" (click)="addlevel(levelname,levelshortcode,year,terms)">
+                            <nb-icon icon="checkmark-outline"></nb-icon>
+                          </button>
+                          <button class="btn btn-default" (click)="deleteFieldValue(i)">
+                            <nb-icon icon="close-outline"></nb-icon>
+                          </button>
+                        </td>
+                        <td><input type="text" class="ConfigId" name="id" [(ngModel)]="id" nbInput fullWidth placeholder="ID">
+                        </td>
+                        <td><input type="text" class="ConfigName" name="levelname" [(ngModel)]="levelname" nbInput fullWidth
+                            placeholder="levelname"></td>
+                        <td><input type="text" class="ConfigName" name="levelshortcode" [(ngModel)]="levelshortcode" nbInput fullWidth
+                            placeholder="shortcode"></td>
+                        <td><input type="text" class="ConfigName" name="year" [(ngModel)]="year" nbInput fullWidth
+                            placeholder="year"></td>
+                        <td><input type="text" class="ConfigName" name="terms" [(ngModel)]="terms" nbInput fullWidth
+                            placeholder="terms"></td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <!-- List of All leve;s  -->
+                      <tr *ngFor="let level of levels; let i=index">
+                        <td class="LevelBlock">
+                          <button class="btn btn-default" (click)="showEditlevel(level,template3)">
+                            <nb-icon icon="edit-outline"></nb-icon>
+                          </button>
+                          <button class="btn btn-default" (click)="removelevel(level.id)">
+                            <nb-icon icon="trash-2-outline"></nb-icon>
+                          </button>
+                        </td>
+          
+                        <td class="CourseData">{{i+1}}</td>
+                        <td class="CourseData">{{level.levelname}}</td>
+                        <td class="CourseData">{{level.levelshortcode}}</td>
+                        <td class="CourseData">{{level.year}}</td>
+                        <td class="CourseData">{{level.terms}}</td>
+                        <!-- Modal Template of New User Form -->
+                        <ng-template #template3>
+                          <div class="modal-header">
+                            <h4 class="modal-title pull-left">Updatelevel</h4>
+                            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <form>
+                              <div class="form-group">
+                                <label for="name">Level Name</label>
+                                <input type="text" class="form-control" name="levelname" nbInput
+                                fullWidth placeholder="levelName" [(ngModel)]="levelname">
+                                <label for="name">Shortcode</label>
+                                <input type="text" class="form-control" name="levelshortcode" nbInput
+                                fullWidth placeholder="shortcode" [(ngModel)]="levelshortcode">
+                                <label for="name">Year</label>
+                                <input type="text" class="form-control" name="year" nbInput
+                                fullWidth placeholder="year" [(ngModel)]="year">
+                                <label for="name">Terms</label>
+                                <input type="text" class="form-control" name="terms" nbInput
+                                fullWidth placeholder="terms" [(ngModel)]="terms">
+                              </div>
+                              <button type="button" class="btn btn-primary" *ngIf="level.id"
+                                (click)="updatelevel(levelname,levelshortcode,year,terms);">Update</button>
+                            </form>
+                          </div>
+                        </ng-template>
+                      </tr>
+                    </tbody>
+                  </table>
+          
+                </div>
+              </nb-card-body>
+            </nb-card>
+          
+          </div>
+
+
+
+
+
+    
+               
+                    
+                     
+              
+            
+     
+
+
+      
+      

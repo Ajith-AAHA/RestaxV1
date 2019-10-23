@@ -9,6 +9,7 @@ import { ECommerceModule } from './e-commerce/e-commerce.module';
 import { PagesRoutingModule } from './pages-routing.module';
 import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import {FormsModule} from '@angular/forms';
+import { SeasonSetupComponent } from './season-setup/season-setup.component';
 
 import { GradingsetupComponent } from './gradingsetup/gradingsetup.component';
 import { SeasonsetupComponent } from './seasonsetup/seasonsetup.component';
@@ -29,6 +30,8 @@ import { StudentbaseComponent } from './studentbase/studentbase.component';
   ],
   declarations: [
     PagesComponent,
+    SeasonSetupComponent,
+
     GradingsetupComponent,
     SeasonsetupComponent,
     SeatingconfigComponent,

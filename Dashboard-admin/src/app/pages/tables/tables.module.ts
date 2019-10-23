@@ -20,5 +20,7 @@ import { FsIconComponent } from './tree-grid/tree-grid.component';
     ...routedComponents,
     FsIconComponent,
   ],
+  exports: [FsIconComponent],
+
 })
 export class TablesModule { }
