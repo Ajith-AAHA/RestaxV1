@@ -1,3 +1,308 @@
-<p>
-  curriculum works!
-</p>
+<div class="container">
+  <nb-card>
+    <nb-card-body>
+      <div class="row">
+        <div class="col-5">
+          <div class="HeadTitle p-3">CURRICULUM SETUP</div>
+          <div class="CardContent pl-3">{{CurriculumTitle}}</div>
+          <div class="CreateBtn pt-2 pl-3">
+            <button class="Morebtn mr-2" nbButton shape="rectangle" size="small">More Info<nb-icon
+                icon="arrowhead-right-outline"></nb-icon></button>
+          </div>
+        </div>
+        <div class="col-7 CurriculumCategory">
+          <button (click)="Papers()" class="Curriculumbtn" nbButton size="giant">
+            <ul style="list-style-type:none;">
+              <li>
+                <nb-icon class="CurriculumIcons" icon="file-add-outline"></nb-icon>
+              </li>
+              <li>Set</li>
+              <li>Papers</li>
+            </ul>
+          </button>
+          <button (click)="Syllabus()" class="Curriculumbtn ml-4 mr-4" nbButton size="giant">
+            <ul style="list-style-type:none;">
+              <li>
+                <nb-icon class="CurriculumIcons" icon="file-text-outline"></nb-icon>
+              </li>
+              <li>Set</li>
+              <li>Syllabus</li>
+            </ul>
+          </button>
+          <button (click)="ExportData()" class="Curriculumbtn" nbButton size="giant">
+            <ul style="list-style-type:none;">
+              <li>
+                <nb-icon class="CurriculumIcons" icon="upload-outline"></nb-icon>
+              </li>
+              <li>Export</li>
+              <li>Data</li>
+            </ul>
+          </button>
+        </div>
+      </div>
+    </nb-card-body>
+  </nb-card>
+  <!-- Curriculum Table  -->
+  <nb-card *ngIf="SetPapers">
+    <nb-card-header>
+      <div class="row">
+        <div class="col-6 PaperTitle"> {{PaperTitle}}</div>
+        <div class="col-6 text-right">
+          <nb-select class="CourseList" placeholder="Courses" size="medium" appearances="outline"
+            [(ngModel)]="selectedItemNgModel">
+            <nb-option *ngFor="let course of Courses" value="1">{{course}}</nb-option>
+          </nb-select>
+        </div>
+      </div>
+    </nb-card-header>
+    <nb-card-body>
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th *ngFor="let Head of HeadElements">{{Head}}</th>
+          </tr>
+          <tr>
+            <td>
+              <nb-select class="DeptList" placeholder="Departments" size="medium" appearances="outline"
+                [(ngModel)]="selectedItemNgModel">
+                <nb-option *ngFor="let dept of Departments" value="1">{{dept}}</nb-option>
+              </nb-select>
+            </td>
+            <td>
+              <nb-select class="DeptList" placeholder="Level" size="medium" appearances="outline"
+                [(ngModel)]="selectedItemNgModel">
+                <nb-option *ngFor="let lev of Level" value="1">{{lev}}</nb-option>
+              </nb-select>
+            </td>
+            <td>
+              <nb-select class="DeptList" placeholder="Year" size="medium" appearances="outline"
+                [(ngModel)]="selectedItemNgModel">
+                <nb-option *ngFor="let year of Year" value="1">{{year}}</nb-option>
+              </nb-select>
+            </td>
+            <td>
+              <nb-select class="DeptList" placeholder="Terms" size="medium" appearances="outline"
+                [(ngModel)]="selectedItemNgModel">
+                <nb-option *ngFor="let terms of Term" value="1">{{terms}}</nb-option>
+              </nb-select>
+            </td>
+            <td>
+              <nb-select class="DeptList" placeholder="Core" size="medium" appearances="outline"
+                [(ngModel)]="selectedItemNgModel">
+                <nb-option *ngFor="let core of Cores" value="1">{{core}}</nb-option>
+              </nb-select>
+            </td>
+          </tr>
+          <tr>
+            <th *ngFor="let head of PaperElements" scope="col">{{head}}</th>
+          </tr>
+          <tr>
+            <td>
+              <button type="button" nbButton size="medium" class="Addbtn" (click)="addPaperValue()" fullWidth>
+                <nb-icon icon="plus-outline"></nb-icon>
+              </button>
+            </td>
+            <td>
+              <input type="text" class="ConfigId " name="newAttributepaper_id" [(ngModel)]="newAttribute.paper_id" nbInput fullWidth
+                placeholder="ID">
+            </td>
+            <td>
+              <input type="text" class="ConfigName" id="newAttributeshortcode" name="newAttributeshortcode"
+                [(ngModel)]="newAttribute.shortcode" nbInput fullWidth placeholder="Short code">
+            </td>
+            <td>
+              <input type="text" class="ConfigName" id="newAttributepapername" name="newAttributepapername"
+                [(ngModel)]="newAttribute.papername" nbInput fullWidth placeholder="Paper Name">
+            </td>
+            <td>
+              <input type="text" class="ConfigName" id="newAttribute" name="newAttributecredits"
+                [(ngModel)]="newAttribute.credits" nbInput fullWidth placeholder="Credits">
+            </td>
+          </tr>
+          <tr *ngFor="let field of fieldArray; let i = index">
+            <td>
+              <button class="btn btn-default" (click)="addPaper()">
+                <nb-icon icon="checkmark-outline"></nb-icon>
+              </button>
+              <button class="btn btn-default" type="button" (click)="deletePaperValue(i)">
+                <nb-icon icon="close-outline"></nb-icon>
+              </button>
+            </td>
+            <td><input type="text" class="ConfigId" name="id" [(ngModel)]="paper.paper_id" nbInput fullWidth placeholder="ID">
+            </td>
+            <td>
+              <input type="text" class="ConfigName" name="shortcode" [(ngModel)]="paper.shortcode" nbInput fullWidth
+                placeholder="Short Code">
+            </td>
+            <td>
+              <input type="text" class="ConfigName" name="papername" [(ngModel)]="paper.name" nbInput fullWidth
+                placeholder="Paper Name">
+            </td>
+            <td>
+              <input type="text" class="ConfigName" name="credits" [(ngModel)]="paper.credits" nbInput fullWidth
+                placeholder="Credits">
+            </td>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let paper of papers;let i=index">
+            <td>
+              <div class="" *ngIf="EditRecord">
+
+                <button class="btn text-center" (click)="ShowEditpaper(paper,paperstemp)">
+                  <nb-icon icon="edit-outline"></nb-icon>
+                </button>
+
+                <button class="btn text-center" (click)="removepaper(paper.id)">
+                  <nb-icon icon="trash-2-outline"></nb-icon>
+                </button>
+
+              </div>
+              <div class="" *ngIf="EditActions">
+                <button class="btn btn-default" type="button" (click)="updatepaper(shortcode,papername,credits)">
+                  <nb-icon icon="checkmark-outline"></nb-icon>
+                </button>
+                <button class="btn btn-default" type="button" (click)="Cancel(paper)">
+                  <nb-icon icon="close-outline"></nb-icon>
+                </button>
+              </div>
+            </td>
+
+            <td class="PaperData">{{paper.paper_id}}</td>
+            <td class="PaperData">{{paper.shortcode}}</td>
+            <td class="PaperData">{{paper.papername}}</td>
+            <td class="PaperData">{{paper.credits}}</td>
+
+            <ng-template #paperstemp>
+                <div class="modal-header">
+                  <h4 class="modal-title pull-left">Update paper</h4>
+                  <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="form-group">
+                        <label for="name">Short code</label>
+                        <td><input type="text" class="ConfigName" name="shortcode" [(ngModel)]="shortcode" nbInput
+                            fullWidth placeholder="shortcode"></td>
+                      <label for="name">Paper Name</label>
+                      <input type="text" class="ConfigName" name="departmentname" [(ngModel)]="papername" nbInput
+                        fullWidth placeholder="papername">
+                          <label for="name">Credits</label>
+                          <input type="text" class="ConfigName" name="credits" [(ngModel)]="credits" nbInput
+                            fullWidth placeholder="credits">
+                    </div>
+                    <button type="button" class="btn btn-primary" *ngIf="paper.id"
+                      (click)="updatepaper(shortcode,papername,credits);">Update</button>
+                  </form>
+                </div>
+              </ng-template>
+            </tr>
+        </tbody>  
+      </table>
+    </nb-card-body>
+  </nb-card>
+  <nb-card *ngIf="SetSyllabus">
+    <nb-card-header>
+      <div class="row">
+        <div class="col-6 SyllabusTitle">Set syllabus</div>
+        <div class="col-6 Departments">
+          <nb-select class="CourseList" placeholder="Courses" size="medium" appearances="outline"
+            [(ngModel)]="selectedItemNgModel">
+            <nb-option *ngFor="let course of Courses" value="1">{{course}}</nb-option>
+          </nb-select>
+        </div>
+      </div>
+    </nb-card-header>
+    <nb-card-header>
+      <table class="table table-borderless">
+        <tr>
+          <td>
+            <nb-select class="DeptList" placeholder="Departments" size="medium" appearances="outline"
+              [(ngModel)]="selectedItemNgModel">
+              <nb-option *ngFor="let dept of Departments" value="1">{{dept}}</nb-option>
+            </nb-select>
+          </td>
+          <td>
+            <nb-select class="DeptList" placeholder="Level" size="medium" appearances="outline"
+              [(ngModel)]="selectedItemNgModel">
+              <nb-option *ngFor="let lev of Level" value="1">{{lev}}</nb-option>
+            </nb-select>
+          </td>
+          <td>
+            <nb-select class="DeptList" placeholder="Year" size="medium" appearances="outline"
+              [(ngModel)]="selectedItemNgModel">
+              <nb-option *ngFor="let year of Year" value="1">{{year}}</nb-option>
+            </nb-select>
+          </td>
+          <td>
+            <nb-select class="DeptList" placeholder="Terms" size="medium" appearances="outline"
+              [(ngModel)]="selectedItemNgModel">
+              <nb-option *ngFor="let terms of Term" value="1">{{terms}}</nb-option>
+            </nb-select>
+          </td>
+          <td>
+            <nb-select class="DeptList" placeholder="Core" size="medium" appearances="outline"
+              [(ngModel)]="selectedItemNgModel">
+              <nb-option *ngFor="let core of Cores" value="1">{{core}}</nb-option>
+            </nb-select>
+          </td>
+        </tr>
+      </table>
+    </nb-card-header>
+    <nb-card-body>
+      <label class="search-label" for="search">Search:</label>
+      <input nbInput [nbFilterInput]="dataSource" id="search" class="search-input">
+
+      <table [nbTreeGrid]="dataSource" [nbSort]="dataSource" (sort)="updateSort($event)">
+
+        <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
+        <tr nbTreeGridRow *nbTreeGridRowDef="let domain; columns: allColumns"></tr>
+
+        <ng-container [nbTreeGridColumnDef]="customColumn">
+
+          <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(customColumn)" *nbTreeGridHeaderCellDef>
+            {{customColumn}}
+          </th>
+
+          <td nbTreeGridCell *nbTreeGridCellDef="let domain">
+            <!-- <span clickToToggle *ngIf="domain.hasChildren()"
+              [attr.aria-label]="domain.expanded ? 'collapse' : 'expand'">
+              <span [ngClass]="{'nb-chevron-down': domain.expanded, 'nb-chevron-right': !domain.expanded}"
+                aria-hidden="true">
+              </span>
+            </span> -->
+            <nb-tree-grid-row-toggle
+            [expanded]="domain.expanded"
+            *ngIf="domain.data.kind === 'dir'">
+          </nb-tree-grid-row-toggle>
+
+            <span  nbButton class="GridActions" size="medium">
+                <nb-icon (click)="addsyllabus()" icon="plus-outline"></nb-icon>
+                <nb-icon  (click)="editDomain(domain)" icon="edit-outline"></nb-icon>
+                <nb-icon (click)="deletesyllabus()" icon="trash-2-outline"></nb-icon>
+            </span>
+            <span *ngIf="!domain.editable">{{domain.data.name}}</span>
+            <input type="text" class="ConfigName" name="syllabus" [(ngModel)]="domain.data.name" *ngIf="domain.editable"
+              nbInput fullWidth>
+            
+          </td>
+          <td>
+            
+          </td>
+        </ng-container>
+        <ng-container *ngFor="let column of defaultColumns" [nbTreeGridColumnDef]="column">
+          <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>{{column}}</th>
+          <td nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data.column}}</td>
+        </ng-container>
+
+      </table>
+    </nb-card-body>
+  </nb-card>
+  <nb-card *ngIf="Exportdata">
+    Exporting data
+  </nb-card>
+
+</div>

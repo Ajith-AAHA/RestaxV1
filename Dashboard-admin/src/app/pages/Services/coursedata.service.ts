@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 const httpOptions = {
@@ -50,17 +49,17 @@ export class CoursedataService {
 
 // departments
 
-// getdepartmentlist(): Observable<any> {
-//   return this.http.get(`${this.baseUrl}/departments`);
-// }
-// adddepartment(department: Object): Observable<Object> {
-//   return this.http.post(`${this.baseUrl}/departments`, department);
-// }
-// getlevellist(): Observable<any> {
-//   return this.http.get(`${this.baseUrl}/levels`);
-// }
-// addlevel(level: Object): Observable<Object> {
-//   return this.http.post(`${this.baseUrl}/levels`, level);
-// }
+getdepartmentlist(): Observable<any> {
+  return this.http.get(`${this.baseUrl}/departments`);
 }
-
+adddepartment(department: Object): Observable<Object> {
+  return this.http.post(`${this.baseUrl}/departments`, department);
+}
+// levels
+getlevellist(): Observable<any> {
+  return this.http.get(`${this.baseUrl}/levels`);
+}
+addlevel(level: Object): Observable<Object> {
+  return this.http.post(`${this.baseUrl}/levels`, level);
+}
+}

@@ -8,16 +8,15 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 // import { Course } from '../../Models/course';
-import { CourseService } from '../course.service';
+import { CoursedataService } from './../../Services/coursedata.service';
 export class Course {
   course_id: number;
   course_name: string;
 }
-
 export class Department {
-name: string;
-shortcode: string;
-course_name: string;
+  department_id: number;
+  name: string;
+  shortcode: string;
 }
 @Component({
   selector: 'ngx-course',
@@ -25,7 +24,9 @@ course_name: string;
   styleUrls: ['./course.component.scss'],
 })
 export class CourseComponent implements OnInit {
+ 
   course: Course = new Course();
+  department: Department = new Department();
 
   course_id: any;
   course_name: any;
@@ -38,9 +39,8 @@ export class CourseComponent implements OnInit {
   basic: string;
   FormBuilder: any;
 
-
   // tslint:disable-next-line: no-shadowed-variable
-  constructor(private _http: HttpClient, private CoursedataService: CourseService,
+  constructor(private _http: HttpClient, private CoursedataService: CoursedataService,
     private treeService: AngularD3TreeLibService, private modalService: BsModalService,
     private dialogService: NbDialogService) {
     this.data = dataTreeSimple.result;
@@ -69,8 +69,12 @@ export class CourseComponent implements OnInit {
   private newAttribute: any = {};
 
   courses:  Array<any> = [];
+  departments: Array<any> = [];
+  levels: Array<any> = [];
+
   coursename: any;
-  departmentname: any;
+
+  name: any;
   shortcode: any;
   levelname: any;
   levelshortcode: any;
@@ -87,7 +91,7 @@ export class CourseComponent implements OnInit {
   // course: true;
   EditRecord: boolean = true;
   EditActions: boolean = false;
-  department: boolean = false;
+  setdepartment: boolean = false;
   setlevels: boolean = false;
   Blocktree: boolean = false;
   Unknownstate: boolean = true;
@@ -97,25 +101,26 @@ export class CourseComponent implements OnInit {
   ngOnInit() {
 
     this.getAllcourses();
+    this.getAlldepartments();
+    this.getAlllevels();
     this.submitted = false;
     this.course = new Course();
 
   }
 
 
-  courseadd(index) {
+  courseadd() {
     this.CoursedataService.createCourse(this.course)
       .subscribe(
         data => {
           console.log(data);
           this.submitted = true;
-          this.coursefieldArray.splice(index, 1);
         },
         error => console.log(error));
     this.course = new Course();
   }
   removecourse() {
-    this.CoursedataService.deleteCourse(this.course_id)
+    this.CoursedataService.deleteCourse(this.course.course_id)
     .subscribe(
       data => {
       console.log(data);
@@ -125,7 +130,9 @@ export class CourseComponent implements OnInit {
   }
 
   onSubmit(index) {
-    this.courseadd(index);
+    this.courseadd();
+    this.coursefieldArray.splice(index, 1);
+
   }
   addCourseValue() {
     this.course_name = '';
@@ -133,7 +140,7 @@ export class CourseComponent implements OnInit {
     this.newAttribute = {};
   }
   addDeptValue() {
-    this.departmentname = '';
+    this.name = '';
     this.shortcode = '';
     this.departmentfieldArray.push(this.newAttribute);
     this.newAttribute = {};
@@ -169,6 +176,8 @@ Cancel(course: { editable: boolean; }) {
 
 }
 
+
+
 getAllcourses() {
 
   this.CoursedataService.getCoursesList().subscribe((data: any) => {
@@ -178,9 +187,24 @@ getAllcourses() {
   });
 }
 
+getAlldepartments() {
+this.CoursedataService.getdepartmentlist().subscribe((data: any) => {
+  this.departments = data;
+});
+}
+
+getAlllevels() {
+  this.CoursedataService.getlevellist().subscribe((data: any) => {
+    this.levels = data;
+  });
+}
+
+
+
+
 Course() {
   this.setcourse = true;
-  this.department = false;
+  this.setdepartment = false;
   this.setlevels = false;
   this.Unknownstate = false;
   this.Blocktree = false;
@@ -189,7 +213,7 @@ Course() {
 
 Depts() {
   this.setcourse = false;
-  this.department = true;
+  this.setdepartment = true;
   this.setlevels = false;
   this.Unknownstate = false;
   this.Blocktree = false;
@@ -197,7 +221,7 @@ Depts() {
 }
 Levels() {
   this.setcourse = false;
-  this.department = false;
+  this.setdepartment = false;
   this.setlevels = true;
   this.Unknownstate = false;
   this.Blocktree = false;
@@ -208,7 +232,7 @@ this.Blocktree = true;
 this.Unknownstate = false;
 this.setcourse = false;
 this.setlevels = false;
-this.department = false;
+this.setdepartment = false;
 this.CourseModule = false;
 }
 TreeBlock() {
@@ -216,7 +240,7 @@ TreeBlock() {
 }
 // Open Modal
 openModal(template: TemplateRef<any>) {
-  this.departmentname = '';
+  this.name = '';
   this.shortcode = '';
   // this.dept = {};
   this.modalRef = this.modalService.show(template);

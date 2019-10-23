@@ -5,6 +5,11 @@ import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
+import { GradingsetupComponent } from './gradingsetup/gradingsetup.component';
+import { SeasonsetupComponent } from './seasonsetup/seasonsetup.component';
+import { StudentbaseComponent } from './studentbase/studentbase.component';
+import { SeatingconfigComponent } from './seatingconfig/seatingconfig.component';
+
 
 const routes: Routes = [{
   path: '',
@@ -20,6 +25,39 @@ const routes: Routes = [{
     },
 
     {
+      path: 'exambase',
+      loadChildren: () => import('./exambase/exambase.module')
+        .then(m => m.ExambaseModule),
+    },
+
+    {
+      path: 'facultybase',
+      loadChildren: () => import('./facultybase/facultybase.module')
+        .then(m => m.FacultybaseModule),
+    },
+
+    {
+      path: 'gradingsetup',
+      component: GradingsetupComponent,
+    },
+
+    {
+      path: 'seasonsetup',
+      component: SeasonsetupComponent,
+    },
+
+    {
+      path: 'studentbase',
+      component: StudentbaseComponent,
+    },
+
+    {
+      path: 'seatingconfig',
+      component: SeatingconfigComponent,
+    },
+
+  
+    {
       path: 'layout',
       loadChildren: () => import('./layout/layout.module')
         .then(m => m.LayoutModule),
@@ -33,6 +71,11 @@ const routes: Routes = [{
       path: 'season-setup',
       loadChildren: () => import('./season-setup/season-setup.module')
         .then(m => m.SeasonSetupModule),
+    },
+    {
+      path: 'curriculum-setup',
+      loadChildren: () => import('./curriculum-setup/curriculum-setup.module')
+      .then(m => m.CurriculumSetupModule),
     },
     {
       path: 'forms',
@@ -74,6 +117,7 @@ const routes: Routes = [{
       loadChildren: () => import('./tables/tables.module')
         .then(m => m.TablesModule),
     },
+    
     {
       path: 'miscellaneous',
       loadChildren: () => import('./miscellaneous/miscellaneous.module')
